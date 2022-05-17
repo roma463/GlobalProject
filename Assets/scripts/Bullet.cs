@@ -4,8 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private DisableParticle _train;
     private Teleport _teleport;
-    private Vector2 _x;
-    void Start()
+    private void Start()
     {
         _teleport = Teleport.GlobaTP;
     }
@@ -14,25 +13,24 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out CollisionSurface collsionSurface))
         {
 
-            _x = collision.GetContact(0).normal;
+            var narmal = collision.GetContact(0).normal;
                 Teleport.Offset a = new Teleport.Offset();
-                if (_x == Vector2.up)
+                if (narmal == Vector2.up)
                 {
                     a = Teleport.Offset.up;
                 }
-                else if (_x == -Vector2.up)
+                else if (narmal == -Vector2.up)
                 {
                     a = Teleport.Offset.down;
                 }
-                if (_x == Vector2.right)
+                if (narmal == Vector2.right)
                 {
                     a = Teleport.Offset.right;
                 }
-                else if (_x == -Vector2.right)
+                else if (narmal == -Vector2.right)
                 {
                     a = Teleport.Offset.left;
                 }
-                print(a);
                 _teleport.Player(a, collision.GetContact(0).point);
         }
         _train.transform.parent = null;

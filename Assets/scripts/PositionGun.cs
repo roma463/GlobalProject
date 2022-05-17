@@ -3,12 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Trajectory))]
 public class PositionGun : MonoBehaviour
 {
-    public enum StateMove
-    {
-        moveObject,
-        teleportPLayer
-    }
-    public StateMove StateTP { get; private set; }
     [SerializeField] private GameObject _bullet;
     [SerializeField] private Transform _gunPoint;
     [SerializeField] private float _force;
@@ -29,18 +23,20 @@ public class PositionGun : MonoBehaviour
     {
         var speed = -(transform.position - _camera.ScreenToWorldPoint(Input.mousePosition)) * _force;
         _trajectory.TrajectoryBullet(speed);
+
         if (_inputButton.MouseLeft)
         {
             Shoot(speed);
         }
-        else if (_inputButton.MouseRightStay)
-        {
-            _holdObject.GameobjectKeep();
-        }
-        else if (!_inputButton.MouseRightStay)
-        {
-            _holdObject.Throw();
-        }
+
+            if (_inputButton.MouseRightStay && _holdObject.StateTP == HoldObject.StateMove.teleportPLayer)
+            {
+                _holdObject.GameobjectKeep();
+            }
+            else if (!_inputButton.MouseRightStay && _holdObject.StateTP == HoldObject.StateMove.moveObject)
+            {
+                _holdObject.Throw();
+            }
     }
     private void Shoot(Vector2 speedBullet)
     {
@@ -51,9 +47,9 @@ public class PositionGun : MonoBehaviour
                 _countShoot--;
                 _stateUi.DecreaseCountShot(_countShoot);
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
-                var rb = bullet.GetComponent<Rigidbody2D>();
-                rb.gravityScale *= transform.parent.gameObject.transform.parent.localScale.y;
-                rb.AddForce(speedBullet, ForceMode2D.Impulse);
+                var rigidbody = bullet.GetComponent<Rigidbody2D>();
+                rigidbody.gravityScale *= transform.parent.gameObject.transform.parent.localScale.y;
+                rigidbody.AddForce(speedBullet, ForceMode2D.Impulse);
             }
         }
         else

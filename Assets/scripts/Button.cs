@@ -3,13 +3,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    enum mobeClick
-    {
-        stay,
-        single,
-    }
     [SerializeField] private GameObject _objectAction;
-    [SerializeField] private mobeClick _modeClick;
     private Action _action;
     private List<GameObject> _clickedButton = new List<GameObject>();
     private void Start()
@@ -21,6 +15,10 @@ public class Button : MonoBehaviour
             _objectAction = null;
         }
     }
+    public Transform GetTransformActiveObject()
+    {
+        return _objectAction.transform;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_clickedButton.Count == 0)
@@ -29,7 +27,6 @@ public class Button : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("exit");
         _clickedButton.Remove(collision.gameObject);
         if (_clickedButton.Count == 0)
             _action.launch();

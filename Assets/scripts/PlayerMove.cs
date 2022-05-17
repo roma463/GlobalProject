@@ -20,7 +20,6 @@ public class PlayerMove : MonoBehaviour
     private bool _InputJump;
     private bool _startCorutaine;
     private bool _onCollison = true;
-    private bool _isLookRight = true;
 
     private void Awake()
     {
@@ -34,21 +33,6 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.velocity = (new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y));
-        //if (horizontal > 0 && _isLookRight == false)
-        //{
-        //    Flip();
-        //}
-        //else if (horizontal < 0 && _isLookRight == true)
-        //{
-        //    Flip();
-        //}
-    }
-    private void Flip()
-    {
-        var scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-        _isLookRight = !_isLookRight;
     }
     private void Update()
     {

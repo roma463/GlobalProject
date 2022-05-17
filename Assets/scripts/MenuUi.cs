@@ -8,7 +8,6 @@ public class MenuUi : MonoBehaviour
     private int _lastLevel;
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
         _lastLevel = PlayerPrefs.GetInt("Scene", 1);
         _lastLevelText.text = _lastLevel.ToString();
     }

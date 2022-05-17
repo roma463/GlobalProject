@@ -28,7 +28,7 @@ public class HoldObject : MonoBehaviour
         var hit = Physics2D.Linecast(_spawnBullet.position, collision.transform.position, _layerForRay);
         if (hit.collider.gameObject != collision.gameObject)
             return;
-        if (collision.TryGetComponent(out useObject use))
+        if (collision.TryGetComponent(out UseObject use))
         {
             _joint.connectedBody = use.gameObject.GetComponent<Rigidbody2D>();
             _useObject = collision.transform;
@@ -39,7 +39,6 @@ public class HoldObject : MonoBehaviour
     {
         if (StateTP == StateMove.moveObject)
         {
-            //_moveArm.Move();
             _useObject.position = transform.position;
         }
     }
@@ -63,6 +62,7 @@ public class HoldObject : MonoBehaviour
             }
         }
     }
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -70,4 +70,5 @@ public class HoldObject : MonoBehaviour
         if (_useObject != null)
             Gizmos.DrawLine(transform.position, _useObject.transform.position);
     }
+#endif
 }
