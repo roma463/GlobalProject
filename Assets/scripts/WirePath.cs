@@ -1,11 +1,13 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class WirePath : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
     private Transform _endPosition;
-    private void Start()
+    private void Awake()
     {
+        PlayerPrefs.DeleteKey("Scene");
         _endPosition = GetComponent<Button>().GetTransformActiveObject();
         Vector3[] points = new Vector3[4];
         points[0] = transform.position;

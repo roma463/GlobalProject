@@ -103,7 +103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.5513, y: 0}
+  m_AnchoredPosition: {x: 31.6, y: -81.4}
   m_SizeDelta: {x: 91.1025, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7833980778454151655
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Restert
+  m_Text: 'Restart
 
 '
 --- !u!114 &7833980778454151656
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 7833980778454151654}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -517,7 +517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.144, y: 86.78549}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 154.49, y: 203.571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7833980778758826246
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16140084, g: 0.2924528, b: 0.2924528, a: 1}
+  m_Color: {r: 0.4188323, g: 0.49056602, b: 0.49056602, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1181,8 +1181,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64.15475, y: 0}
-  m_SizeDelta: {x: 60.4742, y: 30}
+  m_AnchoredPosition: {x: -45.647, y: -81.40001}
+  m_SizeDelta: {x: 63.392, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7833980780114013472
 CanvasRenderer:
@@ -1266,7 +1266,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 7833980780114013535}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1581,6 +1581,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -148.8, y: -6}
+  m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
