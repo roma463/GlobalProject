@@ -103,14 +103,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 7803144574073767259, guid: 8dc97b68c73df0a40956e1550f58ce3f, type: 3}
   _gunPoint: {fileID: 7323935748153237668}
-  _force: 1.5
+  _forceShot: 1.5
   _holdObject: {fileID: 7323935746854482001}
   _rayCollsiion:
     serializedVersion: 2
     m_Bits: 192
   _inputButton: {fileID: 7323935748224626294}
   _stateUi: {fileID: 0}
-  _countShoot: 0
+  _countShot: 1
 --- !u!114 &7323935746854482002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
