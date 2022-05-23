@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    [SerializeField] private StateUi _ui;
+    [SerializeField] private GameUi _ui;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

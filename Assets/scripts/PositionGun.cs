@@ -9,7 +9,7 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private HoldObject _holdObject;
     [SerializeField] private LayerMask _rayCollsiion;
     [SerializeField] private InputButton _inputButton;
-    [SerializeField] private StateUi _stateUi;
+    [SerializeField] private GameUi _stateUi;
     [SerializeField] private int _countShot;
     private Trajectory _trajectory;
     private Camera _camera;

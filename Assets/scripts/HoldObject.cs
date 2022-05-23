@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class HoldObject : MonoBehaviour
 {
-    public enum StateMove
-    {
-        moveObject,
-        teleportPLayer
-    }
     public bool ObjectRised { get; private set; }
     [SerializeField] private RelativeJoint2D _joint;
     [SerializeField] private Transform _pointKeep;
@@ -25,7 +20,7 @@ public class HoldObject : MonoBehaviour
         var hit = Physics2D.Linecast(_spawnBullet.position, collision.transform.position, _layerForRay);
         if (hit.collider.gameObject != collision.gameObject)
             return;
-        if (collision.TryGetComponent(out UseObject use))
+        if (collision.TryGetComponent(out UsePlayerObject use))
         {
             _joint.connectedBody = use.gameObject.GetComponent<Rigidbody2D>();
             _useObject = collision.transform;

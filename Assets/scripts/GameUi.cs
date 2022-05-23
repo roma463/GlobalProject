@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StateUi : MonoBehaviour
+public class GameUi : MonoBehaviour
 {
     [SerializeField] private GameObject _winDisplay;
     [SerializeField] private GameObject _pauseDisplay;
