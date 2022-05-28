@@ -10,12 +10,15 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private LayerMask _rayCollsiion;
     [SerializeField] private InputButton _inputButton;
     [SerializeField] private GameUi _stateUi;
+    [SerializeField] private TextMesh _textCountShot;
     [SerializeField] private int _countShot;
+    [SerializeField] private Color _zeroBullet;
     private Trajectory _trajectory;
     private Camera _camera;
 
     private void Start()
     {
+        _textCountShot.text = _countShot.ToString();
         _stateUi.DecreaseCountShot(_countShot);
         _trajectory = GetComponent<Trajectory>();
         _camera = Camera.main;
@@ -46,6 +49,11 @@ public class PositionGun : MonoBehaviour
             if (!Physics2D.OverlapCircle(_gunPoint.position, .1f, _rayCollsiion))
             {
                 _countShot--;
+                _textCountShot.text = _countShot.ToString();
+                if(_countShot == 0)
+                {
+                    _textCountShot.color = _zeroBullet;
+                }
                 _stateUi.DecreaseCountShot(_countShot);
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
                 var rigidbodyBullet = bullet.GetComponent<Rigidbody2D>();

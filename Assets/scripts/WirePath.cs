@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class WirePath : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;

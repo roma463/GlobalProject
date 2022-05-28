@@ -9,20 +9,25 @@ public class Teleport : MonoBehaviour
         up,
         down,
     }
-
+    public static Teleport GlobaTP { get; private set; }
+    public int GravityScale { get; private set; }
     [SerializeField] private Transform _pointUP;
     [SerializeField] private Transform _pointDown;
     [SerializeField] private Transform _pointLeft;
     [SerializeField] private Transform _pointRight;
-
     [SerializeField] private HoldObject _holdObject;
-    public static Teleport GlobaTP { get; private set; }
+    [SerializeField] private ParticlesPlayer _playerParticles;
+    [SerializeField] private Transform _textPoint;
     private void Awake()
     {
+        _textPoint.parent = null;
+        GravityScale = 1;
         GlobaTP = this;
     }
     public void Player(Offset of, Vector2 newPosition)
     {
+        _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
+
         Vector2 offset = Vector2.zero;
         if (of == Offset.down)
         {
@@ -40,9 +45,14 @@ public class Teleport : MonoBehaviour
         {
             offset = transform.position - _pointRight.position;
         }
-        offset *= transform.localScale.y;
+        offset *= GravityScale;
         transform.position = newPosition - offset;
+        _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
+    }
+    public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
+    {
+        GravityScale = (int)transform.localScale.y;
     }
 }
