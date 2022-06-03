@@ -22,6 +22,10 @@ public class Trajectory : MonoBehaviour
                 {
                     _pointCollisionLine.color = Color.green;
                 }
+                else if (hit.collider.TryGetComponent(out GravityLine gravityLine))
+                {
+                    continue;
+                }
                 else
                 {
                     _pointCollisionLine.color = Color.red;

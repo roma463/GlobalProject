@@ -5,6 +5,7 @@ using UnityEngine;
 public class Undepend : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private ParticleSystem _collisionGravityLine;
 
     private float _force;
     bool _ferstCollision;
@@ -13,8 +14,6 @@ public class Undepend : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out GravityLine gravityLine))
         {
-          
-
         if (_ferstCollision == false)
             _force = _rigidbody2D.velocity.y;
         _ferstCollision = true;
@@ -23,6 +22,7 @@ public class Undepend : MonoBehaviour
             x *= -1;
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, x);
         _vectorForce = !_vectorForce;
+            _collisionGravityLine.Play();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

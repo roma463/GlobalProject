@@ -47,6 +47,7 @@ public class Teleport : MonoBehaviour
         }
         offset *= GravityScale;
         transform.position = newPosition - offset;
+        _textPoint.position = newPosition - offset;
         _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();

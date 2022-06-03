@@ -4,6 +4,7 @@ public class HoldObject : MonoBehaviour
 {
     public bool ObjectRised { get; private set; }
     [SerializeField] private RelativeJoint2D _joint;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Transform _pointKeep;
     [SerializeField] private LayerMask _holdObject;
     [SerializeField] private LayerMask _layerForRay;
@@ -20,10 +21,10 @@ public class HoldObject : MonoBehaviour
         var hit = Physics2D.Linecast(_spawnBullet.position, collision.transform.position, _layerForRay);
         if (hit.collider.gameObject != collision.gameObject)
             return;
-        if (collision.TryGetComponent(out UsePlayerObject use))
+        if (collision.transform.parent.TryGetComponent(out UsePlayerObject use))
         {
             _joint.connectedBody = use.gameObject.GetComponent<Rigidbody2D>();
-            _useObject = collision.transform;
+            _useObject = collision.transform.parent;
             ObjectRised = true;
         }
     }
@@ -38,7 +39,7 @@ public class HoldObject : MonoBehaviour
     {
         if (_useObject == null)
             return;
-        _useObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        _useObject.GetComponent<Rigidbody2D>().velocity = _rigidbody2D.velocity;
         ObjectRised = false;
         _joint.connectedBody = null;
         _useObject = null;
