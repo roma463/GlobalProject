@@ -17,13 +17,13 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 1
+    overrideState: 0
     value: 0
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    overrideState: 1
+    overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 0.73
   rounded:
     overrideState: 0
-    value: 1
+    value: 0
   mask:
     overrideState: 0
     value: {fileID: 0}
@@ -119,10 +119,10 @@ MonoBehaviour:
     value: -49
   colorFilter:
     overrideState: 0
-    value: {r: 0.741011, g: 0.8679245, b: 0.8418066, a: 1}
+    value: {r: 0.5444998, g: 0.8679245, b: 0.8072824, a: 1}
   hueShift:
     overrideState: 0
-    value: -25
+    value: -180
   saturation:
     overrideState: 1
     value: 34
@@ -169,8 +169,8 @@ MonoBehaviour:
     overrideState: 1
     value: {x: 1, y: 1, z: 1, w: -0.14769752}
   gain:
-    overrideState: 1
-    value: {x: 1, y: 0.7977804, z: 0.82455283, w: 0.07819289}
+    overrideState: 0
+    value: {x: 1, y: 0.7977804, z: 0.82455283, w: 0.09958326}
   masterCurve:
     overrideState: 0
     value:
@@ -1395,19 +1395,19 @@ MonoBehaviour:
     value: 1
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.072
   clamp:
     overrideState: 0
     value: 65472
   diffusion:
     overrideState: 0
-    value: 7
+    value: 10
   anamorphicRatio:
     overrideState: 0
-    value: 0
+    value: 1
   color:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0, g: 0.9553201, b: 1, a: 1}
   fastMode:
     overrideState: 0
     value: 0

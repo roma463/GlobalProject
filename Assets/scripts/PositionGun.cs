@@ -13,6 +13,7 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private TextMesh _textCountShot;
     [SerializeField] private int _countShot;
     [SerializeField] private Color _zeroBullet;
+    [SerializeField] private AudioSource _soundShot;
     private Trajectory _trajectory;
     private Camera _camera;
 
@@ -58,6 +59,7 @@ public class PositionGun : MonoBehaviour
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
                 var rigidbodyBullet = bullet.GetComponent<Rigidbody2D>();
                 rigidbodyBullet.AddForce(speedBullet, ForceMode2D.Impulse);
+                _soundShot.Play();
             }
         }
         else

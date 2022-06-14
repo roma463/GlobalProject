@@ -6,6 +6,7 @@ public class Undepend : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private ParticleSystem _collisionGravityLine;
+    [SerializeField] private AudioSource _hit;
 
     private float _force;
     bool _ferstCollision;
@@ -28,6 +29,9 @@ public class Undepend : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ResetForceOnTregger();
+        _hit.volume = collision.relativeVelocity.magnitude * 0.01f;
+        _hit.Play();
+
     }
     public void ResetForceOnTregger()
     {

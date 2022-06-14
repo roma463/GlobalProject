@@ -25,26 +25,6 @@ public class InvisibleBlock : MonoBehaviour, Action
     {
                 StopAllCoroutines();
         int VectorDirectionColor = stateActive ? 1 : -1;
-        //if (stateActive == true)
-        //{
-        //    for (int i = 0; i < _getCheldrensSpriteSenderer.Length; i++)
-        //    {
-        //        _getCheldrensBoxCollider[i].enabled = true;
-        //        Color.RGBToHSV(_getCheldrensSpriteSenderer[i].color, out float H, out float S, out float V);
-        //        Color Targer = Color.HSVToRGB(H, S, V + blockout);
-        //        StartCoroutine(ColorByClick(_getCheldrensSpriteSenderer[i], Targer, _changedInFrame));
-        //    }
-        //}
-        //else
-        //{
-        //    for (int i = 0; i < _getCheldrensSpriteSenderer.Length; i++)
-        //    {
-        //        _getCheldrensBoxCollider[i].enabled = false;
-        //        Color.RGBToHSV(_getCheldrensSpriteSenderer[i].color, out float H, out float S, out float V);
-        //        Color Targer = Color.HSVToRGB(H, S, V - blockout);
-        //        StartCoroutine(ColorByClick(_getCheldrensSpriteSenderer[i], Targer, -_changedInFrame));
-        //    }
-        //}
         for (int i = 0; i < _getCheldrensSpriteSenderer.Length; i++)
         {
             _getCheldrensBoxCollider[i].enabled = stateActive;
