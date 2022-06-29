@@ -451,6 +451,7 @@ MonoBehaviour:
   _countShot: 1
   _zeroBullet: {r: 0.8235294, g: 0.06354574, b: 0.06354574, a: 1}
   _soundShot: {fileID: 985345333141606209}
+  _physicsSimulations: {fileID: 6196748064443620804}
 --- !u!114 &7323935746854482002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1116,7 @@ GameObject:
   - component: {fileID: 7323935748224626294}
   - component: {fileID: 9181593802604380227}
   - component: {fileID: 5952092810604418134}
+  - component: {fileID: 6196748064443620804}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1250,6 +1252,19 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7323935748224626291}
   _collisionGravityLine: {fileID: 8286357710482115494}
   _hit: {fileID: 4462018090586632505}
+--- !u!114 &6196748064443620804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323935748224626289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9310dd94edd3d48ae6befcf2e7cdf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partTime: 20
 --- !u!1 &7323935748421541316
 GameObject:
   m_ObjectHideFlags: 0

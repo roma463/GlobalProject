@@ -14,8 +14,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _timeKnowJump;
 
-
-
     private Rigidbody2D _rigidbody;
     private InputButton _inputButton;
     private bool _isGround;
@@ -29,7 +27,6 @@ public class PlayerMove : MonoBehaviour
     }
     private void Start()
     {
-        //transform.
         _inputButton = GetComponent<InputButton>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }

@@ -43,7 +43,6 @@ public class InvisibleBlock : MonoBehaviour, Action
             {
                 yield break;
             }
-            print(V);
             spriteRenderer.color = Color.HSVToRGB(H, S, V);
             yield return new WaitForFixedUpdate();
         }
