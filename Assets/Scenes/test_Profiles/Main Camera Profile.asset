@@ -1,5 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9037252380096243060
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
+  m_Name: AutoExposure
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  filtering:
+    overrideState: 1
+    value: {x: 1, y: 46.00001}
+  minLuminance:
+    overrideState: 1
+    value: -9
+  maxLuminance:
+    overrideState: 1
+    value: 9
+  keyValue:
+    overrideState: 1
+    value: 1
+  eyeAdaptation:
+    overrideState: 0
+    value: 0
+  speedUp:
+    overrideState: 1
+    value: 0
+  speedDown:
+    overrideState: 1
+    value: 1
 --- !u!114 &-4687378882339881691
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -27,13 +64,13 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.46
+    value: 0.579
   smoothness:
     overrideState: 1
-    value: 1
+    value: 0.157
   roundness:
     overrideState: 1
-    value: 0.73
+    value: 0.609
   rounded:
     overrideState: 0
     value: 0
@@ -60,6 +97,7 @@ MonoBehaviour:
   - {fileID: -4687378882339881691}
   - {fileID: 1082934435273068200}
   - {fileID: 1683065132536965448}
+  - {fileID: -9037252380096243060}
 --- !u!114 &1082934435273068200
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -113,28 +151,28 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 0
-    value: 0
+    value: -37
   tint:
     overrideState: 0
-    value: -49
+    value: -54
   colorFilter:
     overrideState: 0
     value: {r: 0.5444998, g: 0.8679245, b: 0.8072824, a: 1}
   hueShift:
     overrideState: 0
-    value: -180
+    value: 13
   saturation:
-    overrideState: 1
-    value: 34
-  brightness:
     overrideState: 0
-    value: 53
+    value: 100
+  brightness:
+    overrideState: 1
+    value: 20
   postExposure:
     overrideState: 0
     value: 0
   contrast:
     overrideState: 1
-    value: 6
+    value: 33
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -155,22 +193,22 @@ MonoBehaviour:
     value: 0
   mixerBlueOutRedIn:
     overrideState: 0
-    value: 75
+    value: -34
   mixerBlueOutGreenIn:
     overrideState: 0
-    value: 35
+    value: 136
   mixerBlueOutBlueIn:
     overrideState: 0
-    value: 8
+    value: -36
   lift:
     overrideState: 1
-    value: {x: 0.84078836, y: 1, z: 0.9927659, w: -0.060816742}
+    value: {x: 0.96810067, y: 0.9977243, z: 1, w: -0.11424209}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.14769752}
+    value: {x: 1, y: 1, z: 1, w: 0.068545304}
   gain:
-    overrideState: 0
-    value: {x: 1, y: 0.7977804, z: 0.82455283, w: 0.09958326}
+    overrideState: 1
+    value: {x: 0.8900298, y: 1, z: 0.9859186, w: 0.1142422}
   masterCurve:
     overrideState: 0
     value:
@@ -1383,7 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1

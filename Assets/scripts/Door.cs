@@ -4,13 +4,20 @@ using UnityEngine;
 public class Door : MonoBehaviour, Action
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _scaleOpen = 1;
+    [SerializeField] private bool _startIsOpen;
     private bool _isOpen;
-    private float _startPosition;
+    private float _startSize;
     private Coroutine _currentCorutine;
 
     private void Start()
     {
-        _startPosition = transform.localScale.y;
+        _startSize = transform.localScale.y;
+        if (_startIsOpen)
+        {
+            ChangeSize(_scaleOpen);
+        }
+        _isOpen = _startIsOpen;
     }
     public void launch()
     {
@@ -27,7 +34,7 @@ public class Door : MonoBehaviour, Action
     }
     private IEnumerator Raise()
     {
-        for (float i = transform.localScale.y; i > 1; i -= Time.deltaTime * _speed)
+        for (float i = transform.localScale.y; i > _scaleOpen; i -= Time.deltaTime * _speed)
         {
             ChangeSize(i);
             yield return null;
@@ -38,7 +45,7 @@ public class Door : MonoBehaviour, Action
     private IEnumerator Closed()
     {
 
-        for (float i = transform.localScale.y; i < _startPosition; i += Time.deltaTime * _speed)
+        for (float i = transform.localScale.y; i < _startSize; i += Time.deltaTime * _speed)
         {
             ChangeSize(i);
             yield return null;

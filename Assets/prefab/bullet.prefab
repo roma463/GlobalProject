@@ -104,8 +104,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0.8196079, a: 0}
-      key1: {r: 0.0627451, g: 0.9960785, b: 0.909804, a: 0.9502924}
+      key0: {r: 0, g: 1, b: 0.8196079, a: 0.9502924}
+      key1: {r: 0.0627451, g: 0.9960785, b: 0.909804, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -120,8 +120,8 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
-      atime1: 3258
+      atime0: 3258
+      atime1: 65535
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -130,7 +130,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -5122,6 +5122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _train: {fileID: 2469616329133453591}
+  _point: {fileID: 0}
 --- !u!61 &-8201969211761048287
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5146,5 +5147,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25327712, y: 0.25327712}
+  m_Size: {x: 0.076645374, y: 0.076645374}
   m_EdgeRadius: 0

@@ -5,15 +5,18 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     [SerializeField] private GameObject _objectAction;
-    [SerializeField] private Gradient _chengeColor;
+    [Range(0,1)]
+    [SerializeField] private float _scaleByClick;
+    [SerializeField] private Transform _sptireButton;
     [SerializeField] private float _speedChenge;
+    private float _startScale;
     private Action _action;
     private List<GameObject> _clickedButton = new List<GameObject>();
-    private SpriteRenderer _spriteRenderer;
-    private float currentColorGradient;
+    private float _currentScale;
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _startScale = _sptireButton.localScale.y;
+        _currentScale = _startScale;
         if (_objectAction == null)
             return;
         if (!_objectAction.TryGetComponent(out _action))
@@ -21,7 +24,18 @@ public class Button : MonoBehaviour
             _objectAction = null;
         }
     }
-    public Transform GetTransformActiveObject() => _objectAction.transform;
+    public Transform GetTransformActiveObject()
+    {
+        if(_objectAction != null)
+        {
+           return _objectAction.transform;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_clickedButton.Count == 0)
@@ -44,19 +58,22 @@ public class Button : MonoBehaviour
     }
     private IEnumerator ColorByClick()
     {
-        for (; currentColorGradient < 1; currentColorGradient += Time.deltaTime * _speedChenge)
+        for (; _currentScale > _scaleByClick; _currentScale -= Time.deltaTime * _speedChenge)
         {
+            _sptireButton.localScale = new Vector2(_sptireButton.localScale.x, _currentScale);
             yield return null;
-            _spriteRenderer.color = _chengeColor.Evaluate(currentColorGradient);
+
         }
+
     }
     private IEnumerator ColorByClickUp()
     {
-        for (; currentColorGradient > 0; currentColorGradient -= Time.deltaTime * _speedChenge)
+        for (; _currentScale < _startScale; _currentScale += Time.deltaTime * _speedChenge)
         {
+            _sptireButton.localScale = new Vector2(_sptireButton.localScale.x, _currentScale);
             yield return null;
-            _spriteRenderer.color = _chengeColor.Evaluate(currentColorGradient);
         }
+
     }
 }
 public interface Action

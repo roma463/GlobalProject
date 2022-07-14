@@ -21,13 +21,11 @@ public class PhysicsSimulations : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        i++;
-        if (i == _partTime)
+        //for (int i = 0; i < _partTime; i++)
         {
-            i = 0;
-            _physicsMain.Simulate(Time.fixedDeltaTime * _partTime);
+        //    _physicsBullet.Simulate(Time.fixedDeltaTime/_partTime);
+        //_physicsMain.Simulate(Time.fixedDeltaTime);
         }
-        _physicsBullet.Simulate(Time.fixedDeltaTime);
     }
     public void AddObjectInScene(GameObject obj)
     {

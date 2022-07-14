@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6988751125374585996}
   - component: {fileID: 6546786362282537651}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,6 +85,9 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8024578497955258576}
   _collisionGravityLine: {fileID: 2366031563867803622}
   _hit: {fileID: 8761889761112890858}
+  _mack:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &4806084102789455718
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +410,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.93530154, y: 0.93530154}
   m_EdgeRadius: 0
 --- !u!1001 &7665056498729500964
 PrefabInstance:

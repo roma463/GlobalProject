@@ -10,7 +10,12 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Text _nextLevel;
     [SerializeField] private Text _countShotText;
     [SerializeField] private InputButton _inputButton;
+    [SerializeField] private Animator _animator;
     private int _currentScene;
+    private void Awake()
+    {
+        _winDisplay.SetActive(true);
+    }
     private void Start()
     {
         _currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -21,10 +26,14 @@ public class GameUi : MonoBehaviour
         {
             Pause();
         }
+        else if (_inputButton.KeyR)
+        {
+            Restart();
+        }
     }
     public void Win()
     {
-        _winDisplay.SetActive(true);
+        _animator.SetTrigger("Finish");
         if (SceneManager.sceneCountInBuildSettings- 1 > _currentScene)
         {
             PlayerPrefs.SetInt("Scene", _currentScene + 1);
@@ -63,6 +72,10 @@ public class GameUi : MonoBehaviour
     public void ButtonPause()
     {
         Pause();
+    }
+    public void ButtonNextLevel()
+    {
+        _animator.SetTrigger("Next");
     }
     public void NextLevel()
     {
