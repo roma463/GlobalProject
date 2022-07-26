@@ -85,9 +85,6 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8024578497955258576}
   _collisionGravityLine: {fileID: 2366031563867803622}
   _hit: {fileID: 8761889761112890858}
-  _mack:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &4806084102789455718
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +285,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
   m_FlipX: 0
@@ -374,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6792453, g: 0.34408507, b: 0.13777146, a: 1}
   m_FlipX: 0

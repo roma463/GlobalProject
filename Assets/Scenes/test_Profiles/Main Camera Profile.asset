@@ -1,42 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9037252380096243060
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
-  m_Name: AutoExposure
-  m_EditorClassIdentifier: 
-  active: 0
-  enabled:
-    overrideState: 1
-    value: 1
-  filtering:
-    overrideState: 1
-    value: {x: 1, y: 46.00001}
-  minLuminance:
-    overrideState: 1
-    value: -9
-  maxLuminance:
-    overrideState: 1
-    value: 9
-  keyValue:
-    overrideState: 1
-    value: 1
-  eyeAdaptation:
-    overrideState: 0
-    value: 0
-  speedUp:
-    overrideState: 1
-    value: 0
-  speedDown:
-    overrideState: 1
-    value: 1
 --- !u!114 &-4687378882339881691
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -96,8 +59,7 @@ MonoBehaviour:
   settings:
   - {fileID: -4687378882339881691}
   - {fileID: 1082934435273068200}
-  - {fileID: 1683065132536965448}
-  - {fileID: -9037252380096243060}
+  - {fileID: 2946748791010771247}
 --- !u!114 &1082934435273068200
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -172,7 +134,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 33
+    value: 18
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1409,7 +1371,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
---- !u!114 &1683065132536965448
+--- !u!114 &2946748791010771247
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1418,41 +1380,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
-  m_Name: Bloom
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
   m_EditorClassIdentifier: 
   active: 0
   enabled:
     overrideState: 1
     value: 1
-  intensity:
+  focusDistance:
     overrideState: 1
-    value: 5
-  threshold:
-    overrideState: 0
+    value: 7.75
+  aperture:
+    overrideState: 1
+    value: 32
+  focalLength:
+    overrideState: 1
+    value: 300
+  kernelSize:
+    overrideState: 1
     value: 1
-  softKnee:
-    overrideState: 0
-    value: 0.072
-  clamp:
-    overrideState: 0
-    value: 65472
-  diffusion:
-    overrideState: 0
-    value: 10
-  anamorphicRatio:
-    overrideState: 0
-    value: 1
-  color:
-    overrideState: 0
-    value: {r: 0, g: 0.9553201, b: 1, a: 1}
-  fastMode:
-    overrideState: 0
-    value: 0
-  dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
-    defaultState: 1
-  dirtIntensity:
-    overrideState: 0
-    value: 0

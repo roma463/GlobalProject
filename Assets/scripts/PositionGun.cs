@@ -14,7 +14,6 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private int _countShot;
     [SerializeField] private Color _zeroBullet;
     [SerializeField] private AudioSource _soundShot;
-    [SerializeField] private PhysicsSimulations _physicsSimulations;
     private Trajectory _trajectory;
     private Camera _camera;
 
@@ -55,11 +54,13 @@ public class PositionGun : MonoBehaviour
                 if(_countShot == 0)
                 {
                     _textCountShot.color = _zeroBullet;
+                    _trajectory.DisableTranjectoryLine();
+                    
                 }
                 _stateUi.DecreaseCountShot(_countShot);
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
-                bullet.GetComponent<Bullet>().StartSimulate(_physicsSimulations);
                 var rigidbodyBullet = bullet.GetComponent<Rigidbody2D>();
+                rigidbodyBullet.gravityScale *= Teleport.GlobaTP.GravityScale;
                 rigidbodyBullet.AddForce(speedBullet, ForceMode2D.Impulse);
                 _soundShot.Play();
             }

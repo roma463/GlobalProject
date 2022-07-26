@@ -1,34 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Button : MonoBehaviour
 {
-    [SerializeField] private GameObject _objectAction;
+    [SerializeField] private float _delayLaunch;
+    [SerializeField] private List<GameObject> _actionsObject = new List<GameObject>();
     [Range(0,1)]
     [SerializeField] private float _scaleByClick;
     [SerializeField] private Transform _sptireButton;
     [SerializeField] private float _speedChenge;
+    private List<Action> _actions = new List<Action>();
     private float _startScale;
-    private Action _action;
     private List<GameObject> _clickedButton = new List<GameObject>();
     private float _currentScale;
+    private Coroutine _currentCoroutine;
     private void Start()
     {
         _startScale = _sptireButton.localScale.y;
         _currentScale = _startScale;
-        if (_objectAction == null)
-            return;
-        if (!_objectAction.TryGetComponent(out _action))
+        if(_actionsObject != null)
         {
-            _objectAction = null;
+            for (int i = 0; i < _actionsObject.Count; i++)
+            {
+                _actions.Add(_actionsObject[i].GetComponent<Action>());
+            }
         }
     }
     public Transform GetTransformActiveObject()
     {
-        if(_objectAction != null)
+        if(_actionsObject != null)
         {
-           return _objectAction.transform;
+            if(_actionsObject.Count > 0)
+            {
+
+                if(_actionsObject[0].transform.parent != null)
+                {
+                    return _actionsObject[0].transform.parent;
+                }
+                else
+                {
+                return _actionsObject[0].transform;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
         else
         {
@@ -40,9 +57,12 @@ public class Button : MonoBehaviour
     {
         if (_clickedButton.Count == 0)
         {
-            StopAllCoroutines();
-           StartCoroutine(ColorByClick());
-            _action.launch();
+            if(_currentCoroutine != null)
+            {
+            StopCoroutine(_currentCoroutine);
+            }
+            _currentCoroutine =  StartCoroutine(ColorByClick());
+            StartCoroutine(StartLaunch());
         }
         _clickedButton.Add(collision.gameObject);
     }
@@ -51,9 +71,17 @@ public class Button : MonoBehaviour
         _clickedButton.Remove(collision.gameObject);
         if (_clickedButton.Count == 0)
         {
-            StopAllCoroutines();
-            StartCoroutine(ColorByClickUp());
-            _action.launch();
+            StopCoroutine(_currentCoroutine);
+           _currentCoroutine =  StartCoroutine(ColorByClickUp());
+            StartCoroutine(StartLaunch());
+        }
+    }
+    private IEnumerator StartLaunch()
+    {
+        for (int i = 0; i < _actions.Count; i++)
+        {
+            yield return new WaitForSeconds(_delayLaunch);
+            _actions[i].launch();
         }
     }
     private IEnumerator ColorByClick()
@@ -62,9 +90,7 @@ public class Button : MonoBehaviour
         {
             _sptireButton.localScale = new Vector2(_sptireButton.localScale.x, _currentScale);
             yield return null;
-
         }
-
     }
     private IEnumerator ColorByClickUp()
     {
@@ -73,7 +99,6 @@ public class Button : MonoBehaviour
             _sptireButton.localScale = new Vector2(_sptireButton.localScale.x, _currentScale);
             yield return null;
         }
-
     }
 }
 public interface Action

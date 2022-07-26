@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _timeKnowJump;
 
+    [SerializeField] private Undepend _undepend;
+
     private Rigidbody2D _rigidbody;
     private InputButton _inputButton;
     private bool _isGround;
@@ -40,6 +42,10 @@ public class PlayerMove : MonoBehaviour
         if (_onCollison)
         {
             collsionGround = Physics2D.OverlapCircle(_pointCollision.position, _radius, _collisionLayer);
+            if (collsionGround)
+            {
+                _undepend.ResetForceOnTrigger();
+            }
         }
         if (_inputButton.Space)
         {

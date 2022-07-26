@@ -38,10 +38,17 @@ public class WirePath : MonoBehaviour
             points[3] = (Vector2)_endPosition.position;
             _lineRenderer.SetPositions(points);
         }
+        else
+        {
+            _endPosition = GetComponent<Button>().GetTransformActiveObject();
+            _begginPosition = transform.parent;
+        }
     }
+#if UNITY_EDITOR
     [ExecuteAlways]
     private void Update()
     {
         CreatePath();
     }
+#endif
 }

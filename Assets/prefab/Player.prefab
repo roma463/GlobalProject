@@ -397,7 +397,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.084905684, g: 0.061781935, b: 0.054868296, a: 1}
   m_FlipX: 0
@@ -434,7 +434,6 @@ MonoBehaviour:
   _countShot: 1
   _zeroBullet: {r: 0.8235294, g: 0.06354574, b: 0.06354574, a: 1}
   _soundShot: {fileID: 985345333141606209}
-  _physicsSimulations: {fileID: 6196748064443620804}
 --- !u!114 &7323935746854482002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +473,7 @@ MonoBehaviour:
   _layerForRay:
     serializedVersion: 2
     m_Bits: 1217
-  _radiusCapture: 1
+  _radiusCapture: 1.2
   _maxDistance: 3
   _spawnBullet: {fileID: 7323935748153237668}
 --- !u!1 &7323935747173245767
@@ -736,7 +735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4811321, g: 0.4811321, b: 0.25645247, a: 1}
   m_FlipX: 0
@@ -772,8 +771,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9173994, y: 0.9174095}
-  m_EdgeRadius: 0.03
+  m_Size: {x: 0.9388675, y: 0.9388778}
+  m_EdgeRadius: 0.01
 --- !u!58 &7323935747302280230
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -955,7 +954,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1046,7 +1045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323935748166909472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.03, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1181,10 +1180,11 @@ MonoBehaviour:
   _jumpForce: 1500
   _collisionLayer:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 1088
   _pointCollision: {fileID: 7323935748421541317}
   _radius: 0.1
   _timeKnowJump: 0.5
+  _undepend: {fileID: 5952092810604418134}
 --- !u!114 &7323935748224626293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,9 +1244,6 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7323935748224626291}
   _collisionGravityLine: {fileID: 8286357710482115494}
   _hit: {fileID: 4462018090586632505}
-  _mack:
-    serializedVersion: 2
-    m_Bits: 129
 --- !u!114 &6196748064443620804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,7 +1335,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9f440b991b741c6458866e10315d23bf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

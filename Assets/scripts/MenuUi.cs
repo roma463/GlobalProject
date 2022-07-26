@@ -7,7 +7,7 @@ public class MenuUi : MonoBehaviour
     private int _lastLevel;
     private void Start()
     {
-        _lastLevel = PlayerPrefs.GetInt("Scene", 1);
+        _lastLevel = 1;
     }
     public void Quit()
     {
