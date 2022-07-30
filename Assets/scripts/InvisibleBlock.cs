@@ -7,7 +7,7 @@ public class InvisibleBlock : MonoBehaviour, Action
 {
     [SerializeField] private bool _startActive;
     [Range(0, 1)]
-    [SerializeField] private float blockout = 0.3f;
+    [SerializeField] private float _blockout = 0.3f;
     [Range(0, 1)]
     [SerializeField] private float _changedInFrame = 0.05f;
     private bool _currentActivity;
@@ -38,8 +38,8 @@ public class InvisibleBlock : MonoBehaviour, Action
             _allChildrenObjects[i].ColliderEnable(stateActive);
             Color.RGBToHSV(_allChildrenObjects[i].spriteRenderer.color, out float H, out float S, out float V);
 
-            float targetColor = V + blockout * VectorDirectionColor;
-            targetColor = Mathf.Clamp(targetColor, _allChildrenObjects[i].StartColor-blockout, _allChildrenObjects[i].StartColor);
+            float targetColor = V + _blockout * VectorDirectionColor;
+            targetColor = Mathf.Clamp(targetColor, _allChildrenObjects[i].StartColor-_blockout, _allChildrenObjects[i].StartColor);
 
             StartCoroutine(ColorByClick(_allChildrenObjects[i].spriteRenderer, _changedInFrame * VectorDirectionColor, targetColor));
         }

@@ -5,19 +5,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private DisableParticle _train;
     [SerializeField] private GameObject _point;
     private Teleport _teleport;
-    public void StartSimulate(PhysicsSimulations simulations)
-    {
-        //transform.parent = null;
-        //simulations.AddObjectInScene(_point);
-    }
     private void Start()
     {
         _teleport = Teleport.GlobaTP;
     }
-    //private void FixedUpdate()
-    //{
-    //    transform.position = _point.transform.position;
-    //}
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out CollisionSurface collsionSurface))
