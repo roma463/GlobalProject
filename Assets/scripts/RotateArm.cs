@@ -15,7 +15,7 @@ public class RotateArm : MonoBehaviour
     {
         var positionMouse = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var direction = transform.position - positionMouse;
-        direction *= Teleport.GlobaTP.GravityScale;
+        direction *= Teleport.GlobalTP.GravityScale;
         var rotateByZ = Quaternion.Euler( Vector3.forward  * -(Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg));
         transform.rotation = rotateByZ;
     }

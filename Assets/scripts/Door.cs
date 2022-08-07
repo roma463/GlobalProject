@@ -41,6 +41,7 @@ public class Door : MonoBehaviour, Action
         }
         _currentCorutine = null;
         _isOpen = true;
+        ChangeSize(_scaleOpen);
     }
     private IEnumerator Closed()
     {
@@ -52,6 +53,7 @@ public class Door : MonoBehaviour, Action
         }
         _currentCorutine = null;
         _isOpen = false;
+        ChangeSize(_startSize);
     }
     private void ChangeSize(float size)
     {

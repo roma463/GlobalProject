@@ -60,7 +60,7 @@ public class PositionGun : MonoBehaviour
                 _stateUi.DecreaseCountShot(_countShot);
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
                 var rigidbodyBullet = bullet.GetComponent<Rigidbody2D>();
-                rigidbodyBullet.gravityScale *= Teleport.GlobaTP.GravityScale;
+                rigidbodyBullet.gravityScale *= Teleport.GlobalTP.GravityScale;
                 rigidbodyBullet.AddForce(speedBullet, ForceMode2D.Impulse);
                 _soundShot.Play();
             }

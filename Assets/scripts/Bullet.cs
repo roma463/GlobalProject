@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     private Teleport _teleport;
     private void Start()
     {
-        _teleport = Teleport.GlobaTP;
+        _teleport = Teleport.GlobalTP;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

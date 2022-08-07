@@ -14,12 +14,12 @@ public class Trajectory : MonoBehaviour
             return;
         }
         Vector3[] points = new Vector3[200];
-
+        float time = 0;
         points[0] = (Vector2)_gunPoint.position;
         for (int i = 1; i < points.Length; i++)
         {
-            float time = i * .1f;
-            points[i] = ((Vector2)_gunPoint.position + velosity * time + (Physics2D.gravity * Teleport.GlobaTP.GravityScale * Mathf.Pow(time, 2) / 2f));
+            time = i * .1f;
+            points[i] = ((Vector2)_gunPoint.position + velosity * time + (Physics2D.gravity * Teleport.GlobalTP.GravityScale * Mathf.Pow(time, 2) / 2f));
             var hit = Physics2D.Raycast(points[i - 1], (points[i] - points[i - 1]).normalized, Vector2.Distance(points[i - 1], points[i]), _lineCollision);
             if (hit == true)
             {

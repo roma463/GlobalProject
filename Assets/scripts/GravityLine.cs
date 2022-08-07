@@ -22,9 +22,9 @@ public class GravityLine : MonoBehaviour
                 _collision.volume = rigidbody.velocity.magnitude * 0.01f;
                 _collision.Play();
 
-                if (collisionObj.gameObject == Teleport.GlobaTP.gameObject)
+                if (collisionObj.gameObject == Teleport.GlobalTP.gameObject)
                 {
-                    Teleport.GlobaTP.UpdateDataGraviryScale(rigidbody);
+                    Teleport.GlobalTP.UpdateDataGraviryScale(rigidbody);
                 }
             }
         }

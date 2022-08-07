@@ -10,6 +10,8 @@ public class ParticlesPlayer : MonoBehaviour
         TelePort
     }
     [SerializeField] private ParticleSystem _teleport;
+
+    [System.Obsolete]
     public void Play(ViewParticle particlePlay)
     {
         if(particlePlay == ViewParticle.TelePort)

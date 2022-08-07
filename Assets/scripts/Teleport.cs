@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
         up,
         down,
     }
-    public static Teleport GlobaTP { get; private set; }
+    public static Teleport GlobalTP { get; private set; }
     public int GravityScale { get; private set; }
     [SerializeField] private Transform _pointUP;
     [SerializeField] private Transform _pointDown;
@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour
     {
         _textPoint.parent = null;
         GravityScale = 1;
-        GlobaTP = this;
+        GlobalTP = this;
     }
     public void Player(Offset of, Vector2 newPosition)
     {
