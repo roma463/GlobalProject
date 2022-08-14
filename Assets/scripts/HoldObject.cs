@@ -11,7 +11,7 @@ public class HoldObject : MonoBehaviour
     [SerializeField] private float _radiusCapture;
     [SerializeField] private float _maxDistance;
     [SerializeField] private Transform _spawnBullet;
-    private Transform _useObject;
+    private UsePlayerObject _useObject;
 
     public void GameobjectKeep()
     {
@@ -23,8 +23,9 @@ public class HoldObject : MonoBehaviour
             return;
         if (collision.transform.parent.TryGetComponent(out UsePlayerObject use))
         {
+            use.Reise();
             _joint.connectedBody = use.gameObject.GetComponent<Rigidbody2D>();
-            _useObject = collision.transform.parent;
+            _useObject = use;
             ObjectRised = true;
         }
     }
@@ -32,13 +33,14 @@ public class HoldObject : MonoBehaviour
     {
         if (ObjectRised == true)
         {
-            _useObject.position = transform.position;
+            _useObject.transform.position = transform.position;
         }
     }
     public void Throw()
     {
         if (_useObject == null)
             return;
+        _useObject.Put();
         _useObject.GetComponent<Rigidbody2D>().velocity = _rigidbody2D.velocity;
         ObjectRised = false;
         _joint.connectedBody = null;
@@ -48,7 +50,7 @@ public class HoldObject : MonoBehaviour
     {
         if (ObjectRised == true)
         {
-            if (Vector2.Distance(_useObject.position, _pointKeep.position) > _maxDistance)
+            if (Vector2.Distance(_useObject.transform.position, _pointKeep.position) > _maxDistance)
             {
                 Throw();
             }

@@ -18,6 +18,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private HoldObject _holdObject;
     [SerializeField] private ParticlesPlayer _playerParticles;
     [SerializeField] private Transform _textPoint;
+    [SerializeField] private AudioSource _teleportSound;
     private void Awake()
     {
         _textPoint.parent = null;
@@ -51,6 +52,7 @@ public class Teleport : MonoBehaviour
         _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
+        //_teleportSound.Play();
     }
     public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
     {

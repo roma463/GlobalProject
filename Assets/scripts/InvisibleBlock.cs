@@ -10,12 +10,12 @@ public class InvisibleBlock : MonoBehaviour, Action
     [SerializeField] private float _blockout = 0.3f;
     [Range(0, 1)]
     [SerializeField] private float _changedInFrame = 0.05f;
-    private bool _currentActivity;
+    public bool CurrentActivity { private set; get; }
     private List<OblectInformation> _allChildrenObjects = new List<OblectInformation>();
 
-    private void Start()
+    public virtual void Start()
     {
-        _currentActivity = _startActive;
+        CurrentActivity = _startActive;
         var getCheldrensSpriteSenderer = GetComponentsInChildren<SpriteRenderer>();
         var getCheldrensBoxCollider = GetComponentsInChildren<BoxCollider2D>();
         for (int i = 0; i < getCheldrensBoxCollider.Length; i++)
@@ -24,10 +24,10 @@ public class InvisibleBlock : MonoBehaviour, Action
         }
         ActiveThisObject(_startActive);
     }
-    public void launch()
+    public virtual void launch()
     {
-        _currentActivity = !_currentActivity;
-        ActiveThisObject(_currentActivity);
+        CurrentActivity = !CurrentActivity;
+        ActiveThisObject(CurrentActivity);
     }
     private void ActiveThisObject(bool stateActive)
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2313336639432837647}
   - component: {fileID: 2313336639432837644}
   - component: {fileID: 2313336639432837645}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: GravityLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313336639889133966}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 2313336640197064960}
   - component: {fileID: 2313336640197064962}
   - component: {fileID: 2313336640197064963}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4983,7 +4983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6563852704588108967}
   - component: {fileID: 3662116896927274239}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 465540__steaq__sci-fi-shield-hit-wav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 7464836714035090810}
   - component: {fileID: 4404277829767587365}
   - component: {fileID: 5421178731684551053}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5207,7 +5207,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

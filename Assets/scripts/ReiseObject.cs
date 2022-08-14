@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UsePlayerObject : MonoBehaviour
+public class ReiseObject : MonoBehaviour
 {
     public virtual void Reise()
     {

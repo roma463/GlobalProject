@@ -8,11 +8,14 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _teleport = Teleport.GlobalTP;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.TryGetComponent(out Rigidbody2D rigidbody2D))
+        {
+            rigidbody2D.velocity = Vector2.zero;
+        }
         if (collision.gameObject.TryGetComponent(out CollisionSurface collsionSurface))
         {
             var narmal = collision.GetContact(0).normal;
