@@ -52,7 +52,7 @@ public class Teleport : MonoBehaviour
         _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
-        //_teleportSound.Play();
+        _teleportSound.Play();
     }
     public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
     {

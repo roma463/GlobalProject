@@ -65,9 +65,5 @@ public class PositionGun : MonoBehaviour
                 _soundShot.Play();
             }
         }
-        else
-        {
-            _stateUi.Lost();
-        }
     }
 }

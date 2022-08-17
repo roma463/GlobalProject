@@ -12,7 +12,13 @@ public class InputButton : MonoBehaviour
 
     private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
     private string[] _knowKeyDown = new string[5];
+    public string Word { private set; get; }
     private bool _isPause = true;
+    private void Awake()
+    {
+        Word = "1";
+        Cursor.visible = false;
+    }
     private void Update()
     {
         if (_isPause)
@@ -41,6 +47,12 @@ public class InputButton : MonoBehaviour
                 {
                     ArrayOffset();
                     _knowKeyDown[0] = keyCode.ToString();
+
+                    Word = "";
+                    for (int i = _knowKeyDown.Length - 1; i >= 0; i--)
+                    {
+                        Word += _knowKeyDown[i];
+                    }
                 }
             }
         }
@@ -54,6 +66,7 @@ public class InputButton : MonoBehaviour
             _knowKeyDown[i + 1] = valueCell;
             valueCell = timevalue;
         }
+        
     }
     public void Pause(bool pause)
     {
