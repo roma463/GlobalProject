@@ -29,6 +29,7 @@ public class Undepend : MonoBehaviour
     {
         if(collision.TryGetComponent(out GravityLine gravityLine))
         {
+            _rigidbody2D.gravityScale *= -1;
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _vectorForceInt);
         }
     }

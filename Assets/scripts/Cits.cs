@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class Cits : MonoBehaviour
 {
-    [SerializeField] private GameUi _ui;
     [SerializeField] private InputButton _inputButton;
-    private bool _isStop;
-
+    private GameUi _ui;
+    private void Start()
+    {
+        _ui = GameUi.GlobalUI;
+    }
     private void Update()
     {
-        if(_inputButton.Word.IndexOf("DON") == 0 && !_isStop)
-        {
-            _ui.Win();
-            _isStop = true;
-        }
+         if (Input.anyKey)
+         {
 
-            print(_inputButton.Word.IndexOf("DON"));
+             if(_inputButton.Word.Contains("DON"))
+             {
+                 _ui.Win();
+                _inputButton.ResetListKey();
+             }
+        }
     }
 }

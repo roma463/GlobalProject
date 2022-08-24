@@ -71,7 +71,9 @@ public class Button : MonoBehaviour
         _clickedButton.Remove(collision.gameObject);
         if (_clickedButton.Count == 0)
         {
-            StopCoroutine(_currentCoroutine);
+            if(_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+
            _currentCoroutine =  StartCoroutine(ColorByClickUp());
             StartCoroutine(StartLaunch());
         }

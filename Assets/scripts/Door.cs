@@ -6,6 +6,7 @@ public class Door : MonoBehaviour, Action
     [SerializeField] private float _speed;
     [SerializeField] private float _scaleOpen = 1;
     [SerializeField] private bool _startIsOpen;
+    [SerializeField] private AudioSource _open;
     private bool _isOpen;
     private float _startSize;
     private Coroutine _currentCorutine;
@@ -34,6 +35,8 @@ public class Door : MonoBehaviour, Action
     }
     private IEnumerator Raise()
     {
+        if(_open != null)
+        _open.Play();
         for (float i = transform.localScale.y; i > _scaleOpen; i -= Time.deltaTime * _speed)
         {
             ChangeSize(i);
@@ -42,10 +45,13 @@ public class Door : MonoBehaviour, Action
         _currentCorutine = null;
         _isOpen = true;
         ChangeSize(_scaleOpen);
+        if(_open != null)
+            _open.Stop();
     }
     private IEnumerator Closed()
     {
-
+        if (_open != null)
+            _open.Play();
         for (float i = transform.localScale.y; i < _startSize; i += Time.deltaTime * _speed)
         {
             ChangeSize(i);
@@ -54,6 +60,8 @@ public class Door : MonoBehaviour, Action
         _currentCorutine = null;
         _isOpen = false;
         ChangeSize(_startSize);
+        if (_open != null)
+            _open.Stop();
     }
     private void ChangeSize(float size)
     {

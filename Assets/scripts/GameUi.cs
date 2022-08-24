@@ -11,9 +11,11 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Text _countShotText;
     [SerializeField] private InputButton _inputButton;
     [SerializeField] private Animator _animator;
+    public static GameUi GlobalUI { private set; get; }
     private int _currentScene;
     private void Awake()
     {
+        GlobalUI = this;
         _winDisplay.SetActive(true);
     }
     private void Start()
@@ -33,6 +35,7 @@ public class GameUi : MonoBehaviour
     }
     public void Win()
     {
+        Cursor.visible = true;
         _animator.SetTrigger("Finish");
         if (SceneManager.sceneCountInBuildSettings- 1 > _currentScene)
         {
@@ -54,6 +57,7 @@ public class GameUi : MonoBehaviour
     }
     public void Pause()
     {
+        Cursor.visible = !_pauseDisplay.activeInHierarchy;
         _pauseDisplay.SetActive(!_pauseDisplay.activeInHierarchy);
         StopReadClick(!_pauseDisplay.activeInHierarchy);
     }
