@@ -28,7 +28,7 @@ public class InputButton : MonoBehaviour
     private void Awake()
     {
         localWord = "";
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
     private void Update()
     {

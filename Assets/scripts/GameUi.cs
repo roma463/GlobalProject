@@ -35,7 +35,7 @@ public class GameUi : MonoBehaviour
     }
     public void Win()
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         _animator.SetTrigger("Finish");
         if (SceneManager.sceneCountInBuildSettings- 1 > _currentScene)
         {
