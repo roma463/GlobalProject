@@ -8,7 +8,8 @@ public class MenuUi : MonoBehaviour
     [SerializeField] private Animator _animSquare;
     [SerializeField] private Animator _animCamera;
     [SerializeField] private Animator _animButton;
-    
+  
+
     private void Start ()
     {
         _lastLevel = 1;
