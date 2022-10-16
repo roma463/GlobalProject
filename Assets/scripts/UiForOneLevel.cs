@@ -15,7 +15,7 @@ public class UiForOneLevel : GameUi
 
     public void FirstStart()
     {
-        //_animSquare.SetTrigger("_isDisperse");
+        _animSquare.SetTrigger("_isDisperse");
         //_animCamera.SetTrigger("_isMoveCamera");
         _choisePlayer.SetTrigger("ChoisePlayer");
         _animButton.SetTrigger("_isMoveButton");
