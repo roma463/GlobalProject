@@ -36,6 +36,11 @@ public class HoldObject : MonoBehaviour
             _useObject.transform.position = transform.position;
         }
     }
+    public void ChangeGravityHoldObject()
+    {
+        if (_useObject != null)
+            _useObject.SetGraviryDirection();
+    }
     public void Throw()
     {
         if (_useObject == null)

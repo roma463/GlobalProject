@@ -1441,6 +1441,7 @@ MonoBehaviour:
   _pointCollision: {fileID: 7323935748421541317}
   _collisionSize: {x: 0.9, y: 0.05}
   _timeKnowJump: 0.1
+  _jumpDelayTime: 0.05
 --- !u!114 &7323935748224626293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,6 +1505,7 @@ MonoBehaviour:
   _pointUp: {fileID: 7323935747325582271}
   _pointDown: {fileID: 7323935748421541317}
   _sizeBox: {x: 0.9, y: 0.05}
+  _holdObject: {fileID: 7323935746854482001}
 --- !u!114 &5186791256191818039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,7 +1518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b19b971377b3344294df0d3af16933b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ui: {fileID: 0}
   _inputButton: {fileID: 7323935748224626294}
 --- !u!1 &7323935748421541316
 GameObject:

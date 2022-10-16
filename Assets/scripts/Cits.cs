@@ -18,6 +18,11 @@ public class Cits : MonoBehaviour
                  _ui.Win();
                 _inputButton.ResetListKey();
              }
+            if (_inputButton.Word.Contains("ALAX"))
+            {
+                _ui.Win();
+                _inputButton.ResetListKey();
+            }
         }
     }
 }

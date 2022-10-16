@@ -13,7 +13,6 @@ public class ChoisePlayer : MonoBehaviour
 
     private void Start()
     {
-        //Camera camera = Camera.main;
         float positionPlayers = 0;
         int directionOffectPrefab = 1;
         for (int i = 0; i < _countPlayer; i++)

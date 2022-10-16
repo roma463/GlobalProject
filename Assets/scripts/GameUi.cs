@@ -13,13 +13,14 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Animator _animator;
     public static GameUi GlobalUI { private set; get; }
     private int _currentScene;
-    private void Awake()
+    public virtual void Awake()
     {
         GlobalUI = this;
-        _winDisplay.SetActive(true);
     }
-    private void Start()
+    public virtual void Start()
     {
+        _winDisplay.SetActive(true);
+        _animator.SetTrigger("StartGame");
         _currentScene = SceneManager.GetActiveScene().buildIndex;
     }
     private void Update()
@@ -33,9 +34,8 @@ public class GameUi : MonoBehaviour
             Restart();
         }
     }
-    public void Win()
+    public virtual void Win()
     {
-        //Cursor.visible = true;
         _animator.SetTrigger("Finish");
         if (SceneManager.sceneCountInBuildSettings- 1 > _currentScene)
         {
@@ -57,7 +57,6 @@ public class GameUi : MonoBehaviour
     }
     public void Pause()
     {
-        Cursor.visible = !_pauseDisplay.activeInHierarchy;
         _pauseDisplay.SetActive(!_pauseDisplay.activeInHierarchy);
         StopReadClick(!_pauseDisplay.activeInHierarchy);
     }
@@ -65,7 +64,7 @@ public class GameUi : MonoBehaviour
     {
         _inputButton.Pause(state);
     }
-    public void Restart()
+    public virtual void Restart()
     {
         SceneManager.LoadScene(_currentScene);
     }
@@ -81,7 +80,7 @@ public class GameUi : MonoBehaviour
     {
         _animator.SetTrigger("Next");
     }
-    public void NextLevel()
+    public virtual void NextLevel()
     {
         SceneManager.LoadScene(_currentScene + 1);
     }

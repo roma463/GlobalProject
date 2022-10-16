@@ -10,7 +10,7 @@ public class Undepend : MonoBehaviour
     private bool _ferstCollision;
     private bool _vectorForce;
     private float _vectorForceInt;
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out GravityLine gravityLine))
         {
@@ -25,7 +25,7 @@ public class Undepend : MonoBehaviour
             _collisionGravityLine.Play();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.TryGetComponent(out GravityLine gravityLine))
         {
@@ -33,7 +33,7 @@ public class Undepend : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _vectorForceInt);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         _hit.volume = collision.relativeVelocity.magnitude * 0.05f;
         _hit.Play();

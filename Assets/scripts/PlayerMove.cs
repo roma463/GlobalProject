@@ -13,6 +13,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Transform _pointCollision;
     [SerializeField] private Vector2 _collisionSize;
     [SerializeField] private float _timeKnowJump;
+    [SerializeField] private float _jumpDelayTime = 0.05f;
+    private bool _delayJumpEnd = true;
 
     private Rigidbody2D _rigidbody;
     private InputButton _inputButton;
@@ -41,16 +43,20 @@ public class PlayerMove : MonoBehaviour
         {
             collsionGround = Physics2D.OverlapBox(_pointCollision.position, _collisionSize,0, _collisionLayer);
         }
-        if (_inputButton.Space)
+        if (_inputButton.Space && _delayJumpEnd)
         {
             _InputJump = true;
             if (collsionGround == false)
             {
                 if (_isGround)
+                {
                     Jump();
+                    StartCoroutine(DelayJump());
+                }
             }
             else
             {
+                StartCoroutine(DelayJump());
                 Jump();
             }
         }
@@ -65,6 +71,12 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(Knowjump());
         }
+    }
+    private IEnumerator DelayJump()
+    {
+        _delayJumpEnd = false;
+        yield return new WaitForSeconds(_jumpDelayTime);
+        _delayJumpEnd = true;
     }
     public void UnplugJump()
     {
