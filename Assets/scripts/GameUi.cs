@@ -8,9 +8,8 @@ public class GameUi : MonoBehaviour
     [SerializeField] private GameObject _pauseDisplay;
     [SerializeField] private GameObject _lostDisplay;
     [SerializeField] private Text _nextLevel;
-    [SerializeField] private Text _countShotText;
     [SerializeField] private InputButton _inputButton;
-    [SerializeField] private Animator _animator;
+    [SerializeField] protected Animator _animator;
     public static GameUi GlobalUI { private set; get; }
     private int _currentScene;
     public virtual void Awake()
@@ -51,16 +50,12 @@ public class GameUi : MonoBehaviour
         _lostDisplay.SetActive(true);
         _inputButton.Pause(false);
     }
-    public void DecreaseCountShot(int countShoot)
-    {
-        _countShotText.text = countShoot.ToString();
-    }
     public void Pause()
     {
         _pauseDisplay.SetActive(!_pauseDisplay.activeInHierarchy);
         StopReadClick(!_pauseDisplay.activeInHierarchy);
     }
-    private void StopReadClick(bool state)
+    public virtual void StopReadClick(bool state)
     {
         _inputButton.Pause(state);
     }

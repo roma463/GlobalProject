@@ -20,7 +20,6 @@ public class PositionGun : MonoBehaviour
     private void Start()
     {
         _textCountShot.text = _countShot.ToString();
-        _stateUi.DecreaseCountShot(_countShot);
         _trajectory = GetComponent<Trajectory>();
         _camera = Camera.main;
     }
@@ -57,7 +56,6 @@ public class PositionGun : MonoBehaviour
                     _trajectory.DisableTranjectoryLine();
                     
                 }
-                _stateUi.DecreaseCountShot(_countShot);
                 var bullet = Instantiate(_bullet, _gunPoint.position, Quaternion.identity);
                 var rigidbodyBullet = bullet.GetComponent<Rigidbody2D>();
                 rigidbodyBullet.gravityScale *= Teleport.GlobalTP.GravityScale;

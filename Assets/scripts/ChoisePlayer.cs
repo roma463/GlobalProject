@@ -5,7 +5,6 @@ public class ChoisePlayer : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabPlayer;
     [SerializeField] private int _countPlayer;
-    [SerializeField] private Transform _parantPlayers;
     [SerializeField] private float _distancePlayer;
     [SerializeField] private Transform _playerParant;
     private Coroutine _corutine;
@@ -17,8 +16,8 @@ public class ChoisePlayer : MonoBehaviour
         int directionOffectPrefab = 1;
         for (int i = 0; i < _countPlayer; i++)
         {
-            var player = Instantiate(_prefabPlayer, _playerParant);
-             player.transform.position = Vector2.right * positionPlayers * directionOffectPrefab;
+            var player = Instantiate(_prefabPlayer,  _playerParant);
+             player.transform.position = new Vector2(positionPlayers * directionOffectPrefab, _playerParant.position.y);
             if (i%2==0)
                 positionPlayers += _distancePlayer;
             directionOffectPrefab *= -1;
