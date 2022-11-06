@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 632469695525786668}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 2b69254d58e38d24bb68e951c6ff2c43, type: 2}
   m_audioClip: {fileID: 8300000, guid: 15d86899a8609f4489366a3f722983a8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5109,7 +5109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9516702, y: 0.9516702}
+  m_Size: {x: 0.97, y: 0.97}
   m_EdgeRadius: 0
 --- !u!114 &6534754204539511569
 MonoBehaviour:

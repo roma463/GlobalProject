@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Trajectory))]
@@ -14,6 +15,9 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private int _countShot;
     [SerializeField] private Color _zeroBullet;
     [SerializeField] private AudioSource _soundShot;
+
+    [SerializeField] private AnimationCurve _outputAnimation;
+    [SerializeField] private Transform _spriteGun;
     private Trajectory _trajectory;
     private Camera _camera;
 
@@ -30,6 +34,7 @@ public class PositionGun : MonoBehaviour
 
         if (_inputButton.MouseLeft)
         {
+            StartCoroutine(GunAnimation());
             Shot(speed);
         }
 
@@ -64,4 +69,13 @@ public class PositionGun : MonoBehaviour
             }
         }
     }
+    private IEnumerator GunAnimation()
+    {
+
+        for (float i = 0; i < 1; i+= Time.deltaTime* 10)
+        {
+            _spriteGun.localPosition = transform.localPosition + (Vector3)Vector2.left * (_outputAnimation.Evaluate(i)); 
+            yield return null;
+        }
+    } 
 }
