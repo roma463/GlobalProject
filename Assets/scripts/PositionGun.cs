@@ -71,11 +71,11 @@ public class PositionGun : MonoBehaviour
     }
     private IEnumerator GunAnimation()
     {
-
         for (float i = 0; i < 1; i+= Time.deltaTime* 10)
         {
-            _spriteGun.localPosition = transform.localPosition + (Vector3)Vector2.left * (_outputAnimation.Evaluate(i)); 
+            _spriteGun.localPosition = (Vector3)Vector2.left * (_outputAnimation.Evaluate(i)); 
             yield return null;
         }
+        _spriteGun.localPosition = Vector3.zero;
     } 
 }

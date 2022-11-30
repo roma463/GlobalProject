@@ -5,6 +5,7 @@ public class WirePath : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private bool _upLine;
+    [SerializeField] private float _offsetLine;
     private Transform _endPosition;
     private Transform _begginPosition;
 
@@ -27,12 +28,12 @@ public class WirePath : MonoBehaviour
             y = _begginPosition.position.y - _endPosition.position.y;
             if (_upLine)
             {
-                points[1] = (Vector2)_begginPosition.position - Vector2.up * (y / 2);
+                points[1] = (Vector2)_begginPosition.position - Vector2.up * (y / 2) + _offsetLine * Vector2.up;
                 points[2] = points[1] - Vector3.right * x;
             }
             else
             {
-                points[1] = (Vector2)_begginPosition.position - Vector2.right * (x / 2);
+                points[1] = (Vector2)_begginPosition.position - Vector2.right * (x / 2) + _offsetLine * Vector2.right;
                 points[2] = points[1] - Vector3.up * y;
             }
             points[3] = (Vector2)_endPosition.position;

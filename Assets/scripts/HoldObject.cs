@@ -46,7 +46,7 @@ public class HoldObject : MonoBehaviour
         if (_useObject == null)
             return;
         _useObject.Put();
-        _useObject.GetComponent<Rigidbody2D>().velocity = _rigidbody2D.velocity;
+        _useObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,1) * _rigidbody2D.velocity;
         ObjectRised = false;
         _joint.connectedBody = null;
         _useObject = null;

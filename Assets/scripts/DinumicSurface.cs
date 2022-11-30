@@ -9,6 +9,7 @@ public class DinumicSurface : UsePlayerObject
     [SerializeField] private BoxCollider2D _notCollisionSerface;
     [SerializeField] private ParticleSystem _scales;
     [SerializeField] private float _speedOpen = .1f;
+
     private Vector2 _startScale;
     private void Start()
     {

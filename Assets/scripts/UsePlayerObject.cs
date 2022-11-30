@@ -15,5 +15,6 @@ public class UsePlayerObject : MonoBehaviour
     public void SetGraviryDirection()
     {
         _rigidbody.gravityScale *= -1;
+        transform.localScale = new Vector3(1, _rigidbody.gravityScale, 1);
     }
 }

@@ -19,14 +19,20 @@ public class Teleport : MonoBehaviour
     [SerializeField] private ParticlesPlayer _playerParticles;
     [SerializeField] private Transform _textPoint;
     [SerializeField] private AudioSource _teleportSound;
+    [SerializeField] private ShockWavePositions _shockWave;
     private void Awake()
     {
         _textPoint.parent = null;
         GravityScale = 1;
         GlobalTP = this;
     }
+    public void SetShockWave(ShockWavePositions shockWavePositions)
+    {
+        _shockWave = shockWavePositions;
+    }
     public void Player(Offset of, Vector2 newPosition)
     {
+        
         _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
 
         Vector2 offset = Vector2.zero;
@@ -53,6 +59,7 @@ public class Teleport : MonoBehaviour
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
         _teleportSound.Play();
+        StartCoroutine(_shockWave.Teleportation());
     }
     public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
     {

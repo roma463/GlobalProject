@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class CameraMove : MonoBehaviour
         {
             _offsetPos = new Vector3(_endPosition.position.x, _endPosition.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, _endPosition.position, _speedMove);
-            //transform.position = Vector3.Lerp(transform.position, _offsetPos, _speedMove);
+ 
         }
 
         if (Vector3.Distance(transform.position, _endPosition.position) == 0)
