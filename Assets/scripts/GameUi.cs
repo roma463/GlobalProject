@@ -10,6 +10,7 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Text _nextLevel;
     [SerializeField] private InputButton _inputButton;
     [SerializeField] protected Animator _animator;
+
     public static GameUi GlobalUI { private set; get; }
     private int _currentScene;
     public virtual void Awake()
