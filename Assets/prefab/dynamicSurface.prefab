@@ -5109,7 +5109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.97, y: 0.97}
+  m_Size: {x: 0.99, y: 0.99}
   m_EdgeRadius: 0
 --- !u!114 &6534754204539511569
 MonoBehaviour:
@@ -5374,6 +5374,7 @@ MonoBehaviour:
   _collisionGravityLine: {fileID: 71576819518583944}
   _hit: {fileID: 3741404431190415008}
   _animation: {fileID: 234673462052233689}
+  _startGravityScale: 1
   _usePlayerObject: {fileID: 2737676167947948252}
 --- !u!1 &7528567219967074420
 GameObject:

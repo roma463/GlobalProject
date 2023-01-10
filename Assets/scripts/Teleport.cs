@@ -19,7 +19,8 @@ public class Teleport : MonoBehaviour
     [SerializeField] private ParticlesPlayer _playerParticles;
     [SerializeField] private Transform _textPoint;
     [SerializeField] private AudioSource _teleportSound;
-    [SerializeField] private ShockWavePositions _shockWave;
+    private ShockWavePositions _shockWave;
+    private Coroutine _shockWaveCorutine;
     private void Awake()
     {
         _textPoint.parent = null;
@@ -59,7 +60,9 @@ public class Teleport : MonoBehaviour
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
         _teleportSound.Play();
-        StartCoroutine(_shockWave.Teleportation());
+        if(_shockWaveCorutine != null)
+            StopCoroutine(_shockWaveCorutine);
+        _shockWaveCorutine = StartCoroutine(_shockWave.Teleportation());
     }
     public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
     {

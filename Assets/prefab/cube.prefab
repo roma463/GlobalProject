@@ -86,6 +86,8 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8024578497955258576}
   _collisionGravityLine: {fileID: 2366031563867803622}
   _hit: {fileID: 8761889761112890858}
+  _animation: {fileID: 0}
+  _startGravityScale: 1
   _usePlayerObject: {fileID: 6988751125374585996}
 --- !u!1 &4806084102789455718
 GameObject:
@@ -410,7 +412,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93530154, y: 0.93530154}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1208164828996708443
 MonoBehaviour:
@@ -425,6 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _undepend: {fileID: 4892289673762782890}
+  _animation: {fileID: 0}
 --- !u!1001 &7665056498729500964
 PrefabInstance:
   m_ObjectHideFlags: 0

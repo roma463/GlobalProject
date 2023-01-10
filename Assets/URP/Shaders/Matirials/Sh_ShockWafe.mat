@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_TestColor
-  m_Shader: {fileID: -6465566751694194690, guid: 95fa979ad9a43cb46adc2e29ede6fa95, type: 3}
+  m_Name: Sh_ShockWafe
+  m_Shader: {fileID: -6465566751694194690, guid: 4cd32c68c1454a945b1ae77157b39a14, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -21,10 +21,6 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_ed9129f989844c2eb10f8807c580bbf4_Out_0:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -41,22 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _forceDistortion: 0.001
+    - _Radius: 0.35128248
+    - _floatWave: 0
+    - _one: -0.96
+    - _size: 0.07
     m_Colors:
-    - _Color: {r: 0.06904918, g: 0.072885245, b: 0.078, a: 0}
+    - _PlayerPosition: {r: 0.3861466, g: 0.13037714, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &5626316923232111611
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5

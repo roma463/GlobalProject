@@ -19,7 +19,6 @@ public class ShockWavePositions : MonoBehaviour
         _hieghtScreen = _camera.pixelHeight;
         _widthSceen = _camera.pixelWidth;
     }
-
     public IEnumerator Teleportation()
     {
         float currentValue = 0;
@@ -27,6 +26,11 @@ public class ShockWavePositions : MonoBehaviour
         float forceWave = _forceShockWave;
         float forceProcent = forceWave;
 
+        var PlayerScreenPosition = _camera.WorldToScreenPoint(_player.position);
+        Vector2 ShaderPosition = new Vector2();
+        ShaderPosition.x = PlayerScreenPosition.x / _widthSceen;
+        ShaderPosition.y = PlayerScreenPosition.y / _hieghtScreen;
+        _shockWave.SetVector("_PlayerPosition", ShaderPosition);
         for (; currentTime <= _timeOfAction; )
         {
             var x = Time.deltaTime;
@@ -34,16 +38,11 @@ public class ShockWavePositions : MonoBehaviour
 
             forceWave -= x * forceProcent / _timeOfAction;
             forceWave = Mathf.Clamp(forceWave, 0, forceProcent);
-            
-            var PlayerScreenPosition = _camera.WorldToScreenPoint(_player.position);
-            Vector2 ShaderPosition = new Vector2();
-            ShaderPosition.x = PlayerScreenPosition.x / _widthSceen;
-            ShaderPosition.y = PlayerScreenPosition.y / _hieghtScreen;
+
             currentValue += x * _radiuseShockWave / _timeOfAction * _speedWave;
 
             _shockWave.SetFloat("_Radius", currentValue);
             _shockWave.SetFloat("_floatWave", forceWave);
-            _shockWave.SetVector("_PlayerPosition", ShaderPosition);
             yield return null;
         }
     }

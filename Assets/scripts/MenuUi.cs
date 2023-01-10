@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuUi : MonoBehaviour
@@ -10,7 +9,6 @@ public class MenuUi : MonoBehaviour
     {
         _lastLevel = 1;
     }
-
     public void Quit()
     {
         Application.Quit();

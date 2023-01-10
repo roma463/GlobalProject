@@ -25,44 +25,67 @@ public class Door : MonoBehaviour, Action
         if (_currentCorutine != null)
         {
             StopCoroutine(_currentCorutine);
-            _isOpen = !_isOpen;
             _currentCorutine = null;
         }
         if (_isOpen == false)
-            _currentCorutine = StartCoroutine(Raise());
+            _currentCorutine = StartCoroutine(ActiviyDoor(_scaleOpen));
         else
-            _currentCorutine = StartCoroutine(Closed());
+            _currentCorutine = StartCoroutine(ActiviyDoor(_startSize));
+        _isOpen = !_isOpen;
     }
-    private IEnumerator Raise()
+    private IEnumerator ActiviyDoor(float targetScale)
     {
-        if(_open != null)
-        _open.Play();
-        for (float i = transform.localScale.y; i > _scaleOpen; i -= Time.deltaTime * _speed)
+        while(transform.localScale.y != targetScale)
         {
-            ChangeSize(i);
+            float scaleY = Mathf.MoveTowards(transform.localScale.y, targetScale, Time.deltaTime * _speed);
+            transform.localScale = new Vector3(transform.localScale.x, scaleY, 1);
             yield return null;
         }
         _currentCorutine = null;
-        _isOpen = true;
-        ChangeSize(_scaleOpen);
-        if(_open != null)
-            _open.Stop();
     }
-    private IEnumerator Closed()
-    {
-        if (_open != null)
-            _open.Play();
-        for (float i = transform.localScale.y; i < _startSize; i += Time.deltaTime * _speed)
-        {
-            ChangeSize(i);
-            yield return null;
-        }
-        _currentCorutine = null;
-        _isOpen = false;
-        ChangeSize(_startSize);
-        if (_open != null)
-            _open.Stop();
-    }
+    //public void launch()
+    //{
+    //    if (_currentCorutine != null)
+    //    {
+    //        StopCoroutine(_currentCorutine);
+    //        _isOpen = !_isOpen;
+    //        _currentCorutine = null;
+    //    }
+    //    if (_isOpen == false)
+    //        _currentCorutine = StartCoroutine(Raise());
+    //    else
+    //        _currentCorutine = StartCoroutine(Closed());
+    //}
+    //private IEnumerator Raise()
+    //{
+    //    if(_open != null)
+    //    _open.Play();
+    //    for (float i = transform.localScale.y; i > _scaleOpen; i -= Time.deltaTime * _speed)
+    //    {
+    //        ChangeSize(i);
+    //        yield return null;
+    //    }
+    //    _currentCorutine = null;
+    //    _isOpen = true;
+    //    ChangeSize(_scaleOpen);
+    //    if(_open != null)
+    //        _open.Stop();
+    //}
+    //private IEnumerator Closed()
+    //{
+    //    if (_open != null)
+    //        _open.Play();
+    //    for (float i = transform.localScale.y; i < _startSize; i += Time.deltaTime * _speed)
+    //    {
+    //        ChangeSize(i);
+    //        yield return null;
+    //    }
+    //    _currentCorutine = null;
+    //    _isOpen = false;
+    //    ChangeSize(_startSize);
+    //    if (_open != null)
+    //        _open.Stop();
+    //}
     private void ChangeSize(float size)
     {
         var scale = transform.localScale;
