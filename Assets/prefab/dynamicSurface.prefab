@@ -5325,7 +5325,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2737676167947948252
 MonoBehaviour:
@@ -5375,6 +5375,7 @@ MonoBehaviour:
   _hit: {fileID: 3741404431190415008}
   _animation: {fileID: 234673462052233689}
   _startGravityScale: 1
+  _delayCollision: 0.4
   _usePlayerObject: {fileID: 2737676167947948252}
 --- !u!1 &7528567219967074420
 GameObject:

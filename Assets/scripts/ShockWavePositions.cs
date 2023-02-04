@@ -18,6 +18,7 @@ public class ShockWavePositions : MonoBehaviour
         _camera = Camera.main;
         _hieghtScreen = _camera.pixelHeight;
         _widthSceen = _camera.pixelWidth;
+        _shockWave.SetFloat("_floatWave", 0);
     }
     public IEnumerator Teleportation()
     {

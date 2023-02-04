@@ -15,7 +15,7 @@ public class ParticlesPlayer : MonoBehaviour
     {
         if(particlePlay == ViewParticle.TelePort)
         {
-            Instantiate(_teleportAnim, transform.position, Quaternion.identity);
+            //Instantiate(_teleportAnim, transform.position, Quaternion.identity);
            ParticleSystem  particle =  Instantiate(_teleport, transform.position, Quaternion.identity);
             StartCoroutine(Delited(particle.duration, particle.gameObject));
         }

@@ -32,7 +32,7 @@ public class PositionGun : MonoBehaviour
         var speed = -(_gunPoint.position - _camera.ScreenToWorldPoint(Input.mousePosition)) * _forceShot;
         _trajectory.TrajectoryBullet(speed);
 
-        if (_inputButton.MouseLeft)
+        if (_inputButton.MouseLeft && _countShot > 0)
         {
             StartCoroutine(GunAnimation());
             Shot(speed);

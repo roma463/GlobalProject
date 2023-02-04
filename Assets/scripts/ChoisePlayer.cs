@@ -50,5 +50,4 @@ public class ChoisePlayer : MonoBehaviour
         }
         _corutine = null;
     }
-
 }

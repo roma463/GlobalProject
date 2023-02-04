@@ -7,39 +7,20 @@ public class GravityLine : MonoBehaviour
     [SerializeField] private AudioSource _collision;
     [SerializeField] private float _delay;
     private bool _startSound = true;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void PlayCollision(Rigidbody2D rigidbody)
     {
-        GameObject collisionObj;
-        if (collision.transform.parent != null)
+        if (_startSound)
         {
-            collisionObj = collision.transform.parent.gameObject;
-
-            if (collisionObj.TryGetComponent(out Rigidbody2D rigidbody))
-            {
-                var scale = collisionObj.transform.localScale;
-                scale.y *= -1;
-                scale.x *= -1;
-                collisionObj.transform.localScale = scale;
-                if (_startSound)
-                {
-                    StartCoroutine(SoundPouse());
-                _collision.volume = rigidbody.velocity.magnitude * 0.01f;
-                _collision.Play();
-                }
-
-                if (collisionObj.gameObject == Teleport.GlobalTP.gameObject)
-                {
-                    Teleport.GlobalTP.UpdateDataGraviryScale(rigidbody);
-                }
-            }
+            StartCoroutine(SoundPouse());
+            _collision.volume = rigidbody.velocity.magnitude * 0.01f;
+            _collision.Play();
         }
-        IEnumerator SoundPouse()
-        {
-            _startSound = false;
-            yield return new WaitForSeconds(_delay);
-            _startSound = true;
-
-        }
-
+    }
+    private IEnumerator SoundPouse()
+    {
+        _startSound = false;
+        yield return new WaitForSeconds(_delay);
+        _startSound = true;
     }
 }

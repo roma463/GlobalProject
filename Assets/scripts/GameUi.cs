@@ -9,7 +9,6 @@ public class GameUi : MonoBehaviour
     [SerializeField] private GameObject _winDisplay;
     [SerializeField] private GameObject _pauseDisplay;
     [SerializeField] private GameObject _lostDisplay;
-    [SerializeField] private Text _nextLevel;
     [SerializeField] private InputButton _inputButton;
     [SerializeField] protected Animator _animator;
 
@@ -46,11 +45,10 @@ public class GameUi : MonoBehaviour
     }
     public virtual void Win()
     {
-        _animator.SetTrigger("Finish");
         if (SceneManager.sceneCountInBuildSettings- 1 > _currentScene)
         {
+            _animator.SetTrigger("Finish");
             PlayerPrefs.SetInt("Scene", _currentScene + 1);
-            _nextLevel.gameObject.SetActive(true);
         }
         StopReadClick(false);
                 

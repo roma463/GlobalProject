@@ -73,125 +73,6 @@ RelativeJoint2D:
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: 0, y: 0}
   m_AngularOffset: 1
---- !u!1 &2122169340978397642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4141944209516269791}
-  - component: {fileID: 4751184020756619543}
-  - component: {fileID: 5407707791019858627}
-  - component: {fileID: 1247204596992381854}
-  m_Layer: 0
-  m_Name: New Text (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4141944209516269791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122169340978397642}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3591944920784792118}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &4751184020756619543
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122169340978397642}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 11
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!102 &5407707791019858627
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122169340978397642}
-  m_Text: 10
-  m_OffsetZ: 0
-  m_CharacterSize: 0.1
-  m_LineSpacing: 0.22
-  m_Anchor: 4
-  m_Alignment: 0
-  m_TabSize: 0
-  m_FontSize: 43
-  m_FontStyle: 1
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4287927444
---- !u!50 &1247204596992381854
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122169340978397642}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &3177274006660377945
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8fec1222c8fcaf346b1fb4c359759407, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -406,15 +287,15 @@ TextMesh:
   m_GameObject: {fileID: 5427926679754340038}
   m_Text: 10
   m_OffsetZ: 0
-  m_CharacterSize: 0.1
-  m_LineSpacing: 0.22
+  m_CharacterSize: 0.05
+  m_LineSpacing: 0.04
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 0
-  m_FontSize: 43
-  m_FontStyle: 1
+  m_FontSize: 90
+  m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 8fec1222c8fcaf346b1fb4c359759407, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4291090006
@@ -892,7 +773,7 @@ MonoBehaviour:
   _stateUi: {fileID: 0}
   _textCountShot: {fileID: 8760558192871603510}
   _countShot: 2
-  _zeroBullet: {r: 0.8235294, g: 0.06354574, b: 0.06354574, a: 1}
+  _zeroBullet: {r: 0.879, g: 0.20568603, b: 0.20568603, a: 1}
   _soundShot: {fileID: 5157503447590070145}
   _outputAnimation:
     serializedVersion: 2
@@ -946,7 +827,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3264
   _gunPoint: {fileID: 7323935748153237668}
-  _timeFleBullet: {fileID: 5407707791019858627}
   _offsetTextTime: {x: -1, y: 0.5}
 --- !u!114 &7323935746854482001
 MonoBehaviour:
@@ -1637,7 +1517,6 @@ Transform:
   - {fileID: 367877890389696331}
   - {fileID: 9011054128000287807}
   - {fileID: 1902610139191984525}
-  - {fileID: 4141944209516269791}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1744,6 +1623,9 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7323935748224626291}
   _collisionGravityLine: {fileID: 8286357710482115494}
   _hit: {fileID: 4462018090586632505}
+  _animation: {fileID: 0}
+  _startGravityScale: 1
+  _delayCollision: 0.1
   _pointUp: {fileID: 7323935747325582271}
   _pointDown: {fileID: 7323935748421541317}
   _sizeBox: {x: 0.9, y: 0.05}
@@ -1846,6 +1728,10 @@ PrefabInstance:
     - target: {fileID: 2244844411503115668, guid: f04b59e4458e65c4e94f3dce462b641f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371129067072491202, guid: f04b59e4458e65c4e94f3dce462b641f, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.96633285
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f04b59e4458e65c4e94f3dce462b641f, type: 3}

@@ -6,7 +6,6 @@ public class Trajectory : MonoBehaviour
     [SerializeField] private SpriteRenderer _pointCollisionLine;
     [SerializeField] private LayerMask _lineCollision;
     [SerializeField] private Transform _gunPoint;
-    [SerializeField] private TextMesh _timeFleBullet;
     [SerializeField] private Vector2 _offsetTextTime;
     private bool _enabledLine = true;
     public void TrajectoryBullet(Vector2 velosity)
@@ -44,9 +43,6 @@ public class Trajectory : MonoBehaviour
                 break;
             }
         }
-        _timeFleBullet.text = time.ToString();
-        //print(points.Length / 2);
-        _timeFleBullet.transform.position = (Vector2)points[index] + (_offsetTextTime * Teleport.GlobalTP.GravityScale);
         _lineRenderer.SetPositions(points);
     }
     public void DisableTranjectoryLine()

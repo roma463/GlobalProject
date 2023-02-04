@@ -6,6 +6,7 @@ public class UndependPlayer : Undepend
     [SerializeField] private Transform _pointDown;
     [SerializeField] private Vector2 _sizeBox;
     [SerializeField] private HoldObject _holdObject;
+
     private void Update()
     {
        if(OverlapBox(_pointUp.position) || OverlapBox(_pointDown.position))
@@ -15,10 +16,17 @@ public class UndependPlayer : Undepend
     }
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
         if (collision.gameObject.TryGetComponent(out GravityLine gravityLine))
         {
-            _holdObject.ChangeGravityHoldObject();
+            base.OnTriggerEnter2D(collision);
+
+            var scale = transform.localScale;
+            scale.y *= -1;
+            scale.x *= -1;
+            transform.localScale = scale;
+
+            gravityLine.PlayCollision(_rigidbody2D);
+            Teleport.GlobalTP.UpdateDataGraviryScale(_rigidbody2D);
         }
     }
     private bool OverlapBox(Vector2 point)

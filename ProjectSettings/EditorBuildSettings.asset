@@ -8,16 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/testColor.unity
+    guid: 9b6a5a7c3528b324688a25ff59a07050
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/1Standart 1.unity
     guid: 24334fa6fc0f00a499885220cab01735
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/1.5Standart 1.unity
     guid: 2ce5a2bfce00e164289eff0ddd17ae34
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/2Standart 2.unity
     guid: a7c5b4eb74469534096ae717725ccfb5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/3Standart 3.unity
     guid: 4996d8cde4b8ff04981200ad59f0a7b4
   - enabled: 1
@@ -26,10 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BeginsLevels/4Standart 4.unity
     guid: 2666b704b65e78a4fa727b45e8251e60
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/5Standart 7.unity
     guid: 9f299abf77fd51f41b3fc425e88152f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BeginsLevels/6Standart 5.unity
     guid: 08f055a296513dc4cb12f2a371d9b6ba
   - enabled: 1
@@ -41,7 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BeginsLevels/9Standart 10.unity
     guid: 08c4dc0d50fa073489b315e84b5bec3f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TwoShotLevel/10Standart 12.unity
     guid: 94cdf04569f662c41bdd9fe5e3a807fb
   - enabled: 1
@@ -50,7 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TwoShotLevel/10.3StandartBig 2.unity
     guid: 8bf076b3b9998304883e334b577151c0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TwoShotLevel/11Standart 13.unity
     guid: 25d3f91cb7f45a242af46f08654f5d5a
   - enabled: 1
@@ -62,13 +65,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TwoShotLevel/StandartBig 2.unity
     guid: 59704e7317ba39249ab0a3dd5c80dac5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GravityLevels/Standart 11.unity
     guid: e524eb7a578547747829a78a4dc758d0
   - enabled: 1
     path: Assets/Scenes/GravityLevels/StandartR_1.unity
     guid: 5ddb1883e834c634eb48c05fed64a31d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GravityLevels/Standart 15.unity
     guid: 0cdbcc45b001beb40a4e5a8f0d24995b
   - enabled: 1
@@ -92,9 +95,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GravityLevels/StandartBig 11R.unity
     guid: 4fe2ea034507e884fa0523333b4003b4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveBlockLevel/Standart 3.unity
     guid: 0cfb25b120fe7324c822ec0c5c2284a6
+  - enabled: 1
+    path: Assets/Scenes/MoveBlockLevel/Standart 3R.unity
+    guid: 051a877c73adf3248b9c130c85f78885
+  - enabled: 1
+    path: Assets/Scenes/MoveBlockLevel/Standart 4 - Copy.unity
+    guid: 0f8c1f222daac3242982d42b1894a328
   - enabled: 1
     path: Assets/Scenes/MoveBlockLevel/Standart 6R.unity
     guid: 370858a43b5d6884aa8cbf48bd02b42b
@@ -119,7 +128,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MoveBlockLevel/StandartBig 13.unity
     guid: c0f99de72811cac4a89a661c8c8b0966
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveBlockLevel/StandartBig 8.unity
     guid: 5583f51eb0439b843b8dae9253cb94e7
   m_configObjects: {}
