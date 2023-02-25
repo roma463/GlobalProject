@@ -20,6 +20,15 @@ public class ShockWavePositions : MonoBehaviour
         _widthSceen = _camera.pixelWidth;
         _shockWave.SetFloat("_floatWave", 0);
     }
+    private void Update()
+    {
+        UpdateSizeScreen();
+    }
+    public void UpdateSizeScreen()
+    {
+        _hieghtScreen = _camera.pixelHeight;
+        _widthSceen = _camera.pixelWidth;
+    }
     public IEnumerator Teleportation()
     {
         float currentValue = 0;

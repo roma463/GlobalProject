@@ -20,12 +20,14 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private Transform _spriteGun;
     private Trajectory _trajectory;
     private Camera _camera;
+    private Color _startColor;
 
     private void Start()
     {
         _textCountShot.text = _countShot.ToString();
         _trajectory = GetComponent<Trajectory>();
         _camera = Camera.main;
+        _startColor = _textCountShot.color;
     }
     private void Update()
     {
@@ -46,6 +48,25 @@ public class PositionGun : MonoBehaviour
         {
             _holdObject.Throw();
         }
+    }
+    public void AddBullet(int countAdd)
+    {
+        _countShot += countAdd;
+        _textCountShot.text = _countShot.ToString();
+        _textCountShot.color = _startColor;
+        _trajectory.EnableTranjectoryLine();
+    }
+    public void OnDisableGun()
+    {
+        _trajectory.DisableTranjectoryLine();
+        _textCountShot.color = new Color(0, 0, 0, 0);
+        _spriteGun.gameObject.SetActive(false);
+    }
+    public void OnEnableGun()
+    {
+        _trajectory.EnableTranjectoryLine();
+        _textCountShot.color = _startColor;
+        _spriteGun.gameObject.SetActive(true);
     }
     private void Shot(Vector2 speedBullet)
     {

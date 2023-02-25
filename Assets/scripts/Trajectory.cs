@@ -51,4 +51,10 @@ public class Trajectory : MonoBehaviour
         _enabledLine = false;
         _pointCollisionLine.transform.position = transform.position;
     }
+    public void EnableTranjectoryLine()
+    {
+        _lineRenderer.enabled = true;
+        _enabledLine = true;
+        _pointCollisionLine.transform.position = transform.position;
+    }
 }
