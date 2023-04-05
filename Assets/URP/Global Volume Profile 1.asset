@@ -21,12 +21,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.368
+    m_Value: 0.39
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.258
+    m_Value: 0.603
   rounded:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &-7982975842217724423
 MonoBehaviour:
@@ -59,10 +59,10 @@ MonoBehaviour:
   active: 0
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 109
+    m_Value: 200
   redOutGreenIn:
     m_OverrideState: 0
-    m_Value: 41
+    m_Value: -200
   redOutBlueIn:
     m_OverrideState: 0
     m_Value: -16
@@ -77,10 +77,10 @@ MonoBehaviour:
     m_Value: 13
   blueOutRedIn:
     m_OverrideState: 0
-    m_Value: -21
+    m_Value: -200
   blueOutGreenIn:
     m_OverrideState: 0
-    m_Value: -13
+    m_Value: 7
   blueOutBlueIn:
     m_OverrideState: 0
     m_Value: 100
@@ -121,10 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
   m_Name: SplitToning
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   shadows:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.384, g: 0.384, b: 0.384, a: 1}
   highlights:
     m_OverrideState: 0
     m_Value: {r: 1, g: 0.9386792, b: 0.9386792, a: 1}
@@ -427,17 +427,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -0.94
   contrast:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: -19
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.8235294, g: 0.92713195, b: 1, a: 1}
+    m_Value: {r: 1, g: 0.9332196, b: 0.8235294, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: -180
   saturation:
     m_OverrideState: 0
     m_Value: 100

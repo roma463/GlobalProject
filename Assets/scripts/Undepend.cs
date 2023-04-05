@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Undepend : MonoBehaviour
 {
@@ -20,10 +21,13 @@ public class Undepend : MonoBehaviour
 
     private void Start()
     {
-        _rigidbody2D.gravityScale = _startGravityScale;
         var scale = transform.localScale;
         scale.y *= _startGravityScale;
         transform.localScale = scale;
+    }
+    public void ChangeGravity()
+    {
+        _rigidbody2D.gravityScale = _startGravityScale;
     }
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
