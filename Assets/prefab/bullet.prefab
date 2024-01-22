@@ -9775,9 +9775,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184021489100304607}
-  - component: {fileID: 2469616329133453591}
+  - component: {fileID: 3130318810508204132}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9802,7 +9802,7 @@ Transform:
   m_Father: {fileID: 760882268686191991}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2469616329133453591
+--- !u!114 &3130318810508204132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9811,7 +9811,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4740829718121342951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ced05cc66c958d4daadc622d36dfa3e, type: 3}
+  m_Script: {fileID: 11500000, guid: a96bea06b76370c459cf6dc39e0d8527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particals:
@@ -14750,8 +14750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a3c3d527c15064ba50bad99edd6752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _train: {fileID: 2469616329133453591}
-  _point: {fileID: 0}
+  _effects: {fileID: 3130318810508204132}
 --- !u!61 &-8201969211761048287
 BoxCollider2D:
   m_ObjectHideFlags: 0
