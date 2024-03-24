@@ -34,14 +34,14 @@ public class GameUi : MonoBehaviour
     }
     private void Update()
     {
-        if (_inputButton.Escape)
-        {
-            Pause();
-        }
-        else if (_inputButton.KeyR)
-        {
-            Restart();
-        }
+        //if (_inputButton.Escape)
+        //{
+        //    Pause();
+        //}
+        //else if (_inputButton.KeyR)
+        //{
+        //    Restart();
+        //}
     }
     public virtual void Win()
     {

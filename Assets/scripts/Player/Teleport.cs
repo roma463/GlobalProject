@@ -11,58 +11,66 @@ public class Teleport : MonoBehaviour
     }
     public static Teleport GlobalTP { get; private set; }
     public int GravityScale { get; private set; }
+    public event System.Action Effects_E;
     [SerializeField] private Transform _pointUP;
     [SerializeField] private Transform _pointDown;
     [SerializeField] private Transform _pointLeft;
     [SerializeField] private Transform _pointRight;
+
     [SerializeField] private HoldObject _holdObject;
-    [SerializeField] private ParticlesPlayer _playerParticles;
     [SerializeField] private Transform _textPoint;
     [SerializeField] private AudioSource _teleportSound;
     private ShockWavePositions _shockWave;
     private Coroutine _shockWaveCorutine;
+    
     private void Awake()
     {
         _textPoint.parent = null;
         GravityScale = 1;
         GlobalTP = this;
     }
+
+    private void Start()
+    {
+        SetShockWave(ShockWavePositions.Instance);
+    }
+
     public void SetShockWave(ShockWavePositions shockWavePositions)
     {
         _shockWave = shockWavePositions;
     }
-    public void Player(Offset of, Vector2 newPosition)
+    public void Player(Offset normalSurface, Vector2 newPosition)
     {
-        
-        _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
+        Effects_E?.Invoke();
 
         Vector2 offset = Vector2.zero;
-        if (of == Offset.down)
+        if (normalSurface == Offset.down)
         {
             offset = transform.position - _pointDown.position;
         }
-        else if (of == Offset.up)
+        else if (normalSurface == Offset.up)
         {
             offset = transform.position - _pointUP.position;
         }
-        if (of == Offset.left)
+        if (normalSurface == Offset.left)
         {
             offset = transform.position - _pointLeft.position;
         }
-        else if (of == Offset.right)
+        else if (normalSurface == Offset.right)
         {
             offset = transform.position - _pointRight.position;
         }
+
         offset *= GravityScale;
         transform.position = newPosition - offset;
         _textPoint.position = newPosition - offset;
-        _playerParticles.Play(ParticlesPlayer.ViewParticle.TelePort);
+        Effects_E?.Invoke();
         _holdObject.TeleportCurrentUseObject(transform.position);
         PlayerMove.GlobalPlayer.UnplugJump();
         _teleportSound.Play();
         if(_shockWaveCorutine != null)
             StopCoroutine(_shockWaveCorutine);
-        _shockWaveCorutine = StartCoroutine(_shockWave.Teleportation());
+        _shockWaveCorutine = StartCoroutine(_shockWave.Teleportation(transform.position));
     }
     public void UpdateDataGraviryScale(Rigidbody2D rigidbody2D)
     {

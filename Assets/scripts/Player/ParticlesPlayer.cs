@@ -3,26 +3,29 @@ using UnityEngine;
 
 public class ParticlesPlayer : MonoBehaviour
 {
-    public enum ViewParticle
-    {
-        TelePort
-    }
-    [SerializeField] private ParticleSystem _teleport;
+    [SerializeField] private ParticleSystem _teleportParticle;
     [SerializeField] private GameObject _teleportAnim;
+    [SerializeField] private Teleport _teleport;
 
-    [System.Obsolete]
-    public void Play(ViewParticle particlePlay)
+    public void Teleport()
     {
-        if(particlePlay == ViewParticle.TelePort)
-        {
-            //Instantiate(_teleportAnim, transform.position, Quaternion.identity);
-           ParticleSystem  particle =  Instantiate(_teleport, transform.position, Quaternion.identity);
-            StartCoroutine(Delited(particle.duration, particle.gameObject));
-        }
+        ParticleSystem  particle =  Instantiate(_teleportParticle, transform.position, Quaternion.identity);
+        StartCoroutine(Delited(particle.duration, particle.gameObject));
     }
     private IEnumerator Delited(float  time, GameObject deletedObject)
     {
         yield return new WaitForSeconds(time);
         Destroy(deletedObject);
+    }
+
+    private void OnEnable()
+    {
+        _teleport.Effects_E += Teleport;
+
+    }
+
+    private void OnDisable()
+    {
+        _teleport.Effects_E -= Teleport;
     }
 }

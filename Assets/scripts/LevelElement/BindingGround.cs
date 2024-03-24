@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -28,16 +27,16 @@ public class BindingGround : MonoBehaviour
     }
 }
 
-[CustomEditor(typeof(BindingGround))]
-public class ButtonPositionSetDown : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        BindingGround button = (BindingGround)target;
-        DrawDefaultInspector();
-        if (GUILayout.Button("PositionSetDown"))
-        {
-            button.ButtonClick();
-        }
-    }
-}
+//[CustomEditor(typeof(BindingGround))]
+//public class ButtonPositionSetDown : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        BindingGround button = (BindingGround)target;
+//        DrawDefaultInspector();
+//        if (GUILayout.Button("PositionSetDown"))
+//        {
+//            button.ButtonClick();
+//        }
+//    }
+//}

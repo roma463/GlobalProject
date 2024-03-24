@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using UnityEngine;
 
@@ -10,9 +11,6 @@ public class InputButton : MonoBehaviour
     public bool Escape { private set; get; }
     public bool KeyR { private set; get; }
 
-    private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
-    private string[] _knowKeyDown = new string[10];
-    private string localWord;
     public string Word 
     { 
         get 
@@ -24,25 +22,34 @@ public class InputButton : MonoBehaviour
             localWord =  value; 
         } 
     }
+    [SerializeField] private PhotonView _photon;
+    private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
+    private string[] _knowKeyDown = new string[10];
+    private string localWord;
     private bool _isPause = true;
+
+
     private void Awake()
     {
         localWord = "";
-        //Cursor.visible = false;
     }
+
     private void Update()
     {
+        if (!_photon.IsMine)
+            return;
+
         if (_isPause)
         {
-        Horizontal = Input.GetAxis("Horizontal");
+            Horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetMouseButtonDown(1))
-            MouseRightStay = true;
-        else if (Input.GetMouseButtonUp(1))
-            MouseRightStay = false;
+            if (Input.GetMouseButtonDown(1))
+                MouseRightStay = true;
+            else if (Input.GetMouseButtonUp(1))
+                MouseRightStay = false;
 
-        MouseLeft = Input.GetMouseButtonDown(0);
-        Space = Input.GetKeyDown(KeyCode.Space);
+            MouseLeft = Input.GetMouseButtonDown(0);
+            Space = Input.GetKeyDown(KeyCode.Space);
         }
         else
         {

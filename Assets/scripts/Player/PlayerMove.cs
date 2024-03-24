@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _jumpDelayTime = 0.05f;
     private bool _delayJumpEnd = true;
 
+    private PhotonView _photonView;
     private Rigidbody2D _rigidbody;
     private InputButton _inputButton;
     private bool _isGround;
@@ -29,15 +31,21 @@ public class PlayerMove : MonoBehaviour
     }
     private void Start()
     {
+        _photonView = GetComponent<PhotonView>();
         _inputButton = GetComponent<InputButton>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
     {
+        if (!_photonView.IsMine)
+            return;
         _rigidbody.velocity = (new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y));
     }
     private void Update()
     {
+        if (!_photonView.IsMine)
+            return;
+
         bool collsionGround = false;
         if (_onCollison)
         {
