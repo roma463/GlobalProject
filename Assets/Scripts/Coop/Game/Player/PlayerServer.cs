@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerServer : MonoBehaviour
@@ -19,6 +17,11 @@ public class PlayerServer : MonoBehaviour
             _lineTrajectory.colorGradient = _lineColor;
             _isMineIndicator.SetActive(false);
             _playerSprite.color = _colorPlayer;
+        }
+
+        if (PhotonNetwork.IsMasterClient && _photonView.IsMine)
+        {
+            ((GameUISeriver)GameUi.Instance).InitPhoton(_photonView);
         }
     }
 

@@ -22,23 +22,20 @@ public class InputButton : MonoBehaviour
             localWord =  value; 
         } 
     }
-    [SerializeField] private PhotonView _photon;
     private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
     private string[] _knowKeyDown = new string[10];
     private string localWord;
     private bool _isPause = true;
 
 
-    private void Awake()
+    private void Start()
     {
         localWord = "";
+        GameUi.Instance.Initialize(this);
     }
 
     private void Update()
     {
-        if (!_photon.IsMine)
-            return;
-
         if (_isPause)
         {
             Horizontal = Input.GetAxis("Horizontal");

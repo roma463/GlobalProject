@@ -3,17 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ServerSinglton : MonoBehaviour
+public abstract class ServerSinglton : Singlton
 {
     [SerializeField] protected PhotonView _photonView;
 
-    public virtual void Awake()
+    public override void Awake()
     {
         if (_photonView.IsMine)
         {
-            InitializeSingleton();
+            base.Awake();
         }
     }
-
-    public abstract void InitializeSingleton();
 }

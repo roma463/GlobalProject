@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AchievementCollision : MonoBehaviour
@@ -8,7 +6,7 @@ public class AchievementCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.parent.TryGetComponent(out PlayerMove pl))
+        if (collision.transform.parent.TryGetComponent(out PlayerCollision player))
         {
             _play.StartAchivenemt("Красаучик ваще");
         }

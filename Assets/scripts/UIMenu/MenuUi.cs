@@ -1,9 +1,11 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuUi : MonoBehaviour
 {
     [SerializeField] private Animator _animationMenu;
+    [SerializeField] private ConnectionToServer _connetionToServer;
     private int _lastLevel;
     private SaveGame _save;
 
@@ -18,8 +20,14 @@ public class MenuUi : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene(_lastLevel);
+        _connetionToServer.StartCoroutine(_connetionToServer.Disconection(LoadScene));
     }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void SettingsOpen()
     {
         _animationMenu.SetTrigger("Open");

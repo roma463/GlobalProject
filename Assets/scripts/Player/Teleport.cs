@@ -22,6 +22,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private AudioSource _teleportSound;
     private ShockWavePositions _shockWave;
     private Coroutine _shockWaveCorutine;
+    private PlayerMove _playerMove;
     
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class Teleport : MonoBehaviour
 
     private void Start()
     {
+        _playerMove = GetComponent<PlayerMove>();
         SetShockWave(ShockWavePositions.Instance);
     }
 
@@ -66,7 +68,7 @@ public class Teleport : MonoBehaviour
         _textPoint.position = newPosition - offset;
         Effects_E?.Invoke();
         _holdObject.TeleportCurrentUseObject(transform.position);
-        PlayerMove.GlobalPlayer.UnplugJump();
+        //_playerMove.UnplugJump();
         _teleportSound.Play();
         if(_shockWaveCorutine != null)
             StopCoroutine(_shockWaveCorutine);

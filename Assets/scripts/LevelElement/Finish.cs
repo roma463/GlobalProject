@@ -7,7 +7,7 @@ public class Finish : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerMove plaeyerMove))
+        if (collision.gameObject.TryGetComponent(out PlayerCollision player))
         {
             _ui.Win();
             _soundFinish.Play();

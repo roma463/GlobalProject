@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using static SaveGame;
@@ -53,6 +51,7 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
+
 [Serializable]
 public class Save
 {
@@ -66,6 +65,7 @@ public class Save
         Settings = new SettingsGame();
     }
 }
+
 [Serializable]
 public class SettingsGame
 {

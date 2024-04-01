@@ -1,47 +1,58 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class GameUi : MonoBehaviour
+public class GameUi : MonoBehaviourPunCallbacks
 {
-    public static GameUi GlobalUI { private set; get; }
+    public static GameUi Instance { private set; get; }
     [SerializeField] private GameObject _winDisplay;
     [SerializeField] private GameObject _pauseDisplay;
-    [SerializeField] private GameObject _lostDisplay;
-    [SerializeField] private InputButton _inputButton;
     [SerializeField] protected Animator _animator;
 
     [SerializeField] private float _pauseWindowOpen;
     [SerializeField] private float _pauseWindowClosed;
     [SerializeField] private float _speedOpen;
+    private InputButton _inputButton;
+    private int _currentScene;
     private Coroutine _pauseCorutine;
     private bool _pauseOpen = false;
 
-    private int _currentScene;
 
     public virtual void Awake()
     {
         _pauseDisplay.SetActive(true);
         _pauseDisplay.transform.position = Vector3.right * _pauseWindowClosed;
-        GlobalUI = this;
+        Instance = this;
     }
+
     public virtual void Start()
     {
         _winDisplay.SetActive(true);
         _animator.SetTrigger("StartGame");
         _currentScene = SceneManager.GetActiveScene().buildIndex;
     }
-    private void Update()
+
+    public void Initialize(InputButton inputButton)
     {
-        //if (_inputButton.Escape)
-        //{
-        //    Pause();
-        //}
-        //else if (_inputButton.KeyR)
-        //{
-        //    Restart();
-        //}
+        _inputButton = inputButton;
+    }
+
+    public int GetIndexCurrentScene()
+    {
+        return _currentScene;
+    }
+    
+    public virtual void Update()
+    {
+        if (_inputButton.Escape)
+        {
+            Pause();
+        }
+        else if (_inputButton.KeyR)
+        {
+            Restart();
+        }
     }
     public virtual void Win()
     {
@@ -52,12 +63,6 @@ public class GameUi : MonoBehaviour
         }
         StopReadClick(false);
                 
-    }
-    public void Lost() 
-    {
-        StopReadClick(false);
-        _lostDisplay.SetActive(true);
-        _inputButton.Pause(false);
     }
     public void Pause()
     {

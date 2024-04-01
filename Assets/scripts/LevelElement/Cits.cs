@@ -6,7 +6,7 @@ public class Cits : MonoBehaviour
     private GameUi _ui;
     private void Start()
     {
-        _ui = GameUi.GlobalUI;
+        _ui = GameUi.Instance;
     }
     private void Update()
     {

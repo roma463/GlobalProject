@@ -661,7 +661,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 55
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.084905684, g: 0.061781935, b: 0.054868296, a: 1}
   m_FlipX: 0
@@ -751,7 +751,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 55
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.084905684, g: 0.061781935, b: 0.054868296, a: 1}
   m_FlipX: 0
@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954fcab5e89adb444b1fa2050ec2254b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _teleport: {fileID: 0}
+  _teleport: {fileID: 7323935748224626293}
   _bullet: {fileID: 3784100792342495577, guid: 8dc97b68c73df0a40956e1550f58ce3f, type: 3}
   _gunPoint: {fileID: 7323935748153237668}
   _forceShot: 1.5
@@ -841,7 +841,7 @@ MonoBehaviour:
     m_Bits: 3264
   _gunPoint: {fileID: 7323935748153237668}
   _offsetTextTime: {x: -1, y: 0.5}
-  _teleport: {fileID: 0}
+  _teleport: {fileID: 7323935748224626293}
 --- !u!114 &7323935746854482001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +1130,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6431373, g: 0.59057385, b: 0.2784784, a: 1}
   m_FlipX: 0
@@ -1554,6 +1554,7 @@ GameObject:
   - component: {fileID: 9181593802604380227}
   - component: {fileID: 2333866780032054232}
   - component: {fileID: 5186791256191818039}
+  - component: {fileID: 78567322294394502}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1669,7 +1670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba17a2e41948b41439690454ba06f15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photon: {fileID: 0}
 --- !u!114 &9181593802604380227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1700,7 +1700,6 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7323935748224626291}
   _collisionGravityLine: {fileID: 8286357710482115494}
   _hit: {fileID: 4462018090586632505}
-  _animation: {fileID: 0}
   _startGravityScale: 1
   _delayCollision: 0.1
   _pointUp: {fileID: 7323935747325582271}
@@ -1720,6 +1719,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputButton: {fileID: 7323935748224626294}
+--- !u!114 &78567322294394502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323935748224626289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb930b05665eb6c4b892581d624cc0e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7323935748421541316
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Hint : MonoBehaviour
@@ -8,17 +8,20 @@ public class Hint : MonoBehaviour
 
     [SerializeField] private Gradient _changeColor;
     [SerializeField] private float _speedChenge;
-    private TextMesh _textMesh;
+    private TMP_Text _textMesh;
     private float _currentColorGradient;
     private bool _currentCorutine;
     [SerializeField] private float _positionChange;
 
     private void Start()
     {
-        _textMesh = _hintObject.GetComponent<TextMesh>();
+        _textMesh = _hintObject.GetComponent<TMP_Text>();
+        _hintObject = _textMesh.gameObject;
         _textMesh.color = _changeColor.Evaluate(0);
         _hintObject.transform.position += Vector3.up * _positionChange;
+        //здарова заебал. Че каво? ещё не сдох?
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print(collision.name);
@@ -28,6 +31,7 @@ public class Hint : MonoBehaviour
         }
         StartCoroutine(ActivityText(true, (Vector2)_hintObject.transform.position + Vector2.down * _positionChange));
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (_currentCorutine)
@@ -36,6 +40,7 @@ public class Hint : MonoBehaviour
         }
         StartCoroutine(ActivityText(false, (Vector2)_hintObject.transform.position + Vector2.up * _positionChange));
     }
+
     private IEnumerator ActivityText(bool isActiveText, Vector2 targetPosition)
     {
         int targetPositionGradient = isActiveText ? 1 : 0;

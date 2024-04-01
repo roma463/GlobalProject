@@ -13,7 +13,7 @@ public class DisablingComponent : MonoBehaviour
     {
         if (_photonView.IsMine)
             return;
-        //Destroy((Component)_playerMove);
+        Destroy((Component)_playerMove);
         Destroy((Component)_rotateAem);
     }
 }

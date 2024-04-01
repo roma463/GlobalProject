@@ -6,7 +6,6 @@ public class Undepend : MonoBehaviour
     [SerializeField] protected Rigidbody2D _rigidbody2D;
     [SerializeField] private ParticleSystem _collisionGravityLine;
     [SerializeField] private AudioSource _hit;
-    [SerializeField] private Animator _animation;
     [Range(-1,1)]
     [SerializeField] private int _startGravityScale = 1;
     [SerializeField] private float _delayCollision = 0.1f;
@@ -62,8 +61,6 @@ public class Undepend : MonoBehaviour
     }
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_animation != null)
-            //_animation.SetTrigger("Start");
         _hit.volume = collision.relativeVelocity.magnitude * 0.05f;
         _hit.Play();
 
