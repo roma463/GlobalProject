@@ -15,12 +15,12 @@ public class Cits : MonoBehaviour
 
              if(_inputButton.Word.Contains("DON"))
              {
-                 _ui.Win();
+                 _ui.WinWindow();
                 _inputButton.ResetListKey();
              }
             if (_inputButton.Word.Contains("ALAX"))
             {
-                _ui.Win();
+                _ui.WinWindow();
                 _inputButton.ResetListKey();
             }
         }

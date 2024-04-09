@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputButton : MonoBehaviour
 {
+    public static InputButton Instance { get; private set; }
     public float Horizontal { private set; get; }
     public bool MouseRightStay { private set; get; }
     public bool MouseLeft { private set; get; }
@@ -25,18 +26,22 @@ public class InputButton : MonoBehaviour
     private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
     private string[] _knowKeyDown = new string[10];
     private string localWord;
-    private bool _isPause = true;
+    private bool _isPause = false;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         localWord = "";
-        GameUi.Instance.Initialize(this);
+        GameState.Instance.Initialize(this);
     }
 
     private void Update()
     {
-        if (_isPause)
+        if (!_isPause)
         {
             Horizontal = Input.GetAxis("Horizontal");
 

@@ -3,35 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvisibleBlock : MonoBehaviour, Action
+public class InvisibleBlock : ActionObject
 {
-    [SerializeField] private bool _startActive;
     [Range(0, 1)]
     [SerializeField] private float _blockout = 0.3f;
     [Range(0, 1)]
     [SerializeField] private float _changedInFrame = 0.05f;
-    public bool CurrentActivity { private set; get; }
     private List<OblectInformation> _allChildrenObjects = new List<OblectInformation>();
 
-    public virtual void Start()
+    public override void Start()
     {
-        CurrentActivity = _startActive;
+        base.Start();
         var getCheldrensSpriteSenderer = GetComponentsInChildren<SpriteRenderer>();
         var getCheldrensBoxCollider = GetComponentsInChildren<BoxCollider2D>();
         for (int i = 0; i < getCheldrensBoxCollider.Length; i++)
         {
             _allChildrenObjects.Add(new OblectInformation(getCheldrensSpriteSenderer[i], getCheldrensBoxCollider[i]));
         }
-        ActiveThisObject(_startActive);
+        ActiveThisObject(IsActive);
     }
-    public virtual void launch()
+
+    public override void launch()
     {
-        CurrentActivity = !CurrentActivity;
-        ActiveThisObject(CurrentActivity);
+        base.launch();
+        ActiveThisObject(IsActive);
     }
+
     private void ActiveThisObject(bool stateActive)
     {
-                StopAllCoroutines();
+        StopAllCoroutines();
         int VectorDirectionColor = stateActive ? 1 : -1;
         for (int i = 0; i < _allChildrenObjects.Count; i++)
         {
@@ -44,6 +44,7 @@ public class InvisibleBlock : MonoBehaviour, Action
             StartCoroutine(ColorByClick(_allChildrenObjects[i].spriteRenderer, _changedInFrame * VectorDirectionColor, targetColor));
         }
     }
+
     private IEnumerator ColorByClick(SpriteRenderer spriteRenderer, float change, float targetColor)
     {
         Color.RGBToHSV(spriteRenderer.color, out float H, out float S, out float V);
@@ -60,6 +61,7 @@ public class InvisibleBlock : MonoBehaviour, Action
         }
     }
 }
+
 [Serializable]
  public class OblectInformation
 {
@@ -74,6 +76,7 @@ public class InvisibleBlock : MonoBehaviour, Action
         Color.RGBToHSV(this.spriteRenderer.color, out float H, out float S, out float V);
         StartColor = (float)Math.Round(V, 2);
     }
+
     public void ColliderEnable(bool state)
     {
         _boxCollider.enabled = state;

@@ -1,11 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionObject : MonoBehaviour, Action
+//[RequireComponent (typeof(AnimationActivityObject))]
+public abstract class ActionObject : MonoBehaviour, Action
 {
-    public void launch()
+    public bool IsActive { private set; get; }
+    [SerializeField] private bool _startActive;
+    private AnimationActivityObject _animationStateObject;
+
+    private void OnValidate()
     {
-        throw new System.NotImplementedException();
+        if(gameObject.TryGetComponent(out AnimationActivityObject animation))
+            _animationStateObject = animation;
+        else if(gameObject.GetComponentInChildren<AnimationActivityObject>() != null)
+        {
+            _animationStateObject = gameObject.GetComponentInChildren<AnimationActivityObject>();
+        }
+    }
+
+    public virtual void Start()
+    {
+        IsActive = _startActive;
+        //_animationStateObject.Change(IsActive);
+    }
+
+    public virtual void RemoveFromListButton()
+    {
+
+    }
+
+    public virtual void launch()
+    {
+        IsActive = !IsActive;
+        //_animationStateObject.Change(IsActive);
     }
 }

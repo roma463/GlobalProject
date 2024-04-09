@@ -249,11 +249,11 @@ PrefabInstance:
       insertIndex: 11
       addedObject: {fileID: 6850372203567188461}
     - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      insertIndex: 12
-      addedObject: {fileID: -7752764776233814111}
-    - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4212589434953482361}
+    - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4155385485604254576}
     - targetCorrespondingSourceObject: {fileID: 7323935747249540297, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2337815257693309887}
@@ -355,11 +355,10 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   observableSearch: 2
-  Synchronization: 1
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 6850372203567188461}
-  - {fileID: -7752764776233814111}
   - {fileID: 2337815257693309887}
   - {fileID: 3592783061451717707}
   viewIdField: 0
@@ -395,7 +394,20 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &-7752764776233814111
+--- !u!114 &4212589434953482361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541600944557767243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f84b032b8e71c45a89d50ad4b1c0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: 9144437391449263157}
+--- !u!114 &4155385485604254576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -410,20 +422,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 1
---- !u!114 &4212589434953482361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541600944557767243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f84b032b8e71c45a89d50ad4b1c0aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 9144437391449263157}
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &1541600944557767244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7323935748224626294, guid: da3a194260593b74a89bc09245b22bc6, type: 3}

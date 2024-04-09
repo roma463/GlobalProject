@@ -50,7 +50,6 @@ public class Button : MonoBehaviour
         {
             if(_actionsObject.Count > 0)
             {
-
                 if(_actionsObject[0].transform.parent != null)
                 {
                     return _actionsObject[0].transform.parent;

@@ -18,7 +18,7 @@ public class DisablingGravityLine : InvisibleBlock
     {
         foreach (var item in _particles)
         {
-            if (!CurrentActivity)
+            if (!IsActive)
             {
                 item.Stop();
             }

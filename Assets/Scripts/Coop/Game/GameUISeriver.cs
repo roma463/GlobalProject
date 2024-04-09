@@ -12,11 +12,6 @@ public class GameUISeriver : GameUi
         RestartPhoton();
     }
 
-    public override void Update()
-    {
-
-    }
-
     public void RestartPhoton()
     {
         PhotonNetwork.LoadLevel(GetIndexCurrentScene());

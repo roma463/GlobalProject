@@ -17,7 +17,7 @@ public class ServerLevelLoader : MonoBehaviour
     public void RestartPhoton()
     {
         PhotonNetwork.LoadLevel(1);
-        _photonView.RPC(nameof(LoadSceneRPC), RpcTarget.Others, 1);
+        _photonView.RPC(nameof(LoadSceneRPC), RpcTarget.All, 1);
         print("Server restart");
 
     }
@@ -27,8 +27,8 @@ public class ServerLevelLoader : MonoBehaviour
     public void LoadSceneRPC(int idScene)
     {
         // Загрузка новой сцены на всех клиентах
-        if (!_photonView.IsMine)
-            return;
+        //if (!_photonView.IsMine)
+        //    return;
         PhotonNetwork.LoadLevel(idScene);
     }
 }

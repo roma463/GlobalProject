@@ -14,6 +14,7 @@ public class PlayerServer : MonoBehaviour
     {
         if (!_photonView.IsMine)
         {
+            _playerSprite.sortingOrder = 45;
             _lineTrajectory.colorGradient = _lineColor;
             _isMineIndicator.SetActive(false);
             _playerSprite.color = _colorPlayer;
@@ -23,6 +24,11 @@ public class PlayerServer : MonoBehaviour
         {
             ((GameUISeriver)GameUi.Instance).InitPhoton(_photonView);
         }
+        print(PhotonNetwork.CloudRegion);
     }
 
+    private void Update()
+    {
+        print(PhotonNetwork.GetPing());
+    }
 }

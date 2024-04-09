@@ -39,7 +39,7 @@ public class UiOneLevel : GameUi
         SceneManager.LoadScene(_oneLevelIndex);
         StopReadClick(false);
     }
-    public override void Win()
+    public override void WinWindow()
     {
         _animator.SetTrigger("Finish");
     }

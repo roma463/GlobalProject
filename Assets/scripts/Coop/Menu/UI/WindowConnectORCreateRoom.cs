@@ -1,12 +1,12 @@
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WindowConnectORCreateRoom : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField _idRoom;
     [SerializeField] private WindowError _windowError;
+    [SerializeField] private GameObject _elementsWindows; 
 
     public void JoinRoom()
     {
@@ -36,6 +36,11 @@ public class WindowConnectORCreateRoom : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel(1);
+    }
+
+    public void CloseWindows()
+    {
+        _elementsWindows.SetActive(false);
     }
 
 }

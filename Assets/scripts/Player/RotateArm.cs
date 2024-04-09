@@ -5,14 +5,17 @@ namespace GamePlay.Player
     public class RotateArm : MonoBehaviour
     {
         private Camera _mainCamera;
+
         private void Start()
         {
             _mainCamera = Camera.main;
         }
+
         private void Update()
         {
             Rotation();
         }
+
         public virtual void Rotation()
         {
             var positionMouse = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
