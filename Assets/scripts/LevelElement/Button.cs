@@ -15,6 +15,7 @@ public class Button : MonoBehaviour
     private List<GameObject> _clickedButton = new List<GameObject>();
     private float _currentScale;
     private Coroutine _currentCoroutine;
+    private bool _isClick;
 
     private void Start()
     {
@@ -74,9 +75,10 @@ public class Button : MonoBehaviour
     {
         if (_clickedButton.Count == 0)
         {
+            _isClick = true;
             if(_currentCoroutine != null)
             {
-            StopCoroutine(_currentCoroutine);
+                StopCoroutine(_currentCoroutine);
             }
             _currentCoroutine =  StartCoroutine(ColorByClick());
             StartCoroutine(StartLaunch());
@@ -88,7 +90,8 @@ public class Button : MonoBehaviour
         _clickedButton.Remove(collision.gameObject);
         if (_clickedButton.Count == 0)
         {
-            if(_currentCoroutine != null)
+            _isClick = false;
+            if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
 
            _currentCoroutine =  StartCoroutine(ColorByClickUp());
@@ -100,7 +103,7 @@ public class Button : MonoBehaviour
         for (int i = 0; i < _actions.Count; i++)
         {
             yield return new WaitForSeconds(_delayLaunch);
-            _actions[i].launch();
+            _actions[i].Launch(_isClick);
         }
     }
     private IEnumerator ColorByClick()
@@ -122,6 +125,6 @@ public class Button : MonoBehaviour
 }
 public interface Action
 {
-    void launch();
+    void Launch(bool state);
 }
 

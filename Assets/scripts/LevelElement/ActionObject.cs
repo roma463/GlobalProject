@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 //[RequireComponent (typeof(AnimationActivityObject))]
@@ -6,6 +7,7 @@ public abstract class ActionObject : MonoBehaviour, Action
     public bool IsActive { private set; get; }
     [SerializeField] private bool _startActive;
     private AnimationActivityObject _animationStateObject;
+    private int _countPressedButton = 0;
 
     private void OnValidate()
     {
@@ -23,14 +25,47 @@ public abstract class ActionObject : MonoBehaviour, Action
         //_animationStateObject.Change(IsActive);
     }
 
-    public virtual void RemoveFromListButton()
+    public virtual void Launch(bool state)
     {
+        if (state)
+            _countPressedButton++;
+        else
+            _countPressedButton--;
 
-    }
+        if (_countPressedButton == 0)
+        {
+            print("отпустил");
+            Release();
+            IsActive = false;
+        }
+        else if (_countPressedButton == 1 && !IsActive)
+        {
+            print("нажал");
 
-    public virtual void launch()
-    {
-        IsActive = !IsActive;
+            PressState();
+            IsActive = true;
+        }
+        else
+        {
+            print("другое число");
+            return;
+        }
+
+        //if (_countPressedButton <= 1)
+        //{
+        //    if (_startActive)
+        //        IsActive = !state;
+        //    else
+        //        IsActive = state;
+        //}
+        //else
+        //{
+        //    return;
+        //}
         //_animationStateObject.Change(IsActive);
     }
+
+    public abstract void Release();
+    public abstract void PressState();
+
 }

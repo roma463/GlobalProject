@@ -9,9 +9,9 @@ public class DisablingGravityLine : InvisibleBlock
         base.Start();
         PlayingStateParticle();
     }
-    public override void launch()
+    public override void Launch(bool state)
     {
-        base.launch();
+        base.Launch(state);
         PlayingStateParticle();
     }
     private void PlayingStateParticle()

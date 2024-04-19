@@ -24,11 +24,5 @@ public class PlayerServer : MonoBehaviour
         {
             ((GameUISeriver)GameUi.Instance).InitPhoton(_photonView);
         }
-        print(PhotonNetwork.CloudRegion);
-    }
-
-    private void Update()
-    {
-        print(PhotonNetwork.GetPing());
     }
 }

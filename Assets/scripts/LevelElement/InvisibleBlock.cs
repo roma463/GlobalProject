@@ -23,10 +23,14 @@ public class InvisibleBlock : ActionObject
         ActiveThisObject(IsActive);
     }
 
-    public override void launch()
+    public override void PressState()
     {
-        base.launch();
-        ActiveThisObject(IsActive);
+        ActiveThisObject(true);
+    }
+
+    public override void Release()
+    {
+        ActiveThisObject(false);
     }
 
     private void ActiveThisObject(bool stateActive)
