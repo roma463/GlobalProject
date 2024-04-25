@@ -14,8 +14,13 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerCollision player))
         {
+            WinPlayer();
+        }
+    }
+
+    public virtual void WinPlayer()
+    {
             _gameState.Win();
             _soundFinish.Play();
-        }
     }
 }

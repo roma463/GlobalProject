@@ -13,7 +13,6 @@ public class GameUi : MonoBehaviourPunCallbacks
     [SerializeField] private float _pauseWindowOpen;
     [SerializeField] private float _pauseWindowClosed;
     [SerializeField] private float _speedOpen;
-    private InputButton _inputButton;
     private int _currentScene;
     private Coroutine _pauseCorutine;
 
@@ -31,11 +30,6 @@ public class GameUi : MonoBehaviourPunCallbacks
         _currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void Initialize(InputButton inputButton)
-    {
-        _inputButton = inputButton;
-    }
-
     public int GetIndexCurrentScene()
     {
         return _currentScene;
@@ -47,7 +41,6 @@ public class GameUi : MonoBehaviourPunCallbacks
         {
             _animator.SetTrigger("Finish");
         }
-        StopReadClick(false);
     }
 
     public void PauseWindow(bool state)
@@ -71,11 +64,6 @@ public class GameUi : MonoBehaviourPunCallbacks
         _pauseCorutine = null;
     }
 
-    public virtual void StopReadClick(bool state)
-    {
-        _inputButton.Pause(state);
-    }
-
     public virtual void Restart()
     {
         SceneManager.LoadScene(_currentScene);
@@ -86,12 +74,10 @@ public class GameUi : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Menu");
     }
 
-    public void ButtonNextLevel()
-    {
-        _animator.SetTrigger("Next");
-    }
+    //Вызывается при проигрывании анимации пробеды
     public virtual void NextLevel()
     {
+        print("NextLevel method");
         SceneManager.LoadScene(_currentScene + 1);
     }
 }

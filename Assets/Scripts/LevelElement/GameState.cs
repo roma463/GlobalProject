@@ -54,6 +54,7 @@ public class GameState : MonoBehaviour
     public void Win()
     {
         _gameUi.WinWindow();
+        //PauseGame();
         PlayerPrefs.SetInt("Scene", _currentScene + 1);
     }
 

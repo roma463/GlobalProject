@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ServerLevelLoader : MonoBehaviour
@@ -14,14 +12,12 @@ public class ServerLevelLoader : MonoBehaviour
             RestartPhoton();
         }
     }
+
     public void RestartPhoton()
     {
         PhotonNetwork.LoadLevel(1);
         _photonView.RPC(nameof(LoadSceneRPC), RpcTarget.All, 1);
-        print("Server restart");
-
     }
-
 
     [PunRPC]
     public void LoadSceneRPC(int idScene)

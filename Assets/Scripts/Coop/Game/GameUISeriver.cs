@@ -3,6 +3,7 @@ using Photon.Pun;
 public class GameUISeriver : GameUi
 {
     private PhotonView _photonView;
+
     public void InitPhoton(PhotonView view)
     {
         _photonView = view;
@@ -22,7 +23,7 @@ public class GameUISeriver : GameUi
 
     public override void NextLevel()
     {
-        PhotonNetwork.LoadLevel(GetIndexCurrentScene()+1);
+        //PhotonNetwork.LoadLevel(GetIndexCurrentScene()+1);
     }
 
     [PunRPC]
