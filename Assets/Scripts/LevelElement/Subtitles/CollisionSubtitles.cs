@@ -13,10 +13,8 @@ public class CollisionSubtitles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("triggerIsObject");
         if(collision.transform.root.TryGetComponent(out PlayerCollision playerCollision) && _isCollisionPlayer == false)
         {
-            print("player collisiton");
             _isCollisionPlayer = true;
             _dialog.StartDialog();
         }

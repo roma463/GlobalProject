@@ -9,7 +9,9 @@ public class CollisionStudyBlock : MonoBehaviour
     [SerializeField] private VideoClip _clip;
     [TextArea(10,10)]
     [SerializeField] private string _textStudy;
+    [SerializeField] private string _nameStudy;
     private BoxCollider2D _boxCollider;
+    private StudyWindow _studyWindow;
 
     private void OnValidate()
     {
@@ -18,11 +20,16 @@ public class CollisionStudyBlock : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
     }
 
+    private void Start()
+    {
+        _studyWindow = StudyWindow.Instance;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.root.TryGetComponent(out PlayerMove playerMove))
         {
-            StudyWindow.Instance.InitWindow(_texture, _clip, _textStudy);
+            _studyWindow.InitWindow(_texture, _clip, _textStudy, _nameStudy);
             gameObject.SetActive(false);
         }
     }

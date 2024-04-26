@@ -4,6 +4,7 @@ namespace GamePlay.Player
 {
     public class RotateArm : MonoBehaviour
     {
+        [SerializeField] private InputButton _inputButton;
         private Camera _mainCamera;
 
         private void Start()
@@ -18,6 +19,8 @@ namespace GamePlay.Player
 
         public virtual void Rotation()
         {
+            if (_inputButton.IsPause)
+                return;
             var positionMouse = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var direction = transform.position - positionMouse;
             direction *= Teleport.GlobalTP.GravityScale;

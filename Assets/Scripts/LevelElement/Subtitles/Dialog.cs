@@ -6,7 +6,8 @@ public class Dialog : MonoBehaviour
 {
     [SerializeField] private Parametrs[] _parametrs;
     [SerializeField] private AudioSource _sourceVoise;
-    [SerializeField] private float _dealy = .5f; 
+    [SerializeField] private float _dealy = .5f;
+    [SerializeField] private BoxCollider2D _boxCollider;
     private ViewerSubtitrs _viewer;
 
     private void Start()
@@ -21,6 +22,7 @@ public class Dialog : MonoBehaviour
 
     private IEnumerator ChangeSubtitres()
     {
+        _viewer.ActivateWindow();
         for (int i = 0; i < _parametrs.Length; i++)
         {
             var audioClip = _parametrs[i].GetAudioClip();
@@ -29,11 +31,22 @@ public class Dialog : MonoBehaviour
             _viewer.ViewText(_parametrs[i].GetText());
             yield return new WaitForSeconds(audioClip.length + _dealy);
         }
+        yield return new WaitForSeconds(_dealy);
+        _viewer.DeactivateWindow();
     }
 
     public void StopDialog() 
     {
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_boxCollider == null)
+            return;
+        Vector2 postion = _boxCollider.offset + (Vector2)transform.position;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(postion, _boxCollider.size);
     }
 }
 

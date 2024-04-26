@@ -11,6 +11,7 @@ public class InputButton : MonoBehaviour
     public bool Escape { private set; get; }
     public bool KeyR { private set; get; }
 
+    public bool IsPause { private set; get; } = false;
     public string Word 
     { 
         get 
@@ -25,7 +26,6 @@ public class InputButton : MonoBehaviour
     private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
     private string[] _knowKeyDown = new string[10];
     private string localWord;
-    private bool _isPause = false;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class InputButton : MonoBehaviour
 
     private void Update()
     {
-        if (!_isPause)
+        if (!IsPause)
         {
             Horizontal = Input.GetAxis("Horizontal");
 
@@ -96,6 +96,6 @@ public class InputButton : MonoBehaviour
     }
     public void Pause(bool pause)
     {
-        _isPause = pause;
+        IsPause = pause;
     }
 }

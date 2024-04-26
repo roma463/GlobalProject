@@ -173,22 +173,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1541600944557767247}
     - target: {fileID: 7323935747173245784, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      propertyPath: m_Parameters.colorGradient.atime1
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323935747173245784, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      propertyPath: m_Parameters.colorGradient.key2.a
-      value: 0.5882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323935747173245784, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      propertyPath: m_Parameters.colorGradient.m_ColorSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323935747173245784, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323935747173245784, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
@@ -359,6 +343,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 6850372203567188461}
+  - {fileID: 4155385485604254576}
   - {fileID: 2337815257693309887}
   - {fileID: 3592783061451717707}
   viewIdField: 0

@@ -9,7 +9,8 @@ public class StudyWindow : MonoBehaviour
     public static StudyWindow Instance {  get; private set; }
     [SerializeField] private GameObject _elementWindow;
     [SerializeField] private VideoPlayer _video;
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _discription;
+    [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private RawImage _image;
     private GameState _gameState;
 
@@ -32,12 +33,13 @@ public class StudyWindow : MonoBehaviour
         _elementWindow.SetActive(true);
     }
 
-    public void InitWindow(RenderTexture texture, VideoClip clip, string text)
+    public void InitWindow(RenderTexture texture, VideoClip clip, string text, string name)
     {
         _video.targetTexture = texture;
         _video.clip = clip;
-        _text.text = text;
+        _discription.text = text;
         _image.texture = texture;
+        _name.text = name;
         StartCoroutine(ActiveWindow());
     }
 

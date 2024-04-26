@@ -1,7 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-//[RequireComponent (typeof(AnimationActivityObject))]
 public abstract class ActionObject : MonoBehaviour, Action
 {
     public bool IsActive { private set; get; }
@@ -22,7 +20,6 @@ public abstract class ActionObject : MonoBehaviour, Action
     public virtual void Start()
     {
         IsActive = _startActive;
-        //_animationStateObject.Change(IsActive);
     }
 
     public virtual void Launch(bool state)
@@ -34,35 +31,14 @@ public abstract class ActionObject : MonoBehaviour, Action
 
         if (_countPressedButton == 0)
         {
-            print("отпустил");
             Release();
             IsActive = false;
         }
         else if (_countPressedButton == 1 && !IsActive)
         {
-            print("нажал");
-
             PressState();
             IsActive = true;
         }
-        else
-        {
-            print("другое число");
-            return;
-        }
-
-        //if (_countPressedButton <= 1)
-        //{
-        //    if (_startActive)
-        //        IsActive = !state;
-        //    else
-        //        IsActive = state;
-        //}
-        //else
-        //{
-        //    return;
-        //}
-        //_animationStateObject.Change(IsActive);
     }
 
     public abstract void Release();
