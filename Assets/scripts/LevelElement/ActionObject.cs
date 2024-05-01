@@ -7,16 +7,6 @@ public abstract class ActionObject : MonoBehaviour, Action
     private AnimationActivityObject _animationStateObject;
     private int _countPressedButton = 0;
 
-    private void OnValidate()
-    {
-        if(gameObject.TryGetComponent(out AnimationActivityObject animation))
-            _animationStateObject = animation;
-        else if(gameObject.GetComponentInChildren<AnimationActivityObject>() != null)
-        {
-            _animationStateObject = gameObject.GetComponentInChildren<AnimationActivityObject>();
-        }
-    }
-
     public virtual void Start()
     {
         IsActive = _startActive;
@@ -28,6 +18,8 @@ public abstract class ActionObject : MonoBehaviour, Action
             _countPressedButton++;
         else
             _countPressedButton--;
+
+        _countPressedButton = Mathf.Clamp(_countPressedButton, 0, _countPressedButton);
 
         if (_countPressedButton == 0)
         {

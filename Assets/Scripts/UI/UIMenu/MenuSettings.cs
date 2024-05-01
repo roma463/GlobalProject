@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class MenuSettings : MonoBehaviour
+public class MenuSettings : WindowUI
 {
     public static MenuSettings Instance { private set; get; }
     public event System.Action LanguageUpdate;

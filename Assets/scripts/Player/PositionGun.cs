@@ -1,4 +1,3 @@
-using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ using UnityEngine;
 public class PositionGun : MonoBehaviour
 {
     protected Vector2 Velosity;
+    [SerializeField] protected int _countShot;
     [SerializeField] protected Teleport _teleport;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _gunPoint;
@@ -14,7 +14,6 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private LayerMask _rayCollsiion;
     [SerializeField] private InputButton _inputButton;
     [SerializeField] private TextMesh _textCountShot;
-    [SerializeField] private int _countShot;
     [SerializeField] private Color _zeroBullet;
     [SerializeField] private AudioSource _soundShot;
 
@@ -41,9 +40,13 @@ public class PositionGun : MonoBehaviour
     {
         Velosity = -(_gunPoint.position - _camera.ScreenToWorldPoint(Input.mousePosition)) * _forceShot;
         CreateTranjectory(Velosity);
+
         if (_inputButton.MouseLeft && _countShot > 0)
         {
-            Shot(Velosity);
+            if (!Physics2D.OverlapCircle(_gunPoint.position, .1f, _rayCollsiion))
+            {
+                Shot();
+            }
         }
 
         if (_inputButton.MouseRightStay && _holdObject.ObjectRised == false)
@@ -82,33 +85,38 @@ public class PositionGun : MonoBehaviour
         _textCountShot.color = _startColor;
         _spriteGun.gameObject.SetActive(true);
     }
-    private void Shot(Vector2 speedBullet)
+
+    public virtual void Shot()
     {
-        if (!Physics2D.OverlapCircle(_gunPoint.position, .1f, _rayCollsiion))
+        _countShot--;
+        var bullet = CreateBullet(_gunPoint.position);
+        bullet.Init(_teleport, Velosity);
+
+        ShotFX();
+    }
+
+    public void ShotFX()
+    {
+        StartCoroutine(GunAnimation());
+        _soundShot.Play();
+        
+        _textCountShot.text = _countShot.ToString();
+        if (_countShot == 0)
         {
-            _countShot--;
-            _textCountShot.text = _countShot.ToString();
-            if(_countShot == 0)
-            {
-                _textCountShot.color = _zeroBullet;
-                _trajectory.DisableTrajectoryLine();
-            }
-            StartCoroutine(GunAnimation());
-            var bullet = CreateBullet(_gunPoint.position);
-            bullet.Init(_teleport, speedBullet);
-            _soundShot.Play();
+            _textCountShot.color = _zeroBullet;
+            _trajectory.DisableTrajectoryLine();
         }
     }
 
-
-
     public virtual Bullet CreateBullet(Vector2 position)
     {
-        return Instantiate(_bullet, position, Quaternion.identity);
+        var bullet = Instantiate(_bullet, position, Quaternion.identity);
+        return bullet;
     }
+
     private IEnumerator GunAnimation()
     {
-        for (float i = 0; i < 1; i+= Time.deltaTime* 10)
+        for (float i = 0; i < 1; i += Time.deltaTime * 10)
         {
             _spriteGun.localPosition = (Vector3)Vector2.left * (_outputAnimation.Evaluate(i)); 
             yield return null;

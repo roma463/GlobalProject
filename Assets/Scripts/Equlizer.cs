@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Exvalaser : MonoBehaviour
+public class Equlizer : MonoBehaviour
 {
-    [SerializeField] private int numberOfBars = 64; // Количество полосок в эквалайзере
-    [SerializeField] private float sensitivity = 100.0f; // Чувствительность эквалайзера
+    [SerializeField] private int numberOfBars = 64;
+    [SerializeField] private float sensitivity = 100.0f;
 
     [SerializeField] private float _offset;
     [SerializeField] private GameObject _prefabCubeElement;
     [SerializeField] private float _speedMoveLines = .5f;
     [SerializeField] private int _countVisibleLine = 3;
-    private float[] audioData; // Массив для хранения аудио данных
+    private float[] audioData;
     private GameObject[] _listOfject;
 
-    void Start()
+    private void Start()
     {
-        audioData = new float[numberOfBars]; // Инициализация массива аудио данных
+        audioData = new float[numberOfBars];
         _listOfject = new GameObject[numberOfBars];
         for (int i = 0; i < _countVisibleLine; i++)
         {
@@ -25,12 +23,10 @@ public class Exvalaser : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        // Получаем аудио данные из источника звука
         AudioListener.GetSpectrumData(audioData, 0, FFTWindow.Rectangular);
 
-        // Отрисовываем полоски эквалайзера
         for (int i = 0; i < _countVisibleLine; i++)
         {
             float barHeight = audioData[i] * sensitivity;

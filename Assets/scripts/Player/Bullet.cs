@@ -1,33 +1,54 @@
-using System;
+using Photon.Pun;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     protected Teleport _teleport;
+    [SerializeField] protected MoveBullet _moveBullet;
     [SerializeField] private BulletDisableParticle _effects;
-    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private LayerMask _layerMask;
 
-    public void Init(Teleport teleport, Vector2 startForce)
+    public void Init(Teleport teleport, Vector2 velosity)
     {
-        _rigidbody.gravityScale = teleport.GravityScale;
-        _rigidbody.AddForce(startForce, ForceMode2D.Impulse);
         _teleport = teleport;
+        _moveBullet.Initialize(velosity, PhotonNetwork.Time);
     }
 
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    private void OnEnable()
     {
-        if(collision.gameObject.TryGetComponent(out Rigidbody2D rigidbody2D))
-        {
-            rigidbody2D.velocity = Vector2.zero;
-        }
-        if (collision.gameObject.TryGetComponent(out CollisionSurface collsionSurface))
-        {
-            var normal = collision.GetContact(0).normal;
-            var TeleportNormal = NormalTeleport(normal);
+        _moveBullet.ChangePosition += CollisionLine;
+    }
 
-            TeleportPlayer(TeleportNormal, collision.GetContact(0).point);
+    private void OnDisable()
+    {
+        _moveBullet.ChangePosition -= CollisionLine;
+    }
+
+    public virtual void CollisionLine(Vector2 origin, Vector2 ending)
+    {
+        var hit = new RaycastHit2D();
+        var directionLine = (ending - origin).normalized;
+
+        hit = Physics2D.Raycast(origin, directionLine, Vector2.Distance(origin, ending), _layerMask);
+        CheckCollisionCollider(hit);
+    }
+
+    public virtual void CheckCollisionCollider(RaycastHit2D hit)
+    {
+        if (hit)
+        {
+            if (hit.collider.TryGetComponent(out CollisionSurface collsionSurface))
+            {
+                CollisionSurface(hit.normal, hit.point);
+            }
+            DestroyBullet();
         }
-        DestroyBullet();
+    }
+
+    public void CollisionSurface(Vector2 normalSurface, Vector2 positionCollision)
+    {
+        var TeleportNormal = NormalTeleport(normalSurface);
+        TeleportPlayer(TeleportNormal, positionCollision);
     }
 
     public virtual Teleport.Offset NormalTeleport(Vector2 normalSurface)
@@ -59,7 +80,9 @@ public class Bullet : MonoBehaviour
 
     public virtual void DestroyBullet()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
+        EffectDie();
     }
 
     private void OnDestroy()

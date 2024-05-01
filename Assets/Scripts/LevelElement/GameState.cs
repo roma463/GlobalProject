@@ -17,7 +17,6 @@ public class GameState : MonoBehaviour
 
     private void Start()
     {
-        _playerButton = InputButton.Instance;
         _currentScene = SceneManager.GetActiveScene().buildIndex;
         _gameUi = GameUi.Instance;
     }

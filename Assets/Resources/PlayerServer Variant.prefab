@@ -230,14 +230,11 @@ PrefabInstance:
       insertIndex: 10
       addedObject: {fileID: 1037252864472834452}
     - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      insertIndex: 11
-      addedObject: {fileID: 6850372203567188461}
-    - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4212589434953482361}
     - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4155385485604254576}
+      addedObject: {fileID: 5504208226206993185}
     - targetCorrespondingSourceObject: {fileID: 7323935747249540297, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2337815257693309887}
@@ -271,6 +268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e014a526f88a44147890bfef679c3301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1541600944557767241 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7323935748224626291, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+  m_PrefabInstance: {fileID: 8126469715451384890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1541600944557767243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
@@ -288,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e34be415dc302478948b32167466aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _positionGun: {fileID: 3592783061451717707}
   _photonView: {fileID: 9144437391449263157}
   _lineTrajectory: {fileID: 1541600945458706274}
   _playerSprite: {fileID: 1541600945481177113}
@@ -323,6 +326,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   _colorPlayer: {r: 0.77254903, g: 0.25490198, b: 0.25490198, a: 1}
   _isMineIndicator: {fileID: 1570868989415690114}
+  _rigidbody: {fileID: 1541600944557767241}
 --- !u!114 &9144437391449263157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,11 +343,10 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   observableSearch: 2
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6850372203567188461}
-  - {fileID: 4155385485604254576}
+  - {fileID: 5504208226206993185}
   - {fileID: 2337815257693309887}
   - {fileID: 3592783061451717707}
   viewIdField: 0
@@ -364,21 +367,6 @@ MonoBehaviour:
   _photonView: {fileID: 9144437391449263157}
   _playerMove: {fileID: 1541600944557767240}
   _rotateAem: {fileID: 1541600945533294833}
---- !u!114 &6850372203567188461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541600944557767243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!114 &4212589434953482361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _photonView: {fileID: 9144437391449263157}
---- !u!114 &4155385485604254576
+--- !u!114 &5504208226206993185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,13 +389,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541600944557767243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 2
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!114 &1541600944557767244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7323935748224626294, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
@@ -488,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d0eaf148fc8bc4ab5709a2d0da504f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _countShot: 100
   _teleport: {fileID: 1541600944557767247}
   _bullet: {fileID: 2781342650273556866, guid: a0c52912cef75e64f9f504506868676d, type: 3}
   _gunPoint: {fileID: 1541600944478123166}
@@ -498,7 +504,6 @@ MonoBehaviour:
     m_Bits: 1216
   _inputButton: {fileID: 1541600944557767244}
   _textCountShot: {fileID: 672378181034764556}
-  _countShot: 100
   _zeroBullet: {r: 0.8784314, g: 0.20392157, b: 0.20392157, a: 1}
   _soundShot: {fileID: 3986854627747722171}
   _outputAnimation:
@@ -536,6 +541,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _spriteGun: {fileID: 4553080202731587555}
   _photonView: {fileID: 9144437391449263157}
+  _playerServer: {fileID: 2942076919025973838}
   _forceSmooth: 0.2
 --- !u!114 &1541600945911686251 stripped
 MonoBehaviour:

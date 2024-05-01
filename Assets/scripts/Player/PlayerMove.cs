@@ -1,4 +1,3 @@
-using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -27,10 +26,12 @@ public class PlayerMove : MonoBehaviour
         _inputButton = GetComponent<InputButton>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
+
     private void FixedUpdate()
     {
         _rigidbody.velocity = (new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y));
     }
+
     private void Update()
     {
         var collsionGround = false;
@@ -67,26 +68,31 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(Knowjump());
         }
     }
+
     private IEnumerator DelayJump()
     {
         _delayJumpEnd = false;
         yield return new WaitForSeconds(_jumpDelayTime);
         _delayJumpEnd = true;
     }
+
     public void UnplugJump()
     {
         StopCoroutine(Knowjump());
         _onCollison = false;
-        Invoke(nameof(ChengeBool), .1f);
+        Invoke(nameof(ChangeBool), .1f);
     }
-    private void ChengeBool()
+
+    private void ChangeBool()
     {
         _onCollison = true;
     }
+
     private void Jump()
     {
         _rigidbody.AddRelativeForce(new Vector2(0, _rigidbody.gravityScale) * _jumpForce);
     }
+
     private IEnumerator Knowjump()
     {
         _startCorutaine = false;

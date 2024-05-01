@@ -2,6 +2,7 @@
 public class FinishServer : Finish
 {
     private int _countFinishPlayer;
+    
     public override void WinPlayer()
     {
         _countFinishPlayer++;

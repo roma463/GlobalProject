@@ -15,6 +15,7 @@ public class WirePath : MonoBehaviour
         _endPosition = GetComponent<Button>().GetTransformActiveObject();
         CreatePath();
     }
+
     [ExecuteAlways]
     private void CreatePath()
     {
@@ -43,6 +44,7 @@ public class WirePath : MonoBehaviour
             _endPosition = GetComponent<Button>().GetTransformActiveObject();
         }
     }
+
 #if UNITY_EDITOR
     [ExecuteAlways]
     private void Update()

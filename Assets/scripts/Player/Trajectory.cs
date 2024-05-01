@@ -44,8 +44,7 @@ public class Trajectory : MonoBehaviour
                 break;
             }
         }
-                _lineRenderer.SetPositions(points);
-                //_lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _pointCollisionLine.transform.position);
+        _lineRenderer.SetPositions(points);
     }
     public void DisableTrajectoryLine()
     {
