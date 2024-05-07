@@ -231,10 +231,7 @@ PrefabInstance:
       addedObject: {fileID: 1037252864472834452}
     - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4212589434953482361}
-    - targetCorrespondingSourceObject: {fileID: 7323935748224626289, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5504208226206993185}
+      addedObject: {fileID: 2316151579383946329}
     - targetCorrespondingSourceObject: {fileID: 7323935747249540297, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2337815257693309887}
@@ -346,7 +343,7 @@ MonoBehaviour:
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 5504208226206993185}
+  - {fileID: 2316151579383946329}
   - {fileID: 2337815257693309887}
   - {fileID: 3592783061451717707}
   viewIdField: 0
@@ -367,20 +364,7 @@ MonoBehaviour:
   _photonView: {fileID: 9144437391449263157}
   _playerMove: {fileID: 1541600944557767240}
   _rotateAem: {fileID: 1541600945533294833}
---- !u!114 &4212589434953482361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541600944557767243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f84b032b8e71c45a89d50ad4b1c0aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 9144437391449263157}
---- !u!114 &5504208226206993185
+--- !u!114 &2316151579383946329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,8 +381,8 @@ MonoBehaviour:
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 2
+    InterpolateMoveTowardsSpeed: 3
+    InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1

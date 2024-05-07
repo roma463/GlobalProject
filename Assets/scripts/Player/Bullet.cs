@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected MoveBullet _moveBullet;
     [SerializeField] private BulletDisableParticle _effects;
     [SerializeField] private LayerMask _layerMask;
+    private Vector2 _collisionPosition;
 
     public void Init(Teleport teleport, Vector2 velosity)
     {
@@ -28,27 +29,29 @@ public class Bullet : MonoBehaviour
     {
         var hit = new RaycastHit2D();
         var directionLine = (ending - origin).normalized;
-
+        Debug.DrawLine(origin, ending, Color.yellow);
         hit = Physics2D.Raycast(origin, directionLine, Vector2.Distance(origin, ending), _layerMask);
-        CheckCollisionCollider(hit);
-    }
-
-    public virtual void CheckCollisionCollider(RaycastHit2D hit)
-    {
         if (hit)
         {
-            if (hit.collider.TryGetComponent(out CollisionSurface collsionSurface))
-            {
-                CollisionSurface(hit.normal, hit.point);
-            }
-            DestroyBullet();
+            _collisionPosition = hit.point;
+
+            _moveBullet.StopMovement();
+            CheckCollisionSurface(hit);
+        }
+        else
+        {
+            _collisionPosition = transform.position;
         }
     }
 
-    public void CollisionSurface(Vector2 normalSurface, Vector2 positionCollision)
+    public virtual void CheckCollisionSurface(RaycastHit2D hit)
     {
-        var TeleportNormal = NormalTeleport(normalSurface);
-        TeleportPlayer(TeleportNormal, positionCollision);
+        if (hit.collider.TryGetComponent(out CollisionSurface collsionSurface))
+        {
+            var TeleportNormal = NormalTeleport(hit.normal);
+            TeleportPlayer(TeleportNormal, hit.point);
+        }
+        DestroyBullet();
     }
 
     public virtual Teleport.Offset NormalTeleport(Vector2 normalSurface)
@@ -78,20 +81,15 @@ public class Bullet : MonoBehaviour
         _teleport.Player(normal, positionCollision);
     }
 
-    public virtual void DestroyBullet()
+    public void DestroyBullet()
     {
-        //Destroy(gameObject);
         gameObject.SetActive(false);
-        EffectDie();
-    }
-
-    private void OnDestroy()
-    {
         EffectDie();
     }
 
     public void EffectDie()
     {
+        _effects.transform.position = _collisionPosition;
         _effects.transform.parent = null;
         _effects.StopParticals();
     }

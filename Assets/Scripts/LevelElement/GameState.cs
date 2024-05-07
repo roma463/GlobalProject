@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+    [SerializeField] private LevelList _levelList;
     public static GameState Instance { get; private set; }
-    private int _currentScene;
+    protected int CurrentScene;
     private GameUi _gameUi;
     private InputButton _playerButton;
     private bool _isGamePause = false;
+    private SaveGame _saveGame;
 
 
     private void Awake()
@@ -15,9 +17,10 @@ public class GameState : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public virtual void Start()
     {
-        _currentScene = SceneManager.GetActiveScene().buildIndex;
+        _saveGame = SaveGame.Instance;
+        CurrentScene = SceneManager.GetActiveScene().buildIndex;
         _gameUi = GameUi.Instance;
     }
 
@@ -26,7 +29,7 @@ public class GameState : MonoBehaviour
         _playerButton = inputButton;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (_playerButton.Escape)
         {
@@ -39,9 +42,9 @@ public class GameState : MonoBehaviour
         }
     }
 
-    private void Restart()
+    public virtual void Restart()
     {
-        SceneManager.LoadScene(_currentScene);
+        SceneManager.LoadScene(CurrentScene);
     }
 
     public void PauseGame()
@@ -52,9 +55,12 @@ public class GameState : MonoBehaviour
 
     public void Win()
     {
+        _saveGame.Saves.LevelSingleIndex++;
+        _saveGame.SaveData();
+        
         _gameUi.WinWindow();
-        //PauseGame();
-        PlayerPrefs.SetInt("Scene", _currentScene + 1);
+        PauseGame();
+        //PlayerPrefs.SetInt("Scene", CurrentScene + 1);
     }
 
 }

@@ -64,12 +64,7 @@ public class GameUi : MonoBehaviourPunCallbacks
         _pauseCorutine = null;
     }
 
-    public virtual void Restart()
-    {
-        SceneManager.LoadScene(_currentScene);
-    }
-
-    public void Menu()
+    public virtual void Menu()
     {
         SceneManager.LoadScene("Menu");
     }
@@ -77,7 +72,6 @@ public class GameUi : MonoBehaviourPunCallbacks
     //Вызывается при проигрывании анимации пробеды
     public virtual void NextLevel()
     {
-        print("NextLevel method");
         SceneManager.LoadScene(_currentScene + 1);
     }
 }

@@ -10,9 +10,9 @@ public class Finish : MonoBehaviour
         _gameState = GameState.Instance;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerCollision player))
+        if (collision.transform.root.TryGetComponent(out PlayerCollision player))
         {
             WinPlayer();
         }
@@ -20,7 +20,6 @@ public class Finish : MonoBehaviour
 
     public virtual void WinPlayer()
     {
-            _gameState.Win();
-            _soundFinish.Play();
+        _gameState.Win();
     }
 }

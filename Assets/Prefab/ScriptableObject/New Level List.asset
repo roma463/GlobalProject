@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbef65770a17c394791acd87f15046c4, type: 3}
+  m_Name: New Level List
+  m_EditorClassIdentifier: 
+  _levelsCotegory:
+  - Levels:
+    - levelName: StandartBig 1
+      buildIndex: 1
+    - levelName: StandartBig 2
+      buildIndex: 2
+    _name: Coop
+    _cotegory: 0
+    _icon: {fileID: 0}
+  - Levels:
+    - levelName: 1.5Standart 1
+      buildIndex: 4
+    - levelName: 1Standart 1
+      buildIndex: 5
+    - levelName: 2Standart 2
+      buildIndex: 6
+    - levelName: 3-4Standart 1
+      buildIndex: 7
+    - levelName: 3Standart 3
+      buildIndex: 8
+    - levelName: 4Standart 4
+      buildIndex: 9
+    - levelName: 5Standart 7
+      buildIndex: 10
+    - levelName: 6Standart 5
+      buildIndex: 11
+    - levelName: 7Standart 6
+      buildIndex: 12
+    - levelName: 8Standart 8
+      buildIndex: 13
+    - levelName: 9Standart 10
+      buildIndex: 14
+    - levelName: Standart 3
+      buildIndex: 15
+    - levelName: Standart 3.1
+      buildIndex: 16
+    _name: Begin
+    _cotegory: 1
+    _icon: {fileID: 0}
+  - Levels:
+    - levelName: Standart 1
+      buildIndex: 17
+    - levelName: Standart 11
+      buildIndex: 18
+    - levelName: Standart 15
+      buildIndex: 19
+    - levelName: Standart 16
+      buildIndex: 20
+    - levelName: StandartBig 1
+      buildIndex: 21
+    - levelName: StandartBig 3
+      buildIndex: 22
+    - levelName: StandartBig 4
+      buildIndex: 23
+    - levelName: StandartBig 5
+      buildIndex: 24
+    - levelName: StandartBig 11R
+      buildIndex: 25
+    - levelName: StandartR_1
+      buildIndex: 26
+    _name: Gravity
+    _cotegory: 3
+    _icon: {fileID: 0}
+  - Levels:
+    - levelName: Standart 3
+      buildIndex: 27
+    - levelName: Standart 3R
+      buildIndex: 28
+    - levelName: Standart 4
+      buildIndex: 29
+    - levelName: Standart 4 - Copy
+      buildIndex: 30
+    - levelName: Standart 6R
+      buildIndex: 31
+    - levelName: Standart 7R
+      buildIndex: 32
+    - levelName: StandartBig 7
+      buildIndex: 33
+    - levelName: StandartBig 8
+      buildIndex: 34
+    - levelName: StandartBig 9
+      buildIndex: 35
+    - levelName: StandartBig 10
+      buildIndex: 36
+    - levelName: StandartBig 12
+      buildIndex: 37
+    - levelName: StandartBig 13
+      buildIndex: 38
+    _name: MovePlatform
+    _cotegory: 4
+    _icon: {fileID: 0}
+  - Levels:
+    - levelName: 10.3StandartBig 2
+      buildIndex: 39
+    - levelName: 10.4Standart 10.5
+      buildIndex: 40
+    - levelName: 10Standart 12
+      buildIndex: 41
+    - levelName: 11Standart 13
+      buildIndex: 42
+    - levelName: 12Standart 14
+      buildIndex: 43
+    - levelName: 14StandartBig 1
+      buildIndex: 44
+    - levelName: StandartBig 2
+      buildIndex: 45
+    _name: TwoShot
+    _cotegory: 2
+    _icon: {fileID: 0}
+  _countCoopLevels:
+  - levelName: StandartBig 1
+    buildIndex: 1
+  - levelName: StandartBig 2
+    buildIndex: 2
+  _countSingleLevels:
+  - levelName: 1.5Standart 1
+    buildIndex: 4
+  - levelName: 1Standart 1
+    buildIndex: 5
+  - levelName: 2Standart 2
+    buildIndex: 6
+  - levelName: 3-4Standart 1
+    buildIndex: 7
+  - levelName: 3Standart 3
+    buildIndex: 8
+  - levelName: 4Standart 4
+    buildIndex: 9
+  - levelName: 5Standart 7
+    buildIndex: 10
+  - levelName: 6Standart 5
+    buildIndex: 11
+  - levelName: 7Standart 6
+    buildIndex: 12
+  - levelName: 8Standart 8
+    buildIndex: 13
+  - levelName: 9Standart 10
+    buildIndex: 14
+  - levelName: Standart 3
+    buildIndex: 15
+  - levelName: Standart 3.1
+    buildIndex: 16
+  - levelName: Standart 1
+    buildIndex: 17
+  - levelName: Standart 11
+    buildIndex: 18
+  - levelName: Standart 15
+    buildIndex: 19
+  - levelName: Standart 16
+    buildIndex: 20
+  - levelName: StandartBig 1
+    buildIndex: 21
+  - levelName: StandartBig 3
+    buildIndex: 22
+  - levelName: StandartBig 4
+    buildIndex: 23
+  - levelName: StandartBig 5
+    buildIndex: 24
+  - levelName: StandartBig 11R
+    buildIndex: 25
+  - levelName: StandartR_1
+    buildIndex: 26
+  - levelName: Standart 3
+    buildIndex: 27
+  - levelName: Standart 3R
+    buildIndex: 28
+  - levelName: Standart 4
+    buildIndex: 29
+  - levelName: Standart 4 - Copy
+    buildIndex: 30
+  - levelName: Standart 6R
+    buildIndex: 31
+  - levelName: Standart 7R
+    buildIndex: 32
+  - levelName: StandartBig 7
+    buildIndex: 33
+  - levelName: StandartBig 8
+    buildIndex: 34
+  - levelName: StandartBig 9
+    buildIndex: 35
+  - levelName: StandartBig 10
+    buildIndex: 36
+  - levelName: StandartBig 12
+    buildIndex: 37
+  - levelName: StandartBig 13
+    buildIndex: 38
+  - levelName: 10.3StandartBig 2
+    buildIndex: 39
+  - levelName: 10.4Standart 10.5
+    buildIndex: 40
+  - levelName: 10Standart 12
+    buildIndex: 41
+  - levelName: 11Standart 13
+    buildIndex: 42
+  - levelName: 12Standart 14
+    buildIndex: 43
+  - levelName: 14StandartBig 1
+    buildIndex: 44
+  - levelName: StandartBig 2
+    buildIndex: 45

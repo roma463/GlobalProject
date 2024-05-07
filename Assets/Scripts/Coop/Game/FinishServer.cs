@@ -1,3 +1,4 @@
+using Photon.Pun;
 
 public class FinishServer : Finish
 {
@@ -8,7 +9,10 @@ public class FinishServer : Finish
         _countFinishPlayer++;
         if(_countFinishPlayer == 2)
         {
-            base.WinPlayer();
+            if(PhotonNetwork.IsMasterClient)
+            {
+                base.WinPlayer();
+            }
         }
     }
 }

@@ -5,14 +5,6 @@ public class ServerLevelLoader : MonoBehaviour
 {
     [SerializeField] private PhotonView _photonView;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartPhoton();
-        }
-    }
-
     public void RestartPhoton()
     {
         PhotonNetwork.LoadLevel(1);
@@ -22,9 +14,6 @@ public class ServerLevelLoader : MonoBehaviour
     [PunRPC]
     public void LoadSceneRPC(int idScene)
     {
-        // Загрузка новой сцены на всех клиентах
-        //if (!_photonView.IsMine)
-        //    return;
         PhotonNetwork.LoadLevel(idScene);
     }
 }

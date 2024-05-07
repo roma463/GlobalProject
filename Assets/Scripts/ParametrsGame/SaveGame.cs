@@ -7,6 +7,7 @@ public class SaveGame : MonoBehaviour
 {
     public static SaveGame Instance { private set; get; }
     public Save Saves { get; set; }
+    [SerializeField] private LevelList _levelList;
 
     private const string KEY_SAVE = "SAVE";
 
@@ -56,12 +57,14 @@ public class SaveGame : MonoBehaviour
 public class Save
 {
     public Language CurrentLanguage;
-    public int LevelIndex;
+    public int LevelSingleIndex;
+    public int LevelJointsIndex;
     public SettingsGame Settings;
     public Save()
     {
         CurrentLanguage = Language.rus;
-        LevelIndex = 1;
+        LevelSingleIndex = 0;
+        LevelJointsIndex = 0;
         Settings = new SettingsGame();
     }
 }

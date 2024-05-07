@@ -1,19 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class WindowError : MonoBehaviour
+public class WindowError : WindowUI
 {
     [SerializeField] private TextMeshProUGUI _message;
-    public void Active(string error)
-    {
-        gameObject.SetActive(true);
-        _message.text = error;
-    }
+    [SerializeField] private string _text;
 
-    public void CliskClosedWindow()
+    private void Start()
     {
-        gameObject.SetActive(false);
+        _message.text = _text;
     }
 }

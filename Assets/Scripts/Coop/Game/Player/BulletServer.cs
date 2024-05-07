@@ -8,16 +8,17 @@ public class BulletServer : Bullet
 
     public override void CollisionLine(Vector2 origin, Vector2 ending)
     {
-        if (_photonView.IsMine)
-            base.CollisionLine(origin, ending);
+        base.CollisionLine(origin, ending);
     }
 
-    public override void CheckCollisionCollider(RaycastHit2D hit)
+    public override void CheckCollisionSurface(RaycastHit2D hit)
     {
         if (_photonView.IsMine)
-            base.CheckCollisionCollider(hit);
+            base.CheckCollisionSurface(hit);
         else
-            base.DestroyBullet();
+        {
+            DestroyBullet();
+        }    
     }
 
     [PunRPC]
@@ -47,10 +48,5 @@ public class BulletServer : Bullet
     public void SyncTeleport(Teleport.Offset normal, Vector2 positionCollision)
     {
         base.TeleportPlayer(normal, positionCollision);
-    }
-
-    public override void DestroyBullet()
-    {
-        PhotonNetwork.Destroy(_photonView);
     }
 }
