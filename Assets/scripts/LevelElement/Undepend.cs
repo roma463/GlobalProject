@@ -24,6 +24,7 @@ public class Undepend : MonoBehaviour
         scale.y *= _startGravityScale;
         transform.localScale = scale;
     }
+
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (_isCollision)
@@ -40,6 +41,7 @@ public class Undepend : MonoBehaviour
         _vectorForce = !_vectorForce;
         _collisionGravityLine.Play();
     }
+
     public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out GravityLine gravityLine))
@@ -53,18 +55,21 @@ public class Undepend : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _vectorForceInt);
         }
     }
+
     private IEnumerator TimerDelayCollision()
     {
         _isCollision = true;
         yield return new WaitForSeconds(_delayCollision);
         _isCollision = false;
     }
+
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         _hit.volume = collision.relativeVelocity.magnitude * 0.05f;
         _hit.Play();
 
     }
+
     public void ResetForceOnTrigger()
     {
         _ferstCollision = false;

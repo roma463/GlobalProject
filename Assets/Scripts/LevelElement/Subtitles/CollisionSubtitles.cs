@@ -5,6 +5,7 @@ public class CollisionSubtitles : MonoBehaviour
 {
     private Dialog _dialog;
     private bool _isCollisionPlayer = false;
+    [SerializeField] private BoxCollider2D _boxCollider;
 
     private void Start()
     {
@@ -18,5 +19,14 @@ public class CollisionSubtitles : MonoBehaviour
             _isCollisionPlayer = true;
             _dialog.StartDialog();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_boxCollider == null)
+            return;
+        Vector2 postion = _boxCollider.offset + (Vector2)transform.position;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(postion, _boxCollider.size);
     }
 }

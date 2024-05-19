@@ -45,6 +45,13 @@ namespace Photon.Pun
             m_firstTake = true;
         }
 
+
+        public void EnablePosition()
+        {
+            m_NetworkPosition = transform.localPosition;
+            m_StoredPosition = transform.localPosition;
+        }
+
         public void Update()
         {
             if (!this.photonView.IsMine)

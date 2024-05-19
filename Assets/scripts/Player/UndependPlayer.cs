@@ -6,6 +6,7 @@ public class UndependPlayer : Undepend
     [SerializeField] private Transform _pointDown;
     [SerializeField] private Vector2 _sizeBox;
     [SerializeField] private HoldObject _holdObject;
+    [SerializeField] private Teleport _teleport;
 
     private void Update()
     {
@@ -26,7 +27,7 @@ public class UndependPlayer : Undepend
             transform.localScale = scale;
 
             gravityLine.PlayCollision(_rigidbody2D);
-            Teleport.GlobalTP.UpdateDataGraviryScale(_rigidbody2D);
+            _teleport.UpdateDataGraviryScale(_rigidbody2D);
         }
     }
     private bool OverlapBox(Vector2 point)

@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.82
       objectReference: {fileID: 0}
+    - target: {fileID: 2333866780032054232, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+      propertyPath: _holdObject
+      value: 
+      objectReference: {fileID: 4674217823219113517}
     - target: {fileID: 3591944920784792118, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -142,11 +146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971675818097555056, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7679999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3971675818097555056, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8200003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5400414466166385688, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: m_CorrectionScale
@@ -205,6 +209,10 @@ PrefabInstance:
       value: PlayerServer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7323935748224626293, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+      propertyPath: _holdObject
+      value: 
+      objectReference: {fileID: 4674217823219113517}
+    - target: {fileID: 7323935748224626293, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       propertyPath: _teleportParticle
       value: 
       objectReference: {fileID: 159890195945627548}
@@ -214,6 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 9144437391449263157}
     m_RemovedComponents:
     - {fileID: 7323935746854482000, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+    - {fileID: 7323935746854482001, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3591944920784792118, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
@@ -238,15 +247,23 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7323935746854482013, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
       insertIndex: 2
       addedObject: {fileID: 3592783061451717707}
+    - targetCorrespondingSourceObject: {fileID: 7323935746854482013, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4674217823219113517}
   m_SourcePrefab: {fileID: 100100000, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
 --- !u!198 &159890195945627548 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8286357710482115494, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
   m_PrefabInstance: {fileID: 8126469715451384890}
   m_PrefabAsset: {fileID: 0}
---- !u!102 &672378181034764556 stripped
-TextMesh:
-  m_CorrespondingSourceObject: {fileID: 8760558192871603510, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+--- !u!254 &1541600944464521753 stripped
+RelativeJoint2D:
+  m_CorrespondingSourceObject: {fileID: 7323935748166909475, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
+  m_PrefabInstance: {fileID: 8126469715451384890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1541600944464521755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7323935748166909473, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
   m_PrefabInstance: {fileID: 8126469715451384890}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1541600944478123166 stripped
@@ -324,6 +341,7 @@ MonoBehaviour:
   _colorPlayer: {r: 0.77254903, g: 0.25490198, b: 0.25490198, a: 1}
   _isMineIndicator: {fileID: 1570868989415690114}
   _rigidbody: {fileID: 1541600944557767241}
+  _holdObjectServer: {fileID: 4674217823219113517}
 --- !u!114 &9144437391449263157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,13 +500,11 @@ MonoBehaviour:
   _bullet: {fileID: 2781342650273556866, guid: a0c52912cef75e64f9f504506868676d, type: 3}
   _gunPoint: {fileID: 1541600944478123166}
   _forceShot: 1.5
-  _holdObject: {fileID: 1541600945911686251}
+  _holdObject: {fileID: 4674217823219113517}
   _rayCollsiion:
     serializedVersion: 2
     m_Bits: 1216
   _inputButton: {fileID: 1541600944557767244}
-  _textCountShot: {fileID: 672378181034764556}
-  _zeroBullet: {r: 0.8784314, g: 0.20392157, b: 0.20392157, a: 1}
   _soundShot: {fileID: 3986854627747722171}
   _outputAnimation:
     serializedVersion: 2
@@ -527,17 +543,31 @@ MonoBehaviour:
   _photonView: {fileID: 9144437391449263157}
   _playerServer: {fileID: 2942076919025973838}
   _forceSmooth: 0.2
---- !u!114 &1541600945911686251 stripped
+--- !u!114 &4674217823219113517
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7323935746854482001, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-  m_PrefabInstance: {fileID: 8126469715451384890}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541600945911686247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ebec7063d62ad4a89283e87af32f29, type: 3}
+  m_Script: {fileID: 11500000, guid: 3730aad9dc64e7242a7057aadf24b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _joint: {fileID: 1541600944464521753}
+  _rigidbody2D: {fileID: 1541600944557767241}
+  _pointKeep: {fileID: 1541600944464521755}
+  _holdObject:
+    serializedVersion: 2
+    m_Bits: 1
+  _layerForRay:
+    serializedVersion: 2
+    m_Bits: 1217
+  _radiusCapture: 1.2
+  _maxDistance: 3
+  _spawnBullet: {fileID: 1541600944478123166}
+  _playerServer: {fileID: 2942076919025973838}
 --- !u!82 &3986854627747722171 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5157503447590070145, guid: da3a194260593b74a89bc09245b22bc6, type: 3}

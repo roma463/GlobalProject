@@ -6,8 +6,8 @@ public class GameState : MonoBehaviour
     [SerializeField] private LevelList _levelList;
     public static GameState Instance { get; private set; }
     protected int CurrentScene;
+    protected InputButton PlayerButton;
     private GameUi _gameUi;
-    private InputButton _playerButton;
     private bool _isGamePause = false;
     private SaveGame _saveGame;
 
@@ -26,17 +26,17 @@ public class GameState : MonoBehaviour
 
     public void Initialize(InputButton inputButton)
     {
-        _playerButton = inputButton;
+        PlayerButton = inputButton;
     }
 
     public virtual void Update()
     {
-        if (_playerButton.Escape)
+        if (PlayerButton.Escape)
         {
             _gameUi.PauseWindow(_isGamePause);
             PauseGame();
         }
-        else if (_playerButton.KeyR)
+        else if (PlayerButton.KeyR)
         {
             Restart();
         }
@@ -50,7 +50,13 @@ public class GameState : MonoBehaviour
     public void PauseGame()
     {
         _isGamePause = !_isGamePause;
-        _playerButton.Pause(_isGamePause);
+        PlayerButton.Pause(_isGamePause);
+    }
+
+    public virtual void LoadNextLevel()
+    {
+        var nextLevel = _levelList.GetSingleNextLevel(_saveGame.Saves.LevelSingleIndex);
+        SceneManager.LoadScene(nextLevel);
     }
 
     public void Win()

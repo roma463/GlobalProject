@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Video;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -6,6 +7,7 @@ using UnityEngine.Video;
 public class CollisionStudyBlock : MonoBehaviour
 {
     [SerializeField] private RenderTexture _texture;
+    [SerializeField] private UnityEvent _closedWindow;
     [SerializeField] private VideoClip _clip;
     [TextArea(10,10)]
     [SerializeField] private string _textStudy;
@@ -29,7 +31,7 @@ public class CollisionStudyBlock : MonoBehaviour
     {
         if(collision.transform.root.TryGetComponent(out PlayerMove playerMove))
         {
-            _studyWindow.InitWindow(_texture, _clip, _textStudy, _nameStudy);
+            _studyWindow.InitWindow(_texture, _clip, _textStudy, _nameStudy, _closedWindow);
             gameObject.SetActive(false);
         }
     }

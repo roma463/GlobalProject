@@ -930,8 +930,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: -21.63861}
+  m_SizeDelta: {x: 0, y: 43.2772}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2692805502212387299
 CanvasRenderer:
@@ -963,8 +963,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee77ea9a7573c3a48bbc5e5663edd31f, type: 2}
-  m_sharedMaterial: {fileID: -3416929718585958452, guid: ee77ea9a7573c3a48bbc5e5663edd31f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66b976d2ebbc6bb4b91a1394bc1f54a3, type: 2}
+  m_sharedMaterial: {fileID: -7311746579104989087, guid: 66b976d2ebbc6bb4b91a1394bc1f54a3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -988,15 +988,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1328,6 +1328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017126478924617926}
   - component: {fileID: 3114507955825987197}
+  - component: {fileID: 7024447396689104352}
   m_Layer: 5
   m_Name: HelpWindow
   m_TagString: Untagged
@@ -1368,10 +1369,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _elementWindow: {fileID: 4431021150059411995}
-  _video: {fileID: 0}
+  _video: {fileID: 7024447396689104352}
   _discription: {fileID: 5519058099218158718}
   _name: {fileID: 737989147947118510}
   _image: {fileID: 5498738244034144582}
+--- !u!328 &7024447396689104352
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538438760748488186}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &5736109136391021598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,15 +1555,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041F\u0443\u0441\u0442\u043E\u0435 \u043C\u0435\u0441\u0442\u043E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee77ea9a7573c3a48bbc5e5663edd31f, type: 2}
-  m_sharedMaterial: {fileID: -3416929718585958452, guid: ee77ea9a7573c3a48bbc5e5663edd31f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c024194e51c806042b66a76367923c4e, type: 2}
+  m_sharedMaterial: {fileID: 1019251839554176159, guid: c024194e51c806042b66a76367923c4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2583691263
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.69411767}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1543,8 +1580,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1966,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 36ed52b9d31f7814ca31ec1bd877d102, type: 2}
-  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+  m_Color: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2218,12 +2255,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0409f5d7ff560468299b38f39e0d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 7517454216020608583}
+  e_startGame:
+    m_PersistentCalls:
+      m_Calls: []
   _winDisplay: {fileID: 7833980780099321097}
   _pauseDisplay: {fileID: 7833980780502318681}
-  _animator: {fileID: 7517454216020608583}
   _pauseWindowOpen: 0
-  _pauseWindowClosed: -25
-  _speedOpen: 45
+  _pauseWindowClosed: -400
+  _speedOpen: 700
 --- !u!95 &7517454216020608583
 Animator:
   serializedVersion: 5
@@ -2284,7 +2324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29637b5cdefe92a478cdf607ddd76797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelList: {fileID: 0}
+  _levelList: {fileID: 11400000, guid: a97de9b86fff49b43bef3f75844fa7f9, type: 2}
 --- !u!1 &7833980780502318681
 GameObject:
   m_ObjectHideFlags: 0

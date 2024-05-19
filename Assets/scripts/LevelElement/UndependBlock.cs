@@ -10,7 +10,6 @@ public class UndependBlock : Undepend
     }
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.TryGetComponent(out GravityLine gravityLine))
         {
             base.OnTriggerEnter2D(collision);

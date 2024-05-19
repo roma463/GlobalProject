@@ -4,6 +4,7 @@ namespace GamePlay.Player
 {
     public class RotateArm : MonoBehaviour
     {
+        [SerializeField] private Teleport _teleport;
         [SerializeField] private InputButton _inputButton;
         private Camera _mainCamera;
 
@@ -23,7 +24,7 @@ namespace GamePlay.Player
                 return;
             var positionMouse = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var direction = transform.position - positionMouse;
-            direction *= Teleport.GlobalTP.GravityScale;
+            direction *= _teleport.GravityScale;
             var rotateByZ = Quaternion.Euler( Vector3.forward  * -(Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg));
             transform.rotation = rotateByZ;
         }

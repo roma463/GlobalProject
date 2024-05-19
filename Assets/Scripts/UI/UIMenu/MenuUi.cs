@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,7 @@ public class MenuUi : MonoBehaviour
 
     [SerializeField] private Animator _animationMenu;
     [SerializeField] private ConnectionToServer _connetionToServer;
-    private WindowUI _lastOpenWindow;
-    private SaveGame _save;
+    private List<WindowUI> _listOpenWindow = new List<WindowUI>();
 
     private void Awake()
     {
@@ -18,8 +18,7 @@ public class MenuUi : MonoBehaviour
 
     private void Start ()
     {
-        _save = SaveGame.Instance;
-        _lastOpenWindow = w_basic;
+        _listOpenWindow.Add(w_basic);
     }
 
     public void Quit()
@@ -39,21 +38,21 @@ public class MenuUi : MonoBehaviour
 
     public void OpenWindow(WindowUI window)
     {
-        //_animationMenu.SetTrigger("Open");
-        ActiveWindow(window);
+        _listOpenWindow.Add(window);
+        ActiveWindow(window, _listOpenWindow[_listOpenWindow.Count - 2]);
     }
 
     public void ClosedWindow()
     {
-        //_animationMenu.SetTrigger("Closed");
-        ActiveWindow(w_basic);
+        var lastOpenWindow = _listOpenWindow[_listOpenWindow.Count-1];
+        _listOpenWindow.Remove(lastOpenWindow);
+        ActiveWindow(_listOpenWindow[_listOpenWindow.Count - 1], lastOpenWindow);
     }
 
-    private void ActiveWindow(WindowUI window)
+    private void ActiveWindow(WindowUI windowOpen, WindowUI windowClosed)
     {
-        _lastOpenWindow.Deactivate();
-        window.Activate();
-        _lastOpenWindow = window;
+        windowOpen.Activate();
+        windowClosed.Deactivate();
     }
 
 }

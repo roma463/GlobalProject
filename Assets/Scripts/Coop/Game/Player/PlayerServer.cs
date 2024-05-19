@@ -12,6 +12,7 @@ public class PlayerServer : MonoBehaviour
     [SerializeField] private Color _colorPlayer;
     [SerializeField] private GameObject _isMineIndicator;
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private HoldObjectServer _holdObjectServer;
 
     private void Awake()
     {
@@ -43,6 +44,19 @@ public class PlayerServer : MonoBehaviour
     public void LoadLevel(int idScene)
     {
         PhotonNetwork.LoadLevel(idScene);
+    }
+
+    [PunRPC]
+    public void HoldObject(int IdCube)
+    {
+        var userOject = PhotonView.Find(IdCube).GetComponent<UsePlayerObject>();
+        _holdObjectServer.KeepingObject(userOject);
+    }
+
+    [PunRPC]
+    public void PutObject()
+    {
+        _holdObjectServer.Throw();
     }
 
     [PunRPC]

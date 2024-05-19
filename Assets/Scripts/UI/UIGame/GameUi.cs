@@ -1,14 +1,16 @@
 using Photon.Pun;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameUi : MonoBehaviourPunCallbacks
 {
     public static GameUi Instance { private set; get; }
+    [SerializeField] protected Animator _animator;
+    [SerializeField] private UnityEvent e_startGame;
     [SerializeField] private GameObject _winDisplay;
     [SerializeField] private GameObject _pauseDisplay;
-    [SerializeField] protected Animator _animator;
 
     [SerializeField] private float _pauseWindowOpen;
     [SerializeField] private float _pauseWindowClosed;
@@ -19,7 +21,7 @@ public class GameUi : MonoBehaviourPunCallbacks
     public virtual void Awake()
     {
         _pauseDisplay.SetActive(true);
-        _pauseDisplay.transform.position = Vector3.right * _pauseWindowClosed;
+        _pauseDisplay.transform.localPosition =  Vector3.right * _pauseWindowClosed;
         Instance = this;
     }
 
@@ -43,6 +45,11 @@ public class GameUi : MonoBehaviourPunCallbacks
         }
     }
 
+    public void EndStartAnimation()
+    {
+        e_startGame?.Invoke();
+    }
+
     public void PauseWindow(bool state)
     {
         if (_pauseCorutine == null)
@@ -54,12 +61,12 @@ public class GameUi : MonoBehaviourPunCallbacks
 
     private IEnumerator PauseAnimation(float target)
     {
-        float currentValue = _pauseDisplay.transform.position.x;
+        float currentValue = _pauseDisplay.transform.localPosition.x;
         while(currentValue != target)
         {
             yield return null;
             currentValue = Mathf.MoveTowards(currentValue, target, Time.deltaTime * _speedOpen);
-            _pauseDisplay.transform.position = Vector3.right * currentValue;
+            _pauseDisplay.transform.localPosition = Vector3.right * currentValue;
         }
         _pauseCorutine = null;
     }

@@ -8,6 +8,7 @@ using UnityEditor;
 
 using UnityEngine;
 using static LevelList;
+using static SaveGame;
 
 [CreateAssetMenu(fileName = "New Level List", menuName = "Level List")]
 public class LevelList : ScriptableObject
@@ -52,7 +53,7 @@ public class LevelList : ScriptableObject
     //    }
     //}
 
-    public LevelsCotegory[] GetLevelsCotegories() => _levelsCotegory.ToArray();
+    public LevelsCotegory[] GetLevelsCotegories() => _levelsCotegory.Where(p => p.GetCotegory() != Levels.Coop).ToArray();
 
     public int GetCurrentSceneSingleLevel(int currentIndexLevel)
     {
@@ -62,7 +63,7 @@ public class LevelList : ScriptableObject
     public int GetSingleNextLevel(int currentLevel)
     {
         if (currentLevel < _countSingleLevels.Count - 1)
-            return _countSingleLevels[++currentLevel].buildIndex;
+            return _countSingleLevels[currentLevel].buildIndex;
         else
             throw new Exception("Вышел за приделы массива одиночных уровней");
     }
@@ -71,18 +72,13 @@ public class LevelList : ScriptableObject
     [ContextMenu("Populate From Build Settings")]
     private void PopulateFromBuildSettings()
     {
-        //foreach (var item in _levelsCotegory)
-        //{
-        //    item.Levels.Clear();
-        //}
-
         _levelsCotegory.Clear();
 
         // Получаем все сцены из настроек сборки и добавляем их в список
         EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
         string lastPath = "";
         _levelsCotegory.Add(new LevelsCotegory());
-
+        int indexScene = 0;
         foreach (EditorBuildSettingsScene scene in scenes)
         {
             if (scene.enabled)
@@ -91,7 +87,9 @@ public class LevelList : ScriptableObject
                 string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
                 LevelData levelData = new LevelData();
                 levelData.levelName = sceneName;
-                
+                levelData.buildIndex = indexScene;
+                indexScene++;
+
                 if(lastPath == "")
                 {
                     lastPath = scenePath.Replace(sceneName, "");
@@ -113,7 +111,6 @@ public class LevelList : ScriptableObject
                 }
             }
         }
-        //CountingLevels();
 
         // Обновляем активную копию ScriptableObject в редакторе
         EditorUtility.SetDirty(this);
@@ -127,7 +124,7 @@ public class LevelList : ScriptableObject
         _countCoopLevels = _levelsCotegory.Where(p=>p.GetCotegory() == Levels.Coop).FirstOrDefault().Levels;
 
         var singleModeCotegory = _levelsCotegory.Where(p => p.GetCotegory() != Levels.Coop).ToArray();
-
+        _countSingleLevels.Clear();
         foreach (var item in singleModeCotegory)
         {
             _countSingleLevels.AddRange(item.Levels);
@@ -140,12 +137,16 @@ public class LevelList : ScriptableObject
 public class LevelsCotegory
 {
     public List<LevelData> Levels = new List<LevelData>();
-    [SerializeField] private string _name;
+    [SerializeField] private string _nameRussian;
+    [SerializeField] private string _nameEnglish;
     [SerializeField] private Levels _cotegory;
     [SerializeField] private Sprite _icon;
 
-    public string Name() => _name;
     public Levels GetCotegory() => _cotegory;
+
+    public Sprite GetSprite() => _icon;
+
+    public string GetName(Language language) => language == Language.rus ? _nameRussian : _nameEnglish;
 }
 
 [Serializable]

@@ -22,21 +22,21 @@ public class BulletServer : Bullet
     }
 
     [PunRPC]
-    public void SendingData(int id, Vector2 startSpeed, double timeCreate)
+    public void SendingData(int id, Vector2 startSpeed, int gravityScale)
     {
         if (!_photonView.IsMine)
         {
             var player = PhotonView.Find(id);
             _teleport = player.GetComponent<Teleport>();
         }
-        _moveBullet.Initialize(startSpeed, timeCreate);
+        _moveBullet.Initialize(startSpeed, gravityScale);
     }
 
-    public void ServerParamentrsInit(int idPlayer, Vector2 StartSpeed)
+    public void ServerParamentrsInit(int idPlayer, Vector2 StartSpeed, int garavityScale)
     {
         _idMinePlayer = idPlayer;
         var timeCreate = PhotonNetwork.Time;
-        _photonView.RPC(nameof(SendingData), RpcTarget.Others, idPlayer, StartSpeed, timeCreate);
+        _photonView.RPC(nameof(SendingData), RpcTarget.Others, idPlayer, StartSpeed, garavityScale);
     }
 
     public override void TeleportPlayer(Teleport.Offset normal, Vector2 positionCollision)

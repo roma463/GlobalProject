@@ -19,8 +19,18 @@ public class LanguageText : MonoBehaviour
         UpdateText();
     }
 
+    public void Init(string russian, string english)
+    {
+        _russianText = russian;
+        _englishText = english;
+        UpdateText();
+    }
+
     public virtual void UpdateText()
     {
+        if (SaveGame.Instance == null)
+            return;
+
         if (SaveGame.Instance.Saves.CurrentLanguage == SaveGame.Language.rus)
         {
             _text.text = _russianText;

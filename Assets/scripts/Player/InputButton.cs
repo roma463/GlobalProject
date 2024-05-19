@@ -36,7 +36,6 @@ public class InputButton : MonoBehaviour
     {
         localWord = "";
         GameState.Instance.Initialize(this);
-        print("init Player input button");
     }
 
     private void Update()

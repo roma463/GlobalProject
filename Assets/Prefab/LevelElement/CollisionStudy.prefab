@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 9
   m_Name: CollisionStudy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -49,6 +49,7 @@ MonoBehaviour:
   _texture: {fileID: 8400000, guid: e4cc61eb95b92b447a1f95aebc367742, type: 2}
   _clip: {fileID: 32900000, guid: 9871c3dd70fc948489442790a5451419, type: 3}
   _textStudy: <b><color=#B1C6FC></color></b>
+  _nameStudy: 
 --- !u!61 &2235615855480587657
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class PositionGunServer : PositionGun, IPunObservable
         }
         else
         {
-            CreateTranjectory(Velosity);
+            CreateTrajectory(Velosity);
         }
     }
     #endregion
@@ -35,7 +35,7 @@ public class PositionGunServer : PositionGun, IPunObservable
     {
         var prefab = GetBullet();
         var bullet = PhotonNetwork.Instantiate(prefab.name, position, Quaternion.identity).GetComponent<Bullet>();
-        ((BulletServer)bullet).ServerParamentrsInit(_photonView.ViewID, Velosity);
+        ((BulletServer)bullet).ServerParamentrsInit(_photonView.ViewID, Velosity, _teleport.GravityScale);
         return bullet;
     }
 

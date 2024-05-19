@@ -207,11 +207,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1918175091aa5dd43ab6934c4105c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 6624152336733063948}
+  e_startGame:
+    m_PersistentCalls:
+      m_Calls: []
   _winDisplay: {fileID: 6848021959652487234}
   _pauseDisplay: {fileID: 6848021959250572050}
-  _animator: {fileID: 6624152336733063948}
   _pauseWindowOpen: 0
-  _pauseWindowClosed: -25
+  _pauseWindowClosed: -400
   _speedOpen: 45
   _photonView: {fileID: 0}
   _gameState: {fileID: 806621832671229875}

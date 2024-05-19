@@ -8,6 +8,7 @@ public class ChoiseLevel : WindowUI
     [SerializeField] private WindowUI w_watning;
     [SerializeField] private LevelList _level;
     [SerializeField] private Episode _prefab;
+    [SerializeField] private Transform _parentEpisodes;
     private SaveGame _saveGame;
 
     private void Start()
@@ -17,6 +18,18 @@ public class ChoiseLevel : WindowUI
         {
             _countinue.interactable = true;
             _levelChoise.interactable = true;
+        }
+            CreationEpisodes();
+    }
+
+    private void CreationEpisodes()
+    {
+        var levelCorigories = _level.GetLevelsCotegories();
+
+        foreach (var item in levelCorigories)
+        {
+            Episode episode = Instantiate(_prefab, _parentEpisodes);
+            episode.Init(item, this);
         }
     }
 

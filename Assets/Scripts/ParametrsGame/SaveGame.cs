@@ -6,7 +6,7 @@ using static SaveGame;
 public class SaveGame : MonoBehaviour
 {
     public static SaveGame Instance { private set; get; }
-    public Save Saves { get; set; }
+    public Data Saves { get; set; }
     [SerializeField] private LevelList _levelList;
 
     private const string KEY_SAVE = "SAVE";
@@ -37,11 +37,11 @@ public class SaveGame : MonoBehaviour
         {
             string jsonString = PlayerPrefs.GetString(KEY_SAVE);
             print(Encoding.Unicode.GetByteCount(jsonString));
-            Saves = JsonUtility.FromJson<Save>(jsonString);
+            Saves = JsonUtility.FromJson<Data>(jsonString);
         }
         else
         {
-            Saves = new Save();
+            Saves = new Data();
         }
     }
 
@@ -54,13 +54,13 @@ public class SaveGame : MonoBehaviour
 }
 
 [Serializable]
-public class Save
+public class Data
 {
     public Language CurrentLanguage;
     public int LevelSingleIndex;
     public int LevelJointsIndex;
     public SettingsGame Settings;
-    public Save()
+    public Data()
     {
         CurrentLanguage = Language.rus;
         LevelSingleIndex = 0;

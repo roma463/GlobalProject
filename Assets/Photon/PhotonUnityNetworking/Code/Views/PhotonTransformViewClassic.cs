@@ -40,7 +40,8 @@ namespace Photon.Pun
         [HideInInspector]
         public PhotonTransformViewScaleModel m_ScaleModel = new PhotonTransformViewScaleModel();
 
-        PhotonTransformViewPositionControl m_PositionControl;
+        [HideInInspector]
+        public PhotonTransformViewPositionControl m_PositionControl;
         PhotonTransformViewRotationControl m_RotationControl;
         PhotonTransformViewScaleControl m_ScaleControl;
 
@@ -212,6 +213,11 @@ namespace Photon.Pun
         public PhotonTransformViewPositionControl(PhotonTransformViewPositionModel model)
         {
             m_Model = model;
+        }
+
+        public void ClearOldNetworkPositions()
+        {
+            m_OldNetworkPositions.Clear();
         }
 
         Vector3 GetOldestStoredNetworkPosition()

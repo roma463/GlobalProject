@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
     [SerializeField] private Parametrs[] _parametrs;
-    [SerializeField] private AudioSource _sourceVoise;
     [SerializeField] private float _dealy = .5f;
-    [SerializeField] private BoxCollider2D _boxCollider;
+    [SerializeField] private UnityEvent _aciton;
     private ViewerSubtitrs _viewer;
 
     private void Start()
@@ -23,40 +23,41 @@ public class Dialog : MonoBehaviour
     private IEnumerator ChangeSubtitres()
     {
         _viewer.ActivateWindow();
+        //foreach (var item in _parametrs)
+        //{
+        //    string currentLine = "";
+        //    for (int i = 0; i < item.GetText().Length; i++)
+        //    {
+        //        currentLine += item.GetText()[i];
+        //        _viewer.ViewText(currentLine);
+        //        yield return new WaitForSeconds(.05f);
+        //    }
+        //    yield return new WaitForSeconds(item.GetTimeText());
+        //}
         for (int i = 0; i < _parametrs.Length; i++)
         {
-            var audioClip = _parametrs[i].GetAudioClip();
-            _sourceVoise.clip = audioClip;
-            _sourceVoise.Play();
             _viewer.ViewText(_parametrs[i].GetText());
-            yield return new WaitForSeconds(audioClip.length + _dealy);
+            yield return new WaitForSeconds(_parametrs[i].GetTimeText());
         }
         yield return new WaitForSeconds(_dealy);
         _viewer.DeactivateWindow();
+        _aciton?.Invoke();
     }
 
     public void StopDialog() 
     {
 
     }
-
-    private void OnDrawGizmos()
-    {
-        if (_boxCollider == null)
-            return;
-        Vector2 postion = _boxCollider.offset + (Vector2)transform.position;
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(postion, _boxCollider.size);
-    }
 }
 
 [Serializable]
 public class Parametrs
 {
-    [TextArea(10,30)]
+    [TextArea(3,10)]
     [SerializeField] private string _text;
-    [SerializeField] private AudioClip _textVoise;
+    [SerializeField] private float _timeText;
 
-    public AudioClip GetAudioClip() => _textVoise;
+    public float GetTimeText() => _timeText;
+
     public string GetText() => _text;
 }

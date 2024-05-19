@@ -3,7 +3,8 @@ public class LanguageMenu : LanguageText
 {
     public override void Start()
     {
-        MenuSettings.Instance.LanguageUpdate += UpdateText;
+        if(MenuSettings.Instance != null)
+            MenuSettings.Instance.LanguageUpdate += UpdateText;
         base.Start();
     }
 

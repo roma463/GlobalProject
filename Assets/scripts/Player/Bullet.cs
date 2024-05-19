@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     public void Init(Teleport teleport, Vector2 velosity)
     {
         _teleport = teleport;
-        _moveBullet.Initialize(velosity, PhotonNetwork.Time);
+        _moveBullet.Initialize(velosity, teleport.GravityScale);
     }
 
     private void OnEnable()

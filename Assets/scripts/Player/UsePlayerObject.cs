@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class UsePlayerObject : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rigidbody;
+    public event System.Action e_take;
+    public event System.Action e_put;
     public bool UseNow { private set; get; }
-    public virtual void Reise()
+
+    public virtual void Take()
     {
+        e_take?.Invoke();
         UseNow = true;
     }
     public virtual void Put()
     {
+        e_put?.Invoke();
         UseNow = false;
     }
 }

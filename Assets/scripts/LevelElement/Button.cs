@@ -123,6 +123,7 @@ public class Button : MonoBehaviour
         }
     }
 }
+
 public interface Action
 {
     void Launch(bool state);

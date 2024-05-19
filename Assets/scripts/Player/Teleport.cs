@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
         up,
         down,
     }
-    public static Teleport GlobalTP { get; private set; }
+
     public int GravityScale { get; private set; }
     public event System.Action Effects_E;
     [SerializeField] private Transform _pointUP;
@@ -18,7 +18,6 @@ public class Teleport : MonoBehaviour
     [SerializeField] private Transform _pointRight;
 
     [SerializeField] private HoldObject _holdObject;
-    [SerializeField] private Transform _textPoint;
     [SerializeField] private AudioSource _teleportSound;
     private ShockWavePositions _shockWave;
     private Coroutine _shockWaveCorutine;
@@ -26,9 +25,7 @@ public class Teleport : MonoBehaviour
     
     private void Awake()
     {
-        _textPoint.parent = null;
         GravityScale = 1;
-        GlobalTP = this;
     }
 
     private void Start()
@@ -65,9 +62,8 @@ public class Teleport : MonoBehaviour
 
         offset *= GravityScale;
         transform.position = newPosition - offset;
-        _textPoint.position = newPosition - offset;
         Effects_E?.Invoke();
-        _holdObject.TeleportCurrentUseObject(transform.position);
+        _holdObject.TeleportCurrentUseObject();
         //_playerMove.UnplugJump();
         _teleportSound.Play();
         if(_shockWaveCorutine != null)
