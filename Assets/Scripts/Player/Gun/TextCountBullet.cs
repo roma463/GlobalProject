@@ -4,27 +4,27 @@ using UnityEngine;
 public class TextCountBullet : MonoBehaviour
 {
     [SerializeField] private Teleport _teleport;
+    [SerializeField] private PositionGun _positionGun;
     [SerializeField] private TextMeshPro _textCountBullet;
     [SerializeField] private Color _zeroBullet;
-    private Color _startColor;
     private Color _enabledColor;
     private bool _enabled = true;
 
-    private void Start()
+    private void Awake()
     {
         _textCountBullet.transform.parent = null;
-        _startColor = _textCountBullet.color;
+        _enabledColor = _textCountBullet.color;
     }
 
     private void OnEnable()
     {
-        GetComponent<PositionGun>().ChangedCountBullet += UpdateText;
+        _positionGun.ChangedCountBullet += UpdateText;
         _teleport.Effects_E += ChangePosition;
     }
 
     private void OnDisable()
     {
-        GetComponent<PositionGun>().ChangedCountBullet -= UpdateText;
+        _positionGun.ChangedCountBullet -= UpdateText;
         _teleport.Effects_E -= ChangePosition;
     }
 
@@ -48,7 +48,11 @@ public class TextCountBullet : MonoBehaviour
 
     public void UpdateText(int count)
     {
+        if (_positionGun.GetInfinit())
+            return;
+
         _textCountBullet.text = count.ToString();
+
         if (!_enabled)
             return;
         if (count == 0)
@@ -57,7 +61,7 @@ public class TextCountBullet : MonoBehaviour
         }
         else
         {
-            _textCountBullet.color = _startColor;
+            _textCountBullet.color = _enabledColor;
         }
 
     }

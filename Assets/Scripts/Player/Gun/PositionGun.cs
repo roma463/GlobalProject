@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Trajectory))]
@@ -7,6 +6,7 @@ public class PositionGun : MonoBehaviour
 {
     public event System.Action<int> ChangedCountBullet;
     protected Vector2 Velosity;
+    [SerializeField] private bool _isInfinitShoting;
     [SerializeField] protected int _countShot;
     [SerializeField] protected Teleport _teleport;
     [SerializeField] private Bullet _bullet;
@@ -60,10 +60,15 @@ public class PositionGun : MonoBehaviour
         }
     }
 
+    public bool GetInfinit()
+    {
+        return _isInfinitShoting;
+    }
+
     public void GunEnable()
     {
         _isShot = true;
-        ChangedCountBullet(_countShot);
+        UpdateText();
     }
 
     public void GunDisable()
@@ -79,16 +84,25 @@ public class PositionGun : MonoBehaviour
     public void AddBullet(int count)
     {
         _countShot += count;
-        ChangedCountBullet?.Invoke(_countShot);
+        UpdateText();
     }
 
     public virtual void Shot()
     {
-        _countShot--;
+        if(!_isInfinitShoting)
+            _countShot--;
         var bullet = CreateBullet(_gunPoint.position);
         bullet.Init(_teleport, Velosity);
-        ChangedCountBullet?.Invoke(_countShot);
+        UpdateText();
         ShotFX();
+    }
+
+    private void UpdateText()
+    {
+        if (_isInfinitShoting)
+            return;
+        ChangedCountBullet(_countShot);
+
     }
 
     public void ShotFX()
@@ -101,7 +115,6 @@ public class PositionGun : MonoBehaviour
             _trajectory.DisableTrajectoryLine();
         }
     }
-
 
     public virtual Bullet CreateBullet(Vector2 position)
     {

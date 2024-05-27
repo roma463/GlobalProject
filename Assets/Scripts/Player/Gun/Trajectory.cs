@@ -9,6 +9,7 @@ public class Trajectory : MonoBehaviour
     [SerializeField] private Vector2 _offsetTextTime;
     [SerializeField] private Teleport _teleport;
     private bool _enabledLine = true;
+    private const float TimeStep = 0.1f;
 
     public void TrajectoryBullet(Vector2 velocity)
     {
@@ -21,7 +22,7 @@ public class Trajectory : MonoBehaviour
         points[0] = (Vector2)_gunPoint.position;
         for (int i = 1; i < points.Length; i++)
         {
-            time = i * .1f;
+            time = i * TimeStep;
             points[i] = ((Vector2)_gunPoint.position + velocity * time + (Physics2D.gravity * _teleport.GravityScale * Mathf.Pow(time, 2) / 2f));
             var hit = Physics2D.Raycast(points[i - 1], (points[i] - points[i - 1]).normalized, Vector2.Distance(points[i - 1], points[i]), _lineCollision);
             if (hit == true)
@@ -46,12 +47,14 @@ public class Trajectory : MonoBehaviour
         }
         _lineRenderer.SetPositions(points);
     }
+
     public void DisableTrajectoryLine()
     {
         _lineRenderer.enabled = false;
         _enabledLine = false;
         _pointCollisionLine.transform.position = transform.position;
     }
+
     public void EnableTrajectoryLine()
     {
         _lineRenderer.enabled = true;

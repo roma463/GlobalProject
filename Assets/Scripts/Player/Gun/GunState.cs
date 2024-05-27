@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class GunState : MonoBehaviour
@@ -17,11 +16,6 @@ public class GunState : MonoBehaviour
 
         if (!_startState)
             OnDisableGun();
-    }
-
-    private void Start()
-    {
-
     }
 
     public void AddBullet(int countAdd)

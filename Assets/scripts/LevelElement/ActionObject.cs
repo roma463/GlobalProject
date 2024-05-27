@@ -14,6 +14,9 @@ public abstract class ActionObject : MonoBehaviour, Action
 
     public virtual void Launch(bool state)
     {
+        if (_startActive)
+            state = !state;
+
         if (state)
             _countPressedButton++;
         else

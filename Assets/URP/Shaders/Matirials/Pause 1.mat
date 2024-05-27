@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4881346305624056269
+--- !u!114 &-4872183817291178529
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wafe
-  m_Shader: {fileID: -6465566751694194690, guid: 4cd32c68c1454a945b1ae77157b39a14, type: 3}
+  m_Name: Pause 1
+  m_Shader: {fileID: -6465566751694194690, guid: 344ff70af32dc364db143c13e9b13dd9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -54,10 +54,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Radius: 0.35032925
-    - _floatWave: 0
-    - _one: -1.36
-    - _size: 0.15
+    - _long: 1.23
+    - _size: 0.37
     m_Colors:
-    - _PlayerPosition: {r: 0.7109957, g: 0.9269085, b: 0, a: 0}
+    - _speed: {r: 0, g: 1.01, b: 0, a: 0}
   m_BuildTextureStacks: []

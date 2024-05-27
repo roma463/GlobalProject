@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Button : MonoBehaviour
 {
     [SerializeField] private float _delayLaunch;
@@ -37,8 +38,7 @@ public class Button : MonoBehaviour
 
     public void SetPosition()
     {
-        RaycastHit2D hit = new RaycastHit2D();
-        hit = Physics2D.Raycast(transform.position, -transform.up, 100, _layers);
+        var hit = Physics2D.Raycast(transform.position, -transform.up, 100, _layers);
         if (hit.collider != null)
         {
             transform.root.position = hit.point;
@@ -73,6 +73,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("COLLISION");
         if (_clickedButton.Count == 0)
         {
             _isClick = true;
@@ -85,8 +86,13 @@ public class Button : MonoBehaviour
         }
         _clickedButton.Add(collision.gameObject);
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
+        print("EXIT");
+        if (!gameObject.activeInHierarchy)
+            return;
+
         _clickedButton.Remove(collision.gameObject);
         if (_clickedButton.Count == 0)
         {
@@ -98,6 +104,7 @@ public class Button : MonoBehaviour
             StartCoroutine(StartLaunch());
         }
     }
+
     private IEnumerator StartLaunch()
     {
         for (int i = 0; i < _actions.Count; i++)
@@ -106,6 +113,7 @@ public class Button : MonoBehaviour
             _actions[i].Launch(_isClick);
         }
     }
+
     private IEnumerator ColorByClick()
     {
         for (; _currentScale > _scaleByClick; _currentScale -= Time.deltaTime * _speedChenge)
@@ -114,6 +122,7 @@ public class Button : MonoBehaviour
             yield return null;
         }
     }
+
     private IEnumerator ColorByClickUp()
     {
         for (; _currentScale < _startScale; _currentScale += Time.deltaTime * _speedChenge)

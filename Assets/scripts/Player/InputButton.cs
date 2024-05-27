@@ -10,6 +10,7 @@ public class InputButton : MonoBehaviour
     public bool Space { private set; get; }
     public bool Escape { private set; get; }
     public bool KeyR { private set; get; }
+    public event System.Action KeyE;
 
     public bool IsPause { private set; get; } = false;
     public string Word 
@@ -58,6 +59,12 @@ public class InputButton : MonoBehaviour
         }
         Escape = Input.GetKeyDown(KeyCode.Escape);
         KeyR = Input.GetKeyDown(KeyCode.R);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            KeyE?.Invoke();
+        }
+
         if (Input.anyKeyDown)
         {
             foreach (KeyCode keyCode in keyCodes)

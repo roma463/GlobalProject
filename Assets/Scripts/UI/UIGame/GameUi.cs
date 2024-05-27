@@ -21,7 +21,7 @@ public class GameUi : MonoBehaviourPunCallbacks
     public virtual void Awake()
     {
         _pauseDisplay.SetActive(true);
-        _pauseDisplay.transform.localPosition =  Vector3.right * _pauseWindowClosed;
+        //_pauseDisplay.transform.localPosition =  Vector3.right * _pauseWindowClosed;
         Instance = this;
     }
 

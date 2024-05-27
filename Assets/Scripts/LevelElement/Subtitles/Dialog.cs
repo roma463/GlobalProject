@@ -23,17 +23,6 @@ public class Dialog : MonoBehaviour
     private IEnumerator ChangeSubtitres()
     {
         _viewer.ActivateWindow();
-        //foreach (var item in _parametrs)
-        //{
-        //    string currentLine = "";
-        //    for (int i = 0; i < item.GetText().Length; i++)
-        //    {
-        //        currentLine += item.GetText()[i];
-        //        _viewer.ViewText(currentLine);
-        //        yield return new WaitForSeconds(.05f);
-        //    }
-        //    yield return new WaitForSeconds(item.GetTimeText());
-        //}
         for (int i = 0; i < _parametrs.Length; i++)
         {
             _viewer.ViewText(_parametrs[i].GetText());
