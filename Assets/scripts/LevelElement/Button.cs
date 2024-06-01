@@ -13,10 +13,10 @@ public class Button : MonoBehaviour
     [SerializeField] private LayerMask _layers;
     private List<Action> _actions = new List<Action>();
     private float _startScale;
-    private List<GameObject> _clickedButton = new List<GameObject>();
     private float _currentScale;
     private Coroutine _currentCoroutine;
     private bool _isClick;
+    private int _countClickedObject = 0;
 
     private void Start()
     {
@@ -74,7 +74,7 @@ public class Button : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("COLLISION");
-        if (_clickedButton.Count == 0)
+        if (_countClickedObject == 0)
         {
             _isClick = true;
             if(_currentCoroutine != null)
@@ -84,7 +84,7 @@ public class Button : MonoBehaviour
             _currentCoroutine =  StartCoroutine(ColorByClick());
             StartCoroutine(StartLaunch());
         }
-        _clickedButton.Add(collision.gameObject);
+        _countClickedObject++;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -93,8 +93,8 @@ public class Button : MonoBehaviour
         if (!gameObject.activeInHierarchy)
             return;
 
-        _clickedButton.Remove(collision.gameObject);
-        if (_clickedButton.Count == 0)
+        _countClickedObject--;
+        if (_countClickedObject == 0)
         {
             _isClick = false;
             if (_currentCoroutine != null)

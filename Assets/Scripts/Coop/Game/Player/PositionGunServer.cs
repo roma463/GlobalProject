@@ -60,12 +60,10 @@ public class PositionGunServer : PositionGun, IPunObservable
         {
             timeVelosity = Velosity;
             stream.SendNext(timeVelosity);
-            //stream.SendNext(_countShot);
         }
         else
         {
             timeVelosity = (Vector2) stream.ReceiveNext();
-            //_countShot = (int)stream.ReceiveNext();
             _targetVelosity = timeVelosity;
         }
     }

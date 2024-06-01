@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputButton : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class InputButton : MonoBehaviour
     public bool Space { private set; get; }
     public bool Escape { private set; get; }
     public bool KeyR { private set; get; }
-    public event System.Action KeyE;
+    public event UnityAction KeyE;
 
     public bool IsPause { private set; get; } = false;
     public string Word 
@@ -83,6 +84,7 @@ public class InputButton : MonoBehaviour
             }
         }
     }
+    
     public void ResetListKey()
     {
         for (int i = 0; i < _knowKeyDown.Length; i++)
@@ -90,6 +92,7 @@ public class InputButton : MonoBehaviour
             _knowKeyDown[i] = "";
         }
     }
+    
     private void ArrayOffset()
     {
         string valueCell = _knowKeyDown[0];
@@ -101,6 +104,7 @@ public class InputButton : MonoBehaviour
         }
         
     }
+
     public void Pause(bool pause)
     {
         IsPause = pause;

@@ -22,7 +22,7 @@ public class Hint : MonoBehaviour
         //здарова заебал. Че каво? ещё не сдох?
     }
 
-    public void AnimationShow()
+    public virtual void AnimationShow()
     {
 
         if (_currentCorutine)
@@ -32,7 +32,7 @@ public class Hint : MonoBehaviour
         StartCoroutine(ActivityText(true, (Vector2)_hintObject.transform.position + Vector2.down * _positionChange));
     }
 
-    public void AnimationHide()
+    public virtual void AnimationHide()
     {
         if (_currentCorutine)
         {

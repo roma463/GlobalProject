@@ -18,7 +18,7 @@ public class Cits : MonoBehaviour
                  _ui.WinWindow();
                 _inputButton.ResetListKey();
              }
-            if (_inputButton.Word.Contains("ALAX"))
+            if (_inputButton.Word.Contains("MEME"))
             {
                 _ui.WinWindow();
                 _inputButton.ResetListKey();
