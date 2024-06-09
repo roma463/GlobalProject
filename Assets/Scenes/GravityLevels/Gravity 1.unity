@@ -688,7 +688,7 @@ PrefabInstance:
       addedObject: {fileID: 1129259273}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a81a22f4915048e4c9026bd5d053c96c, type: 3}
---- !u!43 &359322750
+--- !u!43 &423383179
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1919,7 +1919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._text
@@ -1947,15 +1947,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[3]._text
-      value: "\u0411\u043E\u043B\u0435\u0435 \u0442\u043E\u0433\u043E, \u0430\u043C\u043F\u043B\u0438\u0442\u0443\u0434\u0430,
-        \u0441 \u043A\u043E\u0442\u043E\u0440\u043E\u0439 \u0442\u044B \u043A\u043E\u0441\u043D\u0443\u043B\u0441\u044F
-        \u0433\u0440\u0430\u0432\u0438\u0442\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439
+      value: "\u0410\u043C\u043F\u043B\u0438\u0442\u0443\u0434\u0430, \u0441 \u043A\u043E\u0442\u043E\u0440\u043E\u0439
+        \u0442\u044B \u043A\u043E\u0441\u043D\u0443\u043B\u0441\u044F \u0433\u0440\u0430\u0432\u0438\u0442\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439
         \u043B\u0438\u043D\u0438\u0438, \u043D\u0435 \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442\u0441\u044F
         \u0441\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0435\u043C."
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[4]._text
+      value: "\u041F\u043E\u044D\u0442\u043E\u043C\u0443 \u0442\u0435\u0431\u0435
+        \u043B\u0443\u0447\u0448\u0435 \u0442\u0430\u043C \u043D\u0435 \u0437\u0430\u0441\u0442\u0440\u0435\u0432\u0430\u0442\u044C."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._timeText
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[1]._timeText
@@ -1967,6 +1971,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[3]._timeText
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[4]._timeText
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1996,7 +2004,7 @@ PrefabInstance:
     - target: {fileID: 2118407585575635312, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 359322750}
+      objectReference: {fileID: 423383179}
     - target: {fileID: 2118407585575635325, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_IsActive
       value: 1

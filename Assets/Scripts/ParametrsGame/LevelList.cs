@@ -35,24 +35,6 @@ public class LevelList : ScriptableObject
             throw new Exception("Ты вишел за приделы массива кооперативных уровней дурачек");
     }
 
-    //public LevelsCotegory GetCotegory(int currentIndex)
-    //{
-    //    var cotegoryWithoutCoop = _levelsCotegory.Where(p => p.GetCotegory() == Levels.Coop).ToArray();
-    //    int localIndex = 0;
-
-    //    foreach (var item in cotegoryWithoutCoop)
-    //    {
-    //        if(item.Levels.Count-1 + localIndex >= currentIndex)
-    //        {
-    //            LevelData levelData = item.Levels.Where()
-    //        }
-    //        else
-    //        {
-
-    //        }
-    //    }
-    //}
-
     public LevelsCotegory[] GetLevelsCotegories() => _levelsCotegory.Where(p => p.GetCotegory() != Levels.Coop).ToArray();
 
     public int GetCurrentSceneSingleLevel(int currentIndexLevel)
