@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    [SerializeField] private LevelList _levelList;
+    [SerializeField] protected LevelList _levelList;
     public static GameState Instance { get; private set; }
     protected int CurrentScene;
     protected InputButton PlayerButton;
@@ -61,12 +61,15 @@ public class GameState : MonoBehaviour
 
     public void Win()
     {
-        _saveGame.Saves.LevelSingleIndex++;
-        _saveGame.SaveData();
-        
+        SaveLevel();
         _gameUi.WinWindow();
         PauseGame();
         //PlayerPrefs.SetInt("Scene", CurrentScene + 1);
+    }
+    public virtual void SaveLevel()
+    {
+        _saveGame.Saves.LevelSingleIndex++;
+        _saveGame.SaveData();
     }
 
 }
