@@ -1,5 +1,4 @@
 using System;
-using System.Text;
 using UnityEngine;
 using static SaveGame;
 
@@ -25,6 +24,16 @@ public class SaveGame : MonoBehaviour
         LoadData();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            Saves.LevelJointsIndex = 0;
+            Saves.LevelSingleIndex = 0;
+            SaveData();
+        }
+    }
+
     public enum Language
     {
         rus,
@@ -35,9 +44,9 @@ public class SaveGame : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(KEY_SAVE))
         {
-            //string jsonString = PlayerPrefs.GetString(KEY_SAVE);
-            //Saves = JsonUtility.FromJson<Data>(jsonString);
-            Saves = new Data();
+            string jsonString = PlayerPrefs.GetString(KEY_SAVE);
+            Saves = JsonUtility.FromJson<Data>(jsonString);
+            //Saves = new Data();
         }
         else
         {

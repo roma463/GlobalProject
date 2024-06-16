@@ -22,7 +22,6 @@ public class ConnectionToServer : MonoBehaviourPunCallbacks
         }
     }
 
-
     public IEnumerator Connection()
     {
         yield return new WaitUntil(GetConnectionToServer);

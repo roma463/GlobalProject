@@ -19,7 +19,6 @@ public class Hint : MonoBehaviour
         _hintObject = _textMesh.gameObject;
         _textMesh.color = _changeColor.Evaluate(0);
         _hintObject.transform.position += Vector3.up * _positionChange;
-        //здарова заебал. Че каво? ещё не сдох?
     }
 
     public virtual void AnimationShow()

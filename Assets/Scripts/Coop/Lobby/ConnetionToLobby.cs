@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ConnetionToLobby : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private TextMeshProUGUI _massage;
+    [SerializeField] private UnityEngine.UI.Button _startGameButton;
+    [SerializeField] private TextMeshProUGUI _playerIsConnetion;
+    [SerializeField] private TextMeshProUGUI _waitingConnection;
     [SerializeField] private TextMeshProUGUI _idServerLevel;
     [SerializeField] private LevelList _levelList;
     [SerializeField] private PhotonView _photonView;
@@ -13,20 +15,48 @@ public class ConnetionToLobby : MonoBehaviourPunCallbacks
     private void Start()
     {
         _idServerLevel.text = PhotonNetwork.CurrentRoom.Name;
-#if UNITY_EDITOR
-        var joinLevelIndex = SaveGame.Instance.Saves.LevelJointsIndex;
-        _photonView.RPC(nameof(LoadLevel), RpcTarget.All, joinLevelIndex);
-#endif
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _startGameButton.gameObject.SetActive(true);
+            IsConnectedPlayer(false);
+        }
     }
 
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            _startGameButton.gameObject.SetActive(true);
+            IsConnectedPlayer(false);
+        }
+    }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            var joinLevelIndex = SaveGame.Instance.Saves.LevelJointsIndex;
-            _photonView.RPC(nameof(LoadLevel), RpcTarget.All, joinLevelIndex);
+            IsConnectedPlayer(true);
         }
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            IsConnectedPlayer(false);
+        }
+    }
+
+    private void IsConnectedPlayer(bool isConnected)
+    {
+        _startGameButton.interactable = isConnected;
+        _playerIsConnetion.gameObject.SetActive(isConnected);
+        _waitingConnection.gameObject.SetActive(!isConnected);
+    }
+    
+    public void StartLoadLevel()
+    {
+        var joinLevelIndex = SaveGame.Instance.Saves.LevelJointsIndex;
+        _photonView.RPC(nameof(LoadLevel), RpcTarget.All, joinLevelIndex);
     }
 
     [PunRPC]
