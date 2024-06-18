@@ -29,10 +29,10 @@ public class LevelList : ScriptableObject
 
     public int GetCoopNextIndex(int currentIndex)
     {
-        if (currentIndex < _countCoopLevels.Count - 1)
-            return _countCoopLevels[++currentIndex].buildIndex;
+        if (currentIndex < _countCoopLevels.Count)
+            return _countCoopLevels[currentIndex++].buildIndex;
         else
-            throw new Exception("Ты вишел за приделы массива кооперативных уровней дурачек");
+            throw new Exception($"Ты вишел за приделы массива кооперативных уровней дурачек {currentIndex}");
     }
 
     public LevelsCotegory[] GetLevelsCotegories() => _levelsCotegory.Where(p => p.GetCotegory() != Levels.Coop).ToArray();
@@ -40,6 +40,10 @@ public class LevelList : ScriptableObject
     public int GetCurrentSceneSingleLevel(int currentIndexLevel)
     {
         return _countSingleLevels[currentIndexLevel].buildIndex;
+    }
+    public int GetBuildIndexBySaveForJoinMode(int saveIndex)
+    {
+        return _countCoopLevels[saveIndex].buildIndex;
     }
 
     public int GetSingleNextLevel(int currentLevel)
@@ -136,5 +140,4 @@ public class LevelData
 {
     public string levelName;
     public int buildIndex;
-    // Другие параметры уровня, которые вы хотите хранить
 }

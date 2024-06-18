@@ -21,6 +21,20 @@ public class GameStateServer : GameState
         LoadSceneRPC(CurrentScene);
     }
 
+    public override void SaveLevel()
+    {
+        SaveGame.Instance.Saves.LevelJointsIndex++;
+        SaveGame.Instance.SaveData();
+    }
+
+    public override void LoadNextLevel()
+    {
+        //base.LoadNextLevel();
+        var indexLevel = _levelList.GetCoopNextIndex(SaveGame.Instance.Saves.LevelJointsIndex);
+        print(indexLevel);
+        LoadSceneRPC(indexLevel);
+    }
+
     public void LoadSceneRPC(int idScene)
     {
         _server.GetPhotonView().RPC(nameof(_server.LoadLevel), RpcTarget.All, idScene);

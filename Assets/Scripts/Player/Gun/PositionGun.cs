@@ -93,7 +93,6 @@ public class PositionGun : MonoBehaviour
             _countShot--;
         var bullet = CreateBullet(_gunPoint.position);
         bullet.Init(_teleport, Velosity);
-        UpdateText();
         ShotFX();
     }
 
@@ -109,7 +108,8 @@ public class PositionGun : MonoBehaviour
     {
         StartCoroutine(GunAnimation());
         _soundShot.Play();
-        
+        UpdateText();
+
         if (_countShot == 0)
         {
             _trajectory.DisableTrajectoryLine();
