@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Door : ActionObject, Action
+public class Door : ActionObject, IAction
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _scaleOpen = 1;

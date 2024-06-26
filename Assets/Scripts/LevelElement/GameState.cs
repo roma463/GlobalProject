@@ -64,7 +64,6 @@ public class GameState : MonoBehaviour
         SaveLevel();
         _gameUi.WinWindow();
         PauseGame();
-        //PlayerPrefs.SetInt("Scene", CurrentScene + 1);
     }
     public virtual void SaveLevel()
     {

@@ -10,16 +10,15 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private Transform _pointCollision;
     [SerializeField] private Vector2 _collisionSize;
-    [SerializeField] private float _timeKnowJump;
     [SerializeField] private float _jumpDelayTime = 0.05f;
-    private bool _delayJumpEnd = true;
+    [SerializeField] private float _timeGroundCheck = 0.1f;
 
     private Rigidbody2D _rigidbody;
     private InputButton _inputButton;
     private bool _isGround;
-    private bool _InputJump;
-    private bool _startCorutaine;
-    private bool _onCollison = true;
+    private bool _canJump = true;
+    private bool _startGroundCheckCoroutine;
+    private bool _isCollisionEnabled = true;
 
     private void Start()
     {
@@ -29,63 +28,59 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = (new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y));
+        _rigidbody.velocity = new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y);
     }
 
     private void Update()
     {
-        var collsionGround = false;
-        if (_onCollison)
+        bool isGrounded = _isCollisionEnabled && Physics2D.OverlapBox(_pointCollision.position, _collisionSize, 0, _collisionLayer);
+
+        if (_inputButton.Space && _canJump)
         {
-            collsionGround = Physics2D.OverlapBox(_pointCollision.position, _collisionSize,0, _collisionLayer);
-        }
-        if (_inputButton.Space && _delayJumpEnd)
-        {
-            _InputJump = true;
-            if (collsionGround == false)
+            if (isGrounded)
             {
-                if (_isGround)
-                {
-                    Jump();
-                    StartCoroutine(DelayJump());
-                }
-            }
-            else
-            {
-                StartCoroutine(DelayJump());
                 Jump();
+                StartCoroutine(DelayJump());
+            }
+            else if (_isGround)
+            {
+                Jump();
+                StartCoroutine(DelayJump());
             }
         }
-        if (collsionGround && !_startCorutaine)
+
+        if (isGrounded)
         {
-            StopCoroutine(Knowjump());
-            _isGround = true;
-            _InputJump = false;
-            _startCorutaine = true;
+            if (!_startGroundCheckCoroutine)
+            {
+                StopCoroutine(GroundCheck());
+                _isGround = true;
+                _startGroundCheckCoroutine = true;
+            }
         }
-        else if (!collsionGround && _startCorutaine)
+        else if (_startGroundCheckCoroutine)
         {
-            StartCoroutine(Knowjump());
+            StartCoroutine(GroundCheck());
         }
     }
 
     private IEnumerator DelayJump()
     {
-        _delayJumpEnd = false;
+        _canJump = false;
         yield return new WaitForSeconds(_jumpDelayTime);
-        _delayJumpEnd = true;
+        _canJump = true;
     }
 
-    public void UnplugJump()
+    public void DisableCollisionCheck()
     {
-        StopCoroutine(Knowjump());
-        _onCollison = false;
-        Invoke(nameof(ChangeBool), .1f);
+        StopCoroutine(GroundCheck());
+        _isCollisionEnabled = false;
+        Invoke(nameof(EnableCollisionCheck), 0.1f);
     }
 
-    private void ChangeBool()
+    private void EnableCollisionCheck()
     {
-        _onCollison = true;
+        _isCollisionEnabled = true;
     }
 
     private void Jump()
@@ -93,19 +88,21 @@ public class PlayerMove : MonoBehaviour
         _rigidbody.AddRelativeForce(new Vector2(0, _rigidbody.gravityScale) * _jumpForce);
     }
 
-    private IEnumerator Knowjump()
+    private IEnumerator GroundCheck()
     {
-        _startCorutaine = false;
+        _startGroundCheckCoroutine = false;
         _isGround = true;
-        for (float i = 0; i < _timeKnowJump; i += Time.deltaTime)
+
+        for (float elapsedTime = 0f; elapsedTime < _timeGroundCheck; elapsedTime += Time.deltaTime)
         {
-            if (_InputJump || _onCollison == false)
+            if (_inputButton.Space || !_isCollisionEnabled)
             {
                 _isGround = false;
                 yield break;
             }
             yield return null;
         }
+
         _isGround = false;
     }
 }

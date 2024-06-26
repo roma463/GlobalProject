@@ -31,7 +31,7 @@ public class AnimationDynamicSurfase : MonoBehaviour
     {
         PlayParticleFX();
         StopAllCoroutines();
-        StartCoroutine(ChangeScale(new Vector3(0.1f, 0.1f, 0), false));
+        StartCoroutine(ChangeScale(new Vector3(_speedOpen, _speedOpen, 0), false));
     }
 
     private void PutAnimation()

@@ -7,38 +7,46 @@ public class Undepend : MonoBehaviour
     [SerializeField] private ParticleSystem _collisionGravityLine;
     [SerializeField] private AudioSource _hit;
     [Range(-1,1)]
-    [SerializeField] private int _startGravityScale = 1;
+    [SerializeField] private int _startGravityDirection = 1;
     [SerializeField] private float _delayCollision = 0.1f;
-    public static float _minImpulse;
+    private const float _minForce = 5;
 
     private bool _isCollision = false;
-    private float _force;
-    private bool _ferstCollision;
-    private bool _vectorForce;
-    private float _vectorForceInt;
+    private int _currentDirection;
+    private float _velosityCollisiton;
+    private bool _resetVelosity;
 
     private void Start()
     {
-        _rigidbody2D.gravityScale = _startGravityScale;
+        _rigidbody2D.gravityScale = _startGravityDirection;
+        _currentDirection = _startGravityDirection;
         var scale = transform.localScale;
-        scale.y *= _startGravityScale;
+        scale.y *= _startGravityDirection;
         transform.localScale = scale;
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_isCollision)
+        if(collision.gameObject.TryGetComponent(out GravityLine gravityLine))
         {
-            return;
+            SetForce(gravityLine);
         }
-        if (_ferstCollision == false)
-            _force = _rigidbody2D.velocity.y;
-        _ferstCollision = true;
-        _vectorForceInt = _force;
-        if (_vectorForce)
-            _vectorForceInt *= -1;
+    }
 
-        _vectorForce = !_vectorForce;
+    public virtual void SetForce(GravityLine gravityLine)
+    {
+        if (_isCollision)
+            return;
+
+        if (_resetVelosity == false)
+        {
+            if (Mathf.Abs(_rigidbody2D.velocity.y) < _minForce)
+                _velosityCollisiton = _minForce * (_currentDirection * -1);
+            else
+                _velosityCollisiton = _rigidbody2D.velocity.y;
+
+            _resetVelosity = true;
+        }
         _collisionGravityLine.Play();
     }
 
@@ -47,12 +55,14 @@ public class Undepend : MonoBehaviour
         if (collision.TryGetComponent(out GravityLine gravityLine))
         {
             if (_isCollision)
-            {
                 return;
-            }
+
+            _currentDirection *= -1;
             StartCoroutine(TimerDelayCollision());
-            _rigidbody2D.gravityScale *= -1;
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _vectorForceInt);
+
+            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _velosityCollisiton);
+            _rigidbody2D.gravityScale = _currentDirection;
+            _velosityCollisiton *= -1;
         }
     }
 
@@ -67,12 +77,10 @@ public class Undepend : MonoBehaviour
     {
         _hit.volume = collision.relativeVelocity.magnitude * 0.05f;
         _hit.Play();
-
     }
 
     public void ResetForceOnTrigger()
     {
-        _ferstCollision = false;
-        _vectorForce = false;
+        _resetVelosity = false;
     }
 }

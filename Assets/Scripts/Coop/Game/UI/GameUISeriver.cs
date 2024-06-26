@@ -26,7 +26,6 @@ public class GameUISeriver : GameUi
 
     public override void OnLeftRoom()
     {
-        //base.OnLeftRoom();
         SceneManager.LoadScene("Menu");
     }
 

@@ -9,8 +9,6 @@ public class PositionGunServer : PositionGun, IPunObservable
     [SerializeField] private float _forceSmooth = 1;
     private Vector2 _targetVelosity;
 
-    #region MONO_BEHAVIOR
-
     public override void Start()
     {
         if(!_photonView.IsMine)
@@ -29,7 +27,6 @@ public class PositionGunServer : PositionGun, IPunObservable
             CreateTrajectory(Velosity);
         }
     }
-    #endregion
 
     public override Bullet CreateBullet(Vector2 position)
     {
@@ -51,8 +48,6 @@ public class PositionGunServer : PositionGun, IPunObservable
         ShotFX();
     }
 
-    #region INTERFACE
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         var timeVelosity = new Vector2();
@@ -67,7 +62,6 @@ public class PositionGunServer : PositionGun, IPunObservable
             _targetVelosity = timeVelosity;
         }
     }
-    #endregion
 
     private IEnumerator SmoothChangeVelosityOnClonePlayer()
     {

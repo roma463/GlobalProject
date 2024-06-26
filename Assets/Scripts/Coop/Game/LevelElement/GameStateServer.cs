@@ -29,9 +29,7 @@ public class GameStateServer : GameState
 
     public override void LoadNextLevel()
     {
-        //base.LoadNextLevel();
         var indexLevel = _levelList.GetCoopNextIndex(SaveGame.Instance.Saves.LevelJointsIndex);
-        print(indexLevel);
         LoadSceneRPC(indexLevel);
     }
 

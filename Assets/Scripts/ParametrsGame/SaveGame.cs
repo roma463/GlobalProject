@@ -46,7 +46,6 @@ public class SaveGame : MonoBehaviour
         {
             string jsonString = PlayerPrefs.GetString(KEY_SAVE);
             Saves = JsonUtility.FromJson<Data>(jsonString);
-            //Saves = new Data();
         }
         else
         {

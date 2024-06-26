@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public abstract class ActionObject : MonoBehaviour, Action
+public abstract class ActionObject : MonoBehaviour, IAction
 {
     public bool IsActive { private set; get; }
     [SerializeField] private bool _startActive;
-    private AnimationActivityObject _animationStateObject;
     private int _countPressedButton = 0;
 
     public virtual void Start()

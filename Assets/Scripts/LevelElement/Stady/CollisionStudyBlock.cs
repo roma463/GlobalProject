@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Video;
 
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class CollisionStudyBlock : MonoBehaviour
 {
@@ -14,15 +13,7 @@ public class CollisionStudyBlock : MonoBehaviour
     [SerializeField] private string[] _textStudy;
     [SerializeField] private string _nameStudy;
     [SerializeField] private UnityEvent _closedWindow;
-    private BoxCollider2D _boxCollider;
     private StudyWindow _studyWindow;
-
-    private void OnValidate()
-    {
-        if (_boxCollider != null)
-            return;
-        _boxCollider = GetComponent<BoxCollider2D>();
-    }
 
     private void Start()
     {
@@ -49,12 +40,5 @@ public class CollisionStudyBlock : MonoBehaviour
     {
             _studyWindow.InitWindow(_texture, _clip, _textStudy, _nameStudy, _closedWindow);
             gameObject.SetActive(false);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Vector2 postion = _boxCollider.offset + (Vector2)transform.position;
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(postion, _boxCollider.size);
     }
 }

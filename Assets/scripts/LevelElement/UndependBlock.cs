@@ -3,24 +3,19 @@ using UnityEngine;
 public class UndependBlock : Undepend
 {
     [SerializeField] private UsePlayerObject _usePlayerObject;
+
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         if (!_usePlayerObject.UseNow)
             base.OnCollisionEnter2D(collision);
     }
-    public override void OnTriggerEnter2D(Collider2D collision)
+
+    public override void SetForce(GravityLine gravityLine)
     {
-        if (collision.gameObject.TryGetComponent(out GravityLine gravityLine))
+        base.SetForce(gravityLine);
+        if (!_usePlayerObject.UseNow)
         {
-            base.OnTriggerEnter2D(collision);
-            if (!_usePlayerObject.UseNow)
-            {
-                gravityLine.PlayCollision(_rigidbody2D);
-            }
+            gravityLine.PlayCollision(_rigidbody2D);
         }
-    }
-    public override void OnTriggerExit2D(Collider2D collision)
-    {
-        base.OnTriggerExit2D(collision);
     }
 }

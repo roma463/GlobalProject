@@ -24,7 +24,6 @@ public class HoldObjectServer : HoldObject
         {
             var idCube = ((UsePlayerObjectServer)UserObject).GetPhotonView().ViewID;
             _playerServer.GetPhotonView().RPC(nameof(_playerServer.HoldObject), RpcTarget.Others, idCube);
-            print("hold");
         }
     }
 
@@ -34,7 +33,6 @@ public class HoldObjectServer : HoldObject
         if (_photonView.IsMine)
         {
             _playerServer.GetPhotonView().RPC(nameof(_playerServer.PutObject), RpcTarget.Others);
-            print("put");
         }
     }
 }

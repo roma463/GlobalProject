@@ -44,11 +44,6 @@ public class ConnectionToServer : MonoBehaviourPunCallbacks
         actionEvent?.Invoke();
     }
 
-    public override void OnConnected()
-    {
-        print("местный конект");
-    }
-
     public override void OnConnectedToMaster()
     {
         _ui.ActiveCoopButton();

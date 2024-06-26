@@ -12,7 +12,7 @@ public class WirePath : MonoBehaviour
     [ExecuteAlways]
     private void Awake()
     {
-        _endPosition = GetComponent<Button>().GetTransformActiveObject();
+        _endPosition = GetComponent<ButtonCollision>().GetTransformActiveObject();
         CreatePath();
     }
 
@@ -41,15 +41,17 @@ public class WirePath : MonoBehaviour
         }
         else
         {
-            _endPosition = GetComponent<Button>().GetTransformActiveObject();
+            _endPosition = GetComponent<ButtonCollision>().GetTransformActiveObject();
         }
     }
 
 #if UNITY_EDITOR
+
     [ExecuteAlways]
     private void Update()
     {
         CreatePath();
+
     }
 #endif
 }
