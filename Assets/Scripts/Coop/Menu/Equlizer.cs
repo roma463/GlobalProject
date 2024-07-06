@@ -9,6 +9,7 @@ public class Equlizer : MonoBehaviour
     [SerializeField] private GameObject _prefabCubeElement;
     [SerializeField] private float _speedMoveLines = .5f;
     [SerializeField] private int _countVisibleLine = 3;
+    [SerializeField] private bool _createIsRight = true;
     private float[] audioData;
     private GameObject[] _listOfject;
 
@@ -18,7 +19,8 @@ public class Equlizer : MonoBehaviour
         _listOfject = new GameObject[numberOfBars];
         for (int i = 0; i < _countVisibleLine; i++)
         {
-            _listOfject[i] = Instantiate(_prefabCubeElement, transform.position + (Vector3.right * i * _offset), transform.rotation);
+            var directionCreate = _createIsRight ? transform.right : -transform.right;
+            _listOfject[i] = Instantiate(_prefabCubeElement, transform.position + (directionCreate * i * _offset), transform.rotation);
             _listOfject[i].transform.parent = transform;
         }
     }
@@ -33,6 +35,15 @@ public class Equlizer : MonoBehaviour
             Vector3 scale = new Vector3(_listOfject[i].transform.localScale.x, barHeight, 1);
 
             _listOfject[i].transform.localScale = Vector3.MoveTowards(_listOfject[i].transform.localScale, scale, _speedMoveLines * Time.deltaTime);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < _countVisibleLine; i++)
+        {
+            var directionCreate = _createIsRight ? transform.right : -transform.right;
+            Gizmos.DrawCube(transform.position + (directionCreate * i * _offset), Vector2.one * .1f);
         }
     }
 }
