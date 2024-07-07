@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuUi : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MenuUi : MonoBehaviour
 
     [SerializeField] private Animator _animationMenu;
     [SerializeField] private ConnectionToServer _connetionToServer;
+    [SerializeField] private Button _back;
     private List<WindowUI> _listOpenWindow = new List<WindowUI>();
 
     private void Awake()
@@ -40,13 +42,24 @@ public class MenuUi : MonoBehaviour
     {
         _listOpenWindow.Add(window);
         ActiveWindow(window, _listOpenWindow[_listOpenWindow.Count - 2]);
+        StateBackButton();
+
     }
 
     public void ClosedWindow()
     {
-        var lastOpenWindow = _listOpenWindow[_listOpenWindow.Count-1];
+        var lastOpenWindow = _listOpenWindow[_listOpenWindow.Count - 1];
         _listOpenWindow.Remove(lastOpenWindow);
         ActiveWindow(_listOpenWindow[_listOpenWindow.Count - 1], lastOpenWindow);
+        StateBackButton();
+    }
+
+    private void StateBackButton()
+    {
+        if(_listOpenWindow.Count > 1)
+            _back.gameObject.SetActive(true);
+        else
+            _back.gameObject.SetActive(false);
     }
 
     private void ActiveWindow(WindowUI windowOpen, WindowUI windowClosed)
