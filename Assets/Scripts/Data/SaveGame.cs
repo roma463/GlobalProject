@@ -1,43 +1,29 @@
 using System;
 using UnityEngine;
-using static SaveGame;
+using Zenject;
 
-public class SaveGame : MonoBehaviour
+public enum Language
 {
-    public static SaveGame Instance { private set; get; }
-    public Data Saves { get; set; }
-    [SerializeField] private LevelList _levelList;
+    rus,
+    eng,
+}
+
+[Serializable]
+public class SaveGame : IDisposable, IInitializable
+{
+    public GameData Saves { get; set; }
 
     private const string KEY_SAVE = "SAVE";
 
-    private void Awake()
+    public void Initialize()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Debug.Log("Save Init");
         LoadData();
     }
 
-    private void Update()
+    public void Dispose()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            Saves.LevelJointsIndex = 0;
-            Saves.LevelSingleIndex = 0;
-            SaveData();
-        }
-    }
-
-    public enum Language
-    {
-        rus,
-        eng,
+        Debug.Log("Dispose Save");
     }
 
     private void LoadData()
@@ -45,11 +31,11 @@ public class SaveGame : MonoBehaviour
         if (PlayerPrefs.HasKey(KEY_SAVE))
         {
             string jsonString = PlayerPrefs.GetString(KEY_SAVE);
-            Saves = JsonUtility.FromJson<Data>(jsonString);
+            Saves = JsonUtility.FromJson<GameData>(jsonString);
         }
         else
         {
-            Saves = new Data();
+            Saves = new GameData();
         }
     }
 
@@ -62,13 +48,14 @@ public class SaveGame : MonoBehaviour
 }
 
 [Serializable]
-public class Data
+public class GameData
 {
     public Language CurrentLanguage;
     public int LevelSingleIndex;
     public int LevelJointsIndex;
     public SettingsGame Settings;
-    public Data()
+
+    public GameData()
     {
         CurrentLanguage = Language.rus;
         LevelSingleIndex = 0;
@@ -84,6 +71,7 @@ public class SettingsGame
     public bool VSing;
     public float VolumeMusic;
     public float VolumeSound;
+
     public SettingsGame()
     {
         PostProcessing = true;

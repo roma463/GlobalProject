@@ -16,7 +16,7 @@ public class GameUISeriver : GameUi
 
     public override void NextLevel()
     {
-        _gameState.LoadSceneRPC(SaveGame.Instance.Saves.LevelJointsIndex);
+        _gameState.LoadSceneRPC(_currentScene + 1);
     }
 
     public override void Menu()

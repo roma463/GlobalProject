@@ -1,16 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameState : MonoBehaviour
 {
     [SerializeField] protected LevelList _levelList;
     public static GameState Instance { get; private set; }
+    protected SaveGame _save;
     protected int CurrentScene;
     protected InputButton PlayerButton;
     private GameUi _gameUi;
     private bool _isGamePause = false;
-    private SaveGame _saveGame;
 
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _save = save;
+    }
 
     private void Awake()
     {
@@ -19,7 +25,6 @@ public class GameState : MonoBehaviour
 
     public virtual void Start()
     {
-        _saveGame = SaveGame.Instance;
         CurrentScene = SceneManager.GetActiveScene().buildIndex;
         _gameUi = GameUi.Instance;
     }
@@ -55,7 +60,7 @@ public class GameState : MonoBehaviour
 
     public virtual void LoadNextLevel()
     {
-        var nextLevel = _levelList.GetSingleNextLevel(_saveGame.Saves.LevelSingleIndex);
+        var nextLevel = _levelList.GetSingleNextLevel(_save.Saves.LevelSingleIndex);
         SceneManager.LoadScene(nextLevel);
     }
 
@@ -67,8 +72,8 @@ public class GameState : MonoBehaviour
     }
     public virtual void SaveLevel()
     {
-        _saveGame.Saves.LevelSingleIndex++;
-        _saveGame.SaveData();
+        _save.Saves.LevelSingleIndex++;
+        _save.SaveData();
     }
 
 }

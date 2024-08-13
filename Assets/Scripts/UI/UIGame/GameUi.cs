@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameUi : MonoBehaviourPunCallbacks
 {
     public static GameUi Instance { private set; get; }
+    protected int _currentScene;
     [SerializeField] protected Animator _animator;
     [SerializeField] private UnityEvent e_startGame;
     [SerializeField] private GameObject _winDisplay;
@@ -15,13 +16,11 @@ public class GameUi : MonoBehaviourPunCallbacks
     [SerializeField] private float _pauseWindowOpen;
     [SerializeField] private float _pauseWindowClosed;
     [SerializeField] private float _speedOpen;
-    private int _currentScene;
     private Coroutine _pauseCorutine;
 
     public virtual void Awake()
     {
         _pauseDisplay.SetActive(true);
-        //_pauseDisplay.transform.localPosition =  Vector3.right * _pauseWindowClosed;
         Instance = this;
     }
 

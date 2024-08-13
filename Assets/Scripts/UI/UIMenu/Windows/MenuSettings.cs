@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Zenject;
 
 public class MenuSettings : WindowUI
 {
     public static MenuSettings Instance { private set; get; }
-    public event System.Action LanguageUpdate;
+    public event Action LanguageUpdate;
     [SerializeField] private GameObject[] _languageObject;
     [SerializeField] private AudioMixer _musicMixer, _soundMixer;
     [SerializeField] private Toggle _postProcessing;
@@ -15,6 +16,12 @@ public class MenuSettings : WindowUI
     private int _currentLenguage = 0;
     private const string KEY_AUDIO_VOLUME = "Volume";
 
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _save = save;
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -22,7 +29,6 @@ public class MenuSettings : WindowUI
 
     private void Start()
     {
-        _save = SaveGame.Instance;
         _currentLenguage = (int)(_save.Saves.CurrentLanguage);
         ChangeLanguage();
 
@@ -37,7 +43,7 @@ public class MenuSettings : WindowUI
             _languageObject[i].SetActive(false);
         }
         _languageObject[_currentLenguage].SetActive(true);
-        _save.Saves.CurrentLanguage = (SaveGame.Language)_currentLenguage;
+        _save.Saves.CurrentLanguage = (Language)_currentLenguage;
         LanguageUpdate?.Invoke();
         _save.SaveData();
     }

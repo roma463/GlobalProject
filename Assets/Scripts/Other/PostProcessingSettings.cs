@@ -1,9 +1,17 @@
 using UnityEngine;
+using Zenject;
 
 public class PostProcessingSettings : MonoBehaviour
 {
     public static PostProcessingSettings Instance { get; private set; }
     [SerializeField] private GameObject _globalVolume;
+    private SaveGame _save;
+
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _save = save;
+    }
 
     private void Awake()
     {
@@ -12,7 +20,7 @@ public class PostProcessingSettings : MonoBehaviour
 
     private void Start()
     {
-        UpdateChanged(SaveGame.Instance.Saves.Settings.PostProcessing);
+        UpdateChanged(_save.Saves.Settings.PostProcessing);
     }
 
     public void UpdateChanged(bool state)

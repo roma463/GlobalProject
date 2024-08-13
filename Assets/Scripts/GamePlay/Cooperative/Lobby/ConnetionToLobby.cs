@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class ConnetionToLobby : MonoBehaviourPunCallbacks
 {
@@ -11,6 +12,13 @@ public class ConnetionToLobby : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI _idServerLevel;
     [SerializeField] private LevelList _levelList;
     [SerializeField] private PhotonView _photonView;
+    private SaveGame _save;
+
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _save = save;
+    }
 
     private void Start()
     {
@@ -55,7 +63,7 @@ public class ConnetionToLobby : MonoBehaviourPunCallbacks
     
     public void StartLoadLevel()
     {
-        var joinLevelIndex = SaveGame.Instance.Saves.LevelJointsIndex;
+        var joinLevelIndex = _save.Saves.LevelJointsIndex;
         _photonView.RPC(nameof(LoadLevel), RpcTarget.All, joinLevelIndex);
     }
 

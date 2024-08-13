@@ -1,11 +1,19 @@
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class LanguageText : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [TextArea]
     [SerializeField] private string _russianText, _englishText;
+    private SaveGame _save;
+
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _save = save;
+    }
 
     private void OnValidate()
     {
@@ -28,10 +36,11 @@ public class LanguageText : MonoBehaviour
 
     public virtual void UpdateText()
     {
-        if (SaveGame.Instance == null)
+        if (_save == null)
             return;
-
-        if (SaveGame.Instance.Saves.CurrentLanguage == SaveGame.Language.rus)
+        Debug.Log(gameObject.name);
+        var language = Language.rus;
+        if (_save.Saves.CurrentLanguage == language)
         {
             _text.text = _russianText;
         }

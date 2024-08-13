@@ -5159,7 +5159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _undepend: {fileID: 168662507249487751}
-  _animation: {fileID: 0}
 --- !u!114 &920242862033443208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5434,9 +5433,9 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 2677768699774315418}
   _collisionGravityLine: {fileID: 71576819518583944}
   _hit: {fileID: 3741404431190415008}
-  _startGravityScale: 1
+  _startGravityDirection: 1
   _delayCollision: 0.4
-  _usePlayerObject: {fileID: 0}
+  _usePlayerObject: {fileID: 4585506865086405167}
 --- !u!114 &1328367761384667957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5449,7 +5448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffde7ebebd92bd40bd22dc4d3ebd8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useObject: {fileID: 0}
+  _useObject: {fileID: 4585506865086405167}
   _changeScale: {fileID: 920242862033443214}
   _boxCollider2D: {fileID: 920242862033443212}
   _scales: {fileID: 2745835849656655812}

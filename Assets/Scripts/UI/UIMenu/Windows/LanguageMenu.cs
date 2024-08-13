@@ -7,9 +7,4 @@ public class LanguageMenu : LanguageText
             MenuSettings.Instance.LanguageUpdate += UpdateText;
         base.Start();
     }
-
-    public override void UpdateText()
-    {
-        base.UpdateText();
-    }
 }
