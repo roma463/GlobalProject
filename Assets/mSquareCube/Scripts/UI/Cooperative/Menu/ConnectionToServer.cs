@@ -79,7 +79,7 @@ public class ConnectionToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        w_error.Activate();
+        w_error.Show();
     }
 
     #endregion

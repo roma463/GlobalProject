@@ -8,5 +8,6 @@ public class GlobalInstaller : MonoInstaller
     {
         Container.BindInstance(_levelList).AsSingle();
         Container.BindInterfacesAndSelfTo<SaveGame>().AsSingle().NonLazy();
+        //Container.BindInterfacesAndSelfTo<MenuLoader>().AsSingle().NonLazy();
     }
 }

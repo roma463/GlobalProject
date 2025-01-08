@@ -10,9 +10,9 @@ public class Terminal : WindowUI
     [SerializeField] private float _delay;
     [SerializeField] private TextMeshProUGUI _outputText;
 
-    public override void Activate()
+    public override void Show()
     {
-        base.Activate();
+        base.Show();
         StartCoroutine(OutputMessage());
     }
 

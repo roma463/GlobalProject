@@ -26,6 +26,7 @@ public class Dialog : MonoBehaviour
         for (int i = 0; i < _parametrs.Length; i++)
         {
             _viewer.ViewText(_parametrs[i].GetText());
+            yield return new WaitUntil(() => !_viewer.IsVieweble);
             yield return new WaitForSeconds(_parametrs[i].GetTimeText());
         }
         yield return new WaitForSeconds(_dealy);

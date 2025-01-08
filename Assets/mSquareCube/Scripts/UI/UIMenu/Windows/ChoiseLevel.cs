@@ -26,7 +26,7 @@ public class ChoiseLevel : WindowUI
     {
         if (_save.Saves.LevelSingleIndex != 0)
         {
-            w_watning.Activate();
+            w_watning.Show();
         }
         else
         {

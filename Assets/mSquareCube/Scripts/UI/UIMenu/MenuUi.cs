@@ -64,8 +64,8 @@ public class MenuUi : MonoBehaviour
 
     private void ActiveWindow(WindowUI windowOpen, WindowUI windowClosed)
     {
-        windowOpen.Activate();
-        windowClosed.Deactivate();
+        windowOpen.Show();
+        windowClosed.Hide();
     }
 
 }

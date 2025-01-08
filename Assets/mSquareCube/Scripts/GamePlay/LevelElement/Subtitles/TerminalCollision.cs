@@ -26,7 +26,7 @@ public class TerminalCollision : MonoBehaviour
     {
         InputButton.Instance.KeyE -= ActiveTerminal;
         InputButton.Instance.KeyE += GameState.Instance.Win;
-        _terminal.Activate();
+        _terminal.Show();
     }
 
 }
