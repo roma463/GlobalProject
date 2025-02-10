@@ -23,14 +23,14 @@ public class GameStateServer : GameState
 
     public override void SaveLevel()
     {
-        _save.Saves.LevelJointsIndex++;
+        _save.Data.LevelJointsIndex++;
         _save.SaveData();
     }
 
     public override void LoadNextLevel()
     {
-        var indexLevel = _levelList.GetCoopNextIndex(_save.Saves.LevelJointsIndex);
-        LoadSceneRPC(indexLevel);
+        //var indexLevel = _levelList.GetCoopNextIndex(_save.Saves.LevelJointsIndex);
+        //LoadSceneRPC(indexLevel);
     }
 
     public void LoadSceneRPC(int idScene)

@@ -29,12 +29,12 @@ public class MenuSettings : WindowUI
 
     private void Start()
     {
-        _currentLenguage = (int)(_save.Saves.CurrentLanguage);
+        _currentLenguage = (int)(_save.Data.CurrentLanguage);
         ChangeLanguage();
 
-        _postProcessing.isOn = _save.Saves.Settings.PostProcessing;
-        _musicSlider.value = _save.Saves.Settings.VolumeMusic;
-        _soundSlider.value = _save.Saves.Settings.VolumeSound;
+        _postProcessing.isOn = _save.Data.Settings.PostProcessing;
+        _musicSlider.value = _save.Data.Settings.VolumeMusic;
+        _soundSlider.value = _save.Data.Settings.VolumeSound;
     }
     private void ChangeLanguage()
     {
@@ -43,7 +43,7 @@ public class MenuSettings : WindowUI
             _languageObject[i].SetActive(false);
         }
         _languageObject[_currentLenguage].SetActive(true);
-        _save.Saves.CurrentLanguage = (Language)_currentLenguage;
+        _save.Data.CurrentLanguage = (Language)_currentLenguage;
         LanguageUpdate?.Invoke();
         _save.SaveData();
     }
@@ -51,19 +51,19 @@ public class MenuSettings : WindowUI
     public void ChangeSoundMixer()
     {
         _soundMixer.SetFloat(KEY_AUDIO_VOLUME, _soundSlider.value);
-        _save.Saves.Settings.VolumeSound = _soundSlider.value;
+        _save.Data.Settings.VolumeSound = _soundSlider.value;
         _save.SaveData();
     }
     public void ChangeMusicMixer()
     {
         _musicMixer.SetFloat(KEY_AUDIO_VOLUME, _musicSlider.value);
-        _save.Saves.Settings.VolumeMusic = _musicSlider.value;
+        _save.Data.Settings.VolumeMusic = _musicSlider.value;
         _save.SaveData();
     }
 
     public void ClickToggle()
     {
-        _save.Saves.Settings.PostProcessing = _postProcessing.isOn;
+        _save.Data.Settings.PostProcessing = _postProcessing.isOn;
         PostProcessingSettings.Instance.UpdateChanged(_postProcessing.isOn);
         _save.SaveData();
     }

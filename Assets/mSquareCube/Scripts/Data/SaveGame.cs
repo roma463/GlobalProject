@@ -11,7 +11,9 @@ public enum Language
 [Serializable]
 public class SaveGame : IDisposable, IInitializable
 {
-    public GameData Saves { get; set; }
+    public GameData Data { get; set; }
+
+    public const int startLevelIndex = 2;
 
     private const string KEY_SAVE = "SAVE";
 
@@ -31,17 +33,23 @@ public class SaveGame : IDisposable, IInitializable
         if (PlayerPrefs.HasKey(KEY_SAVE))
         {
             string jsonString = PlayerPrefs.GetString(KEY_SAVE);
-            Saves = JsonUtility.FromJson<GameData>(jsonString);
+            Data = JsonUtility.FromJson<GameData>(jsonString);
         }
         else
         {
-            Saves = new GameData();
+            Data = new GameData();
         }
+    }
+
+    public void ClearGameProgress()
+    {
+        Data.LevelSingleIndex = startLevelIndex;
+        SaveData();
     }
 
     public void SaveData() 
     {
-        string jsonSave = JsonUtility.ToJson(Saves);
+        string jsonSave = JsonUtility.ToJson(Data);
         PlayerPrefs.SetString(KEY_SAVE, jsonSave);
         PlayerPrefs.Save();
     }
@@ -58,7 +66,7 @@ public class GameData
     public GameData()
     {
         CurrentLanguage = Language.rus;
-        LevelSingleIndex = 0;
+        LevelSingleIndex = SaveGame.startLevelIndex;
         LevelJointsIndex = 0;
         Settings = new SettingsGame();
     }

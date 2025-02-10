@@ -1,13 +1,28 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEngine;
 
-public class LoadInitScene : EditorWindow
+public class GameTools : EditorWindow
 {
-    [MenuItem("Tools/LoadInitScene")]
-    public static void LoadScene()
+    [MenuItem("Tools/ClearSave")]
+    public static void ClearSave()
+    {
+        EditorPrefs.DeleteAll();
+        Debug.Log("Clear all save complete");
+    }
+
+    [MenuItem("Tools/LoadingInit")]
+    public static void LoadInit()
     {
         OpenScene("Init");
     }
+
+    [MenuItem("Tools/LoadingMenu")]
+    public static void LoadMenu()
+    {
+        OpenScene("Menu");
+    }
+
     private static void OpenScene(string sceneName)
     {
         string[] guids = AssetDatabase.FindAssets($"t:Scene {sceneName}");

@@ -60,7 +60,7 @@ public class GameState : MonoBehaviour
 
     public virtual void LoadNextLevel()
     {
-        var nextLevel = _levelList.GetSingleNextLevel(_save.Saves.LevelSingleIndex);
+        var nextLevel = _save.Data.LevelSingleIndex;
         SceneManager.LoadScene(nextLevel);
     }
 
@@ -72,7 +72,7 @@ public class GameState : MonoBehaviour
     }
     public virtual void SaveLevel()
     {
-        _save.Saves.LevelSingleIndex++;
+        _save.Data.LevelSingleIndex++;
         _save.SaveData();
     }
 

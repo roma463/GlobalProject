@@ -40,7 +40,7 @@ public class LanguageText : MonoBehaviour
             return;
         Debug.Log(gameObject.name);
         var language = Language.rus;
-        if (_save.Saves.CurrentLanguage == language)
+        if (_save.Data.CurrentLanguage == language)
         {
             _text.text = _russianText;
         }

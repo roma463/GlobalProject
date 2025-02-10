@@ -63,13 +63,13 @@ public class ConnetionToLobby : MonoBehaviourPunCallbacks
     
     public void StartLoadLevel()
     {
-        var joinLevelIndex = _save.Saves.LevelJointsIndex;
+        var joinLevelIndex = _save.Data.LevelJointsIndex;
         _photonView.RPC(nameof(LoadLevel), RpcTarget.All, joinLevelIndex);
     }
 
     [PunRPC]
     public void LoadLevel(int indexLevel)
     {
-        PhotonNetwork.LoadLevel(_levelList.GetBuildIndexBySaveForJoinMode(indexLevel));
+        //PhotonNetwork.LoadLevel(_levelList.GetBuildIndexBySaveForJoinMode(indexLevel));
     }
 }

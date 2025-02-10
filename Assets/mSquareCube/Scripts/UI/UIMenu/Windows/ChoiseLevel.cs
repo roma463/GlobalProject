@@ -18,32 +18,31 @@ public class ChoiseLevel : WindowUI
 
     private void Start()
     {
-        if(_save.Saves.LevelSingleIndex != 0)
+        if(_save.Data.LevelSingleIndex != 0)
             _countinue.interactable = true;
     }
 
     public void NewGame()
     {
-        if (_save.Saves.LevelSingleIndex != 0)
+        if (_save.Data.LevelSingleIndex != 0)
         {
             w_watning.Show();
         }
         else
         {
-            LaunchGame(_level.GetCurrentSceneSingleLevel(0));
+            LaunchGame(1);
         }
     }
 
     public void ResetSaveLevel()
     {
-        _save.Saves.LevelSingleIndex = 0;
-        _save.SaveData();
-        LaunchGame(_level.GetCurrentSceneSingleLevel(0));
+        _save.ClearGameProgress();
+        LaunchGame(_save.Data.LevelSingleIndex);
     }
 
     public void Countinue()
     {
-        var indexLevel = _level.GetCurrentSceneSingleLevel(_save.Saves.LevelSingleIndex);
+        var indexLevel = _save.Data.LevelSingleIndex;
         LaunchGame(indexLevel);
     }
 

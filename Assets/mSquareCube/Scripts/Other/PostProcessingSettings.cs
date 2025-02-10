@@ -20,7 +20,7 @@ public class PostProcessingSettings : MonoBehaviour
 
     private void Start()
     {
-        UpdateChanged(_save.Saves.Settings.PostProcessing);
+        UpdateChanged(_save.Data.Settings.PostProcessing);
     }
 
     public void UpdateChanged(bool state)

@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ButtonCollision : MonoBehaviour
 {
     [SerializeField] private float _delayLaunch;
-    [SerializeField] private List<ActionObject> _actionsObject = new List<ActionObject>();
+    [SerializeField] private List<GameObject> _actionsObject = new List<GameObject>();
     [Range(0,1)]
     [SerializeField] private float _scaleByClick;
     [SerializeField] private Transform _spriteButton;
     [SerializeField] private float _speedChenge;
     [SerializeField] private LayerMask _layers;
+
     private List<IAction> _actionInterface = new List<IAction>();
     private float _openScale;
     private Coroutine _currentCoroutine;
     private bool _isClick;
     private int _countClickedObject = 0;
+
+    private void OnValidate()
+    {
+        EditorUtility.SetDirty(this);
+    }
 
     private void Start()
     {
