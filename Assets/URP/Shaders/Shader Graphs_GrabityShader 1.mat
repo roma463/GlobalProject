@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4881346305624056269
+--- !u!114 &-2874547524344565234
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wafe
-  m_Shader: {fileID: -6465566751694194690, guid: 4cd32c68c1454a945b1ae77157b39a14, type: 3}
+  m_Name: Shader Graphs_GrabityShader 1
+  m_Shader: {fileID: -6465566751694194690, guid: b7bf615e7cd6a1a4da67128f4a9e6110, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -36,10 +36,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,10 +50,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Radius: 0.3594043
-    - _floatWave: 0
-    - _one: -1.36
-    - _size: 0.15
-    m_Colors:
-    - _PlayerPosition: {r: 0.21893856, g: 0.95000005, b: 0, a: 0}
+    - _speed: 2
+    m_Colors: []
   m_BuildTextureStacks: []

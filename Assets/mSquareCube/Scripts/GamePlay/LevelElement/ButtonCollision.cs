@@ -27,7 +27,7 @@ public class ButtonCollision : MonoBehaviour
     private void Start()
     {
         _openScale = _spriteButton.localScale.y;
-        if(_actionsObject != null)
+        if (_actionsObject != null)
         {
             for (int i = 0; i < _actionsObject.Count; i++)
             {
@@ -36,15 +36,19 @@ public class ButtonCollision : MonoBehaviour
         }
     }
 
-    public Transform GetTransformActiveObject()
+    public bool TryGetTransformActiveObject(out Transform transform)
     {
-        if(_actionsObject.Count != 0)
+         transform = null;
+
+        if (_actionsObject.Count != 0)
         {
-            return _actionsObject[0].transform.root;
+            transform = _actionsObject[0].transform.root;
+            return true;
         }
         else
         {
-            throw new System.Exception(" нопка ничего не активирует");
+            Debug.LogError($" нопка {gameObject.transform.parent.name} ничего не активирует");
+            return false;
         }
     }
 

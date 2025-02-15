@@ -7,7 +7,8 @@ public class AnimationDynamicSurfase : MonoBehaviour
     [SerializeField] private Transform _changeScale;
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private ParticleSystem _scales;
-    [SerializeField] private float _speedOpen = .1f;
+    [SerializeField] private float _speedScale = 25f;
+    [SerializeField] private float _putScale = .1f;
     private Vector2 _startScale;
 
     private void Start()
@@ -31,7 +32,7 @@ public class AnimationDynamicSurfase : MonoBehaviour
     {
         PlayParticleFX();
         StopAllCoroutines();
-        StartCoroutine(ChangeScale(new Vector3(_speedOpen, _speedOpen, 0), false));
+        StartCoroutine(ChangeScale(new Vector3(_putScale, _putScale, 0), false));
     }
 
     private void PutAnimation()
@@ -52,7 +53,7 @@ public class AnimationDynamicSurfase : MonoBehaviour
         _boxCollider2D.enabled = enabledCollider;
         while (_changeScale.localScale != TargetScele)
         {
-            _changeScale.localScale = Vector3.MoveTowards(_changeScale.localScale, TargetScele, _speedOpen * Time.deltaTime);
+            _changeScale.localScale = Vector3.MoveTowards(_changeScale.localScale, TargetScele, _speedScale * Time.deltaTime);
             yield return null;
         }
         _changeScale.localScale = TargetScele;
