@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Equlizer : MonoBehaviour
 {
+    private static Equlizer _instance;
+
     [SerializeField] private int numberOfBars = 64;
     [SerializeField] private float sensitivity = 100.0f;
 
@@ -10,11 +12,20 @@ public class Equlizer : MonoBehaviour
     [SerializeField] private float _speedMoveLines = .5f;
     [SerializeField] private int _countVisibleLine = 3;
     [SerializeField] private bool _createIsRight = true;
+
     private float[] audioData;
     private GameObject[] _listOfject;
+    private bool _isEnable;
 
-    private void Start()
+    public static void Activate()
     {
+        _instance.StartAnimation();
+    }
+
+    public void StartAnimation()
+    {
+
+        _isEnable = true;
         audioData = new float[numberOfBars];
         _listOfject = new GameObject[numberOfBars];
         for (int i = 0; i < _countVisibleLine; i++)
@@ -25,8 +36,16 @@ public class Equlizer : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        _instance = this;
+    }
+
     private void Update()
     {
+        if (!_isEnable)
+            return;
+
         AudioListener.GetSpectrumData(audioData, 0, FFTWindow.Rectangular);
 
         for (int i = 0; i < _countVisibleLine; i++)
@@ -40,6 +59,9 @@ public class Equlizer : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!_isEnable)
+            return;
+
         for (int i = 0; i < _countVisibleLine; i++)
         {
             var directionCreate = _createIsRight ? transform.right : -transform.right;

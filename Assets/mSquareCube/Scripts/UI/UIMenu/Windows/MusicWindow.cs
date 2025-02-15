@@ -4,27 +4,40 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MusicWindow : MonoBehaviour
+public class MusicWindow : WindowUI
 {
+    public static MusicWindow Instance { get; private set; }
+
     public event Action<bool> OnPlay;
     [SerializeField] private MusicItem[] _musicItems;
     [SerializeField] private Slider _lineTime;
     [SerializeField] private TextMeshProUGUI _nameTrack;
     [SerializeField] private TextMeshProUGUI _durationTrack;
     [SerializeField] private TextMeshProUGUI _currentTime;
+
     private static int _currentTrackIndex = 0;
     private AudioSource _audioSource; 
     private bool _isPlaying = true;
 
-    private void Start()
+    private void Awake()
     {
-        _audioSource = Music.Instance.GetAudioSource();
+        Instance = this;
+    }
 
+    public override void Start()
+    {
+        base.Start();
+        _audioSource = Music.Instance.GetAudioSource();
+    }
+
+    public override void Show()
+    {
         var item = _musicItems[_currentTrackIndex];
         if (_audioSource.clip == null)
             SwitchTrack(item);
         else
             InitializeParametrs(item);
+        base.Show();
     }
 
     private async void SwitchTrack(MusicItem item)

@@ -18,19 +18,18 @@ public class ChoiseLevel : WindowUI
 
     private void Start()
     {
-        if(_save.Data.LevelSingleIndex != 0)
-            _countinue.interactable = true;
+
     }
 
     public void NewGame()
     {
-        if (_save.Data.LevelSingleIndex != 0)
+        if (_save.Data.LevelSingleIndex != SaveGame.startLevelIndex)
         {
             w_watning.Show();
         }
         else
         {
-            LaunchGame(1);
+            LaunchGame(SaveGame.startLevelIndex);
         }
     }
 

@@ -3503,6 +3503,7 @@ MonoBehaviour:
   w_basic: {fileID: 9055374227310385619}
   _animationMenu: {fileID: 0}
   _connetionToServer: {fileID: 0}
+  _continue: {fileID: 7401322983494562442}
   _back: {fileID: 237075516542890567}
 --- !u!114 &6096277060518312919
 MonoBehaviour:
@@ -8097,6 +8098,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1569644886747149212, guid: 3e6d067bc1334104ba92f5b9f2a28476, type: 3}
   m_PrefabInstance: {fileID: 5924401700458485787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7401322983494562442 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3783441497344240273, guid: 3e6d067bc1334104ba92f5b9f2a28476, type: 3}
+  m_PrefabInstance: {fileID: 5924401700458485787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6888995639357116468
 PrefabInstance:
   m_ObjectHideFlags: 0

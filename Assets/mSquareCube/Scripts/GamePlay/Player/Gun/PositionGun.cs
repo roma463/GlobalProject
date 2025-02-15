@@ -6,6 +6,7 @@ public class PositionGun : MonoBehaviour
 {
     public event System.Action<int> ChangedCountBullet;
     protected Vector2 Velosity;
+
     [SerializeField] private bool _isInfinitShoting;
     [SerializeField] protected int _countShot;
     [SerializeField] protected Teleport _teleport;
@@ -14,17 +15,19 @@ public class PositionGun : MonoBehaviour
     [SerializeField] private float _forceShot;
     [SerializeField] private HoldObject _holdObject;
     [SerializeField] private LayerMask _rayCollsiion;
-    [SerializeField] private InputButton _inputButton;
     [SerializeField] private AudioSource _soundShot;
 
     [SerializeField] private AnimationCurve _outputAnimation;
     [SerializeField] private Transform _spriteGun;
+
+    private InputButton _inputButton;
     private Trajectory _trajectory;
     private Camera _camera;
-    private bool _isShot = true;
+    private bool _canShot = true;
 
     public virtual void Start()
     {
+        _inputButton = InputButton.Instance;
         ChangedCountBullet?.Invoke(_countShot);
         _trajectory = GetComponent<Trajectory>();
         _camera = Camera.main;
@@ -37,8 +40,9 @@ public class PositionGun : MonoBehaviour
 
     public virtual void Update()
     {
-        if (!_isShot)
+        if (!_canShot || GameState.Instance.IsPaused)
             return;
+
         Velosity = -(_gunPoint.position - _camera.ScreenToWorldPoint(Input.mousePosition)) * _forceShot;
         CreateTrajectory(Velosity);
 
@@ -67,13 +71,13 @@ public class PositionGun : MonoBehaviour
 
     public void GunEnable()
     {
-        _isShot = true;
+        _canShot = true;
         UpdateText();
     }
 
     public void GunDisable()
     {
-        _isShot = false;
+        _canShot = false;
     }
 
     public virtual void CreateTrajectory(Vector2 speed)
@@ -91,6 +95,7 @@ public class PositionGun : MonoBehaviour
     {
         if(!_isInfinitShoting)
             _countShot--;
+
         var bullet = CreateBullet(_gunPoint.position);
         bullet.Init(_teleport, Velosity);
         ShotFX();
@@ -100,6 +105,7 @@ public class PositionGun : MonoBehaviour
     {
         if (_isInfinitShoting)
             return;
+
         ChangedCountBullet(_countShot);
 
     }

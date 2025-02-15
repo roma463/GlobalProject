@@ -4,13 +4,15 @@ using Zenject;
 
 public class GameState : MonoBehaviour
 {
-    [SerializeField] protected LevelList _levelList;
     public static GameState Instance { get; private set; }
+    public bool IsPaused { get; private set; }
+
+    [SerializeField] protected LevelList _levelList;
+
     protected SaveGame _save;
     protected int CurrentScene;
-    protected InputButton PlayerButton;
+    protected InputButton InputButtons;
     private GameUi _gameUi;
-    private bool _isGamePause = false;
 
     [Inject]
     public void Construct(SaveGame save)
@@ -27,21 +29,17 @@ public class GameState : MonoBehaviour
     {
         CurrentScene = SceneManager.GetActiveScene().buildIndex;
         _gameUi = GameUi.Instance;
-    }
-
-    public void Initialize(InputButton inputButton)
-    {
-        PlayerButton = inputButton;
+        InputButtons = InputButton.Instance;
     }
 
     public virtual void Update()
     {
-        if (PlayerButton.Escape)
+        if (InputButtons.Escape)
         {
-            _gameUi.PauseWindow(_isGamePause);
+            _gameUi.PauseWindow(IsPaused);
             PauseGame();
         }
-        else if (PlayerButton.KeyR)
+        else if (InputButtons.KeyR)
         {
             Restart();
         }
@@ -54,8 +52,8 @@ public class GameState : MonoBehaviour
 
     public void PauseGame()
     {
-        _isGamePause = !_isGamePause;
-        PlayerButton.Pause(_isGamePause);
+        IsPaused = !IsPaused;
+        InputButtons.Pause(IsPaused);
     }
 
     public virtual void LoadNextLevel()
@@ -68,7 +66,6 @@ public class GameState : MonoBehaviour
     {
         SaveLevel();
         _gameUi.WinWindow();
-        PauseGame();
     }
     public virtual void SaveLevel()
     {

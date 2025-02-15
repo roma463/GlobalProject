@@ -56,6 +56,7 @@ public class Trajectory : MonoBehaviour
 
     public void DisableTrajectoryLine()
     {
+        _gunPoint.gameObject.SetActive(false);
         _lineRenderer.enabled = false;
         _enabledLine = false;
         _pointCollisionLine.transform.position = transform.position;
@@ -63,6 +64,7 @@ public class Trajectory : MonoBehaviour
 
     public void EnableTrajectoryLine()
     {
+        _gunPoint.gameObject.SetActive(true);
         _lineRenderer.enabled = true;
         _enabledLine = true;
         _pointCollisionLine.transform.position = transform.position;

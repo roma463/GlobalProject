@@ -32,12 +32,12 @@ public class InputButton : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
     {
         localWord = "";
-        GameState.Instance.Initialize(this);
     }
 
     private void Update()
@@ -87,6 +87,7 @@ public class InputButton : MonoBehaviour
     
     public void ResetListKey()
     {
+        localWord = "";
         for (int i = 0; i < _knowKeyDown.Length; i++)
         {
             _knowKeyDown[i] = "";

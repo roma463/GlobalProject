@@ -22,7 +22,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        _inputButton = GetComponent<InputButton>();
+        _inputButton = InputButton.Instance;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 

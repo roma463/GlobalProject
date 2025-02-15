@@ -6,17 +6,34 @@ public class WirePath : MonoBehaviour
     [SerializeField] private ButtonCollision _buttonCollision;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private LineRenderer _maskbleLine;
+
+    [SerializeField] private GameObject _endLinePoint;
+    [SerializeField] private bool _isVisibleEndLinePoint;
+
     [SerializeField] private bool _upLine;
     [SerializeField] private float _offsetLine;
     [SerializeField] private Transform _begginPosition;
     private Transform _endPosition;
+
+    private void OnValidate()
+    {
+        this.enabled = true;
+        if (_buttonCollision.TryGetTransformActiveObject(out _endPosition))
+        {
+            CreatePath();
+            _endLinePoint.SetActive(_isVisibleEndLinePoint);
+        }
+    }
 
     [ExecuteAlways]
     private void Awake()
     {
         this.enabled = true;
         if(_buttonCollision.TryGetTransformActiveObject(out _endPosition))
+        {
             CreatePath();
+            _endLinePoint.SetActive(_isVisibleEndLinePoint);
+        }
     }
 
     [ExecuteAlways]
@@ -42,6 +59,7 @@ public class WirePath : MonoBehaviour
             points[3] = (Vector2)_endPosition.position;
             _lineRenderer.SetPositions(points);
             _maskbleLine.SetPositions(points);
+            _endLinePoint.transform.position = points[3];
         }
         else
         {

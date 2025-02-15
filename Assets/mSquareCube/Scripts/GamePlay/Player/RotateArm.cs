@@ -5,11 +5,12 @@ namespace GamePlay.Player
     public class RotateArm : MonoBehaviour
     {
         [SerializeField] private Teleport _teleport;
-        [SerializeField] private InputButton _inputButton;
+        private InputButton _inputButton;
         private Camera _mainCamera;
 
         private void Start()
         {
+            _inputButton = InputButton.Instance;
             _mainCamera = Camera.main;
         }
 

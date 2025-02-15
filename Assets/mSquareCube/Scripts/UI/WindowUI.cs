@@ -5,7 +5,7 @@ public class WindowUI : MonoBehaviour
     [SerializeField] private bool _viewIsStart;
     [SerializeField] private GameObject _elements;
 
-    private void Start()
+    public virtual void Start()
     {
         if (_viewIsStart)
             Show();

@@ -12,7 +12,7 @@ public class GameStateServer : GameState
 
     public override void Update()
     {
-        if(PlayerButton != null)
+        if(InputButtons != null)
             base.Update();
     }
 

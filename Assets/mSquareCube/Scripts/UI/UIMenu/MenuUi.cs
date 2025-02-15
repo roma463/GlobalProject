@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 public class MenuUi : MonoBehaviour
 {
@@ -10,8 +11,16 @@ public class MenuUi : MonoBehaviour
 
     [SerializeField] private Animator _animationMenu;
     [SerializeField] private ConnectionToServer _connetionToServer;
+    [SerializeField] private Button _continue;
     [SerializeField] private Button _back;
     private List<WindowUI> _listOpenWindow = new List<WindowUI>();
+    private SaveGame _saveGame;
+
+    [Inject]
+    public void Construct(SaveGame save)
+    {
+        _saveGame = save;
+    }
 
     private void Awake()
     {
@@ -20,6 +29,8 @@ public class MenuUi : MonoBehaviour
 
     private void Start ()
     {
+        if (_saveGame.Data.LevelSingleIndex != SaveGame.startLevelIndex)
+            _continue.interactable = true;
         _listOpenWindow.Add(w_basic);
     }
 
