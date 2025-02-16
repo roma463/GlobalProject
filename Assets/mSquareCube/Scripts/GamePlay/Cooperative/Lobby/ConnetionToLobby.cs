@@ -10,7 +10,6 @@ public class ConnetionToLobby : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI _playerIsConnetion;
     [SerializeField] private TextMeshProUGUI _waitingConnection;
     [SerializeField] private TextMeshProUGUI _idServerLevel;
-    [SerializeField] private LevelList _levelList;
     [SerializeField] private PhotonView _photonView;
     private SaveGame _save;
 

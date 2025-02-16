@@ -5,7 +5,6 @@ using Zenject;
 
 public class InitContext : MonoInstaller
 {
-    [SerializeField] private LevelList _levelList;
     public override void InstallBindings()
     {
         //Container.BindInstance(_levelList).AsSingle();

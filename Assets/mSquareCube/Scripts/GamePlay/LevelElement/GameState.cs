@@ -7,8 +7,6 @@ public class GameState : MonoBehaviour
     public static GameState Instance { get; private set; }
     public bool IsPaused { get; private set; }
 
-    [SerializeField] protected LevelList _levelList;
-
     protected SaveGame _save;
     protected int CurrentScene;
     protected InputButton InputButtons;

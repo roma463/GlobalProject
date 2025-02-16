@@ -6,7 +6,6 @@ public class ChoiseLevel : WindowUI
 {
     [SerializeField] private UnityEngine.UI.Button _countinue;
     [SerializeField] private WindowUI w_watning;
-    [SerializeField] private LevelList _level;
     [SerializeField] private Transform _parentEpisodes;
     private SaveGame _save;
 

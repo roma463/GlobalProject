@@ -19,10 +19,12 @@ public class ButtonCollision : MonoBehaviour
     private bool _isClick;
     private int _countClickedObject = 0;
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         EditorUtility.SetDirty(this);
     }
+#endif
 
     private void Start()
     {
