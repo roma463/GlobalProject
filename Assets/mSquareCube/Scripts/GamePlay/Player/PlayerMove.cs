@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     private bool _canJump = true;
     private bool _startGroundCheckCoroutine;
     private bool _isCollisionEnabled = true;
+    private bool _lockMovement = false;
 
     private void Start()
     {
@@ -28,11 +29,16 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_lockMovement)
+            return;
         _rigidbody.velocity = new Vector2(_inputButton.Horizontal * _speed, _rigidbody.velocity.y);
     }
 
     private void Update()
     {
+        if (_lockMovement)
+            return;
+
         bool isGrounded = _isCollisionEnabled && Physics2D.OverlapBox(_pointCollision.position, _collisionSize, 0, _collisionLayer);
 
         if (_inputButton.Space && _canJump)
@@ -62,6 +68,11 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(GroundCheck());
         }
+    }
+
+    public void ChengeLockMovement(bool state)
+    {
+        _lockMovement = state;
     }
 
     private IEnumerator DelayJump()

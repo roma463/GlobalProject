@@ -3,7 +3,9 @@ using UnityEngine;
 public abstract class ActionObject : MonoBehaviour, IAction
 {
     public bool IsActive { private set; get; }
+
     [SerializeField] private bool _startActive;
+
     private int _countPressedButton = 0;
 
     public virtual void Start()
@@ -13,25 +15,16 @@ public abstract class ActionObject : MonoBehaviour, IAction
 
     public virtual void Launch(bool state)
     {
-        if (_startActive)
-            state = !state;
-
+        state = state != _startActive;
         if (state)
-            _countPressedButton++;
-        else
-            _countPressedButton--;
-
-        _countPressedButton = Mathf.Clamp(_countPressedButton, 0, _countPressedButton);
-
-        if (_countPressedButton == 0)
-        {
-            Release();
-            IsActive = false;
-        }
-        else if (_countPressedButton == 1 && !IsActive)
         {
             PressState();
             IsActive = true;
+        }
+        else
+        {
+            Release();
+            IsActive = false;
         }
     }
 

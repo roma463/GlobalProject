@@ -28,6 +28,7 @@ public class GameState : MonoBehaviour
         CurrentScene = SceneManager.GetActiveScene().buildIndex;
         _gameUi = GameUi.Instance;
         InputButtons = InputButton.Instance;
+        InputButtons.Pause(false);
     }
 
     public virtual void Update()

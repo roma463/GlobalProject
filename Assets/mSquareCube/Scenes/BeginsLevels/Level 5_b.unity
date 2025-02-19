@@ -1595,7 +1595,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7dfb7f1e4fc6a45bbdade96dce83ea, type: 3}
---- !u!43 &1718964920
+--- !u!43 &1605534132
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1814,7 +1814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._text
@@ -1824,9 +1824,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[1]._text
-      value: "\u041D\u0430\u0434\u0435\u044E\u0441\u044C \u0443 \u0442\u0435\u0431\u044F
-        \u044D\u0442\u043E \u043D\u0435 \u0432\u044B\u0437\u043E\u0432\u0435\u0442
-        \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0435\u0439."
+      value: "\u042D\u0442\u043E \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C
+        \u043F\u0440\u043E\u0441\u0442\u043E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[2]._text
+      value: "\u041D\u0430\u0434\u0435\u044E\u0441\u044C \u0442\u044B \u043D\u0435
+        \u0437\u0430\u0437\u043D\u0430\u043B\u0441\u044F \u0438 \u043D\u0435 \u0441\u0442\u0430\u043B
+        \u043A\u0430\u043A \u0441\u0432\u043E\u0438 \u043F\u0440\u0435\u0434\u0448\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u0438\u043A\u0438,
+        \u043A\u043E\u0433\u0434\u0430 \u044F \u0442\u0435\u0431\u044F \u043F\u043E\u0445\u0432\u0430\u043B\u0438\u043B?"
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._timeText
@@ -1834,6 +1840,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[1]._timeText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[2]._timeText
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1863,7 +1873,7 @@ PrefabInstance:
     - target: {fileID: 2118407585575635312, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1718964920}
+      objectReference: {fileID: 1605534132}
     - target: {fileID: 2118407585575635325, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_IsActive
       value: 1

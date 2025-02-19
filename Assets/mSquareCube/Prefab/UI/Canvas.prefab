@@ -1330,7 +1330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2776332545227869621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: CrashLevel_2B
 --- !u!1 &4431021150059411995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,10 +2216,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4533078310112558468}
   - {fileID: 7017126478924617926}
   - {fileID: 7833980780099321098}
   - {fileID: 7833980780502318682}
-  - {fileID: 4533078310112558468}
   m_Father: {fileID: 7833980780461269682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2609,7 +2609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29637b5cdefe92a478cdf607ddd76797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelList: {fileID: 11400000, guid: a97de9b86fff49b43bef3f75844fa7f9, type: 2}
 --- !u!1 &7833980780502318681
 GameObject:
   m_ObjectHideFlags: 0

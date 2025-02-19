@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationBlicks : MonoBehaviour
 {
@@ -10,12 +12,15 @@ public class AnimationBlicks : MonoBehaviour
     [SerializeField] private bool _hideIsStart;
 
     [SerializeField] private AudioClip _clipHit;
+    [SerializeField] private UnityEvent _endAnimation;
 
     private Vector3[] _targetPositionsBlocks;
+    private bool[] _stateAnimationBlocks;
 
     private void Start()
     {
         _targetPositionsBlocks = new Vector3[_blocks.Length];
+        _stateAnimationBlocks = new bool[_blocks.Length];
 
         for (int i = 0; i < _blocks.Length; i++)
         {
@@ -35,12 +40,12 @@ public class AnimationBlicks : MonoBehaviour
     {
         for (int i = 0; i < _blocks.Length; i++)
         {
-            StartCoroutine(MovementBlock(_blocks[i], _targetPositionsBlocks[i]));
+            StartCoroutine(MovementBlock(i, _blocks[i], _targetPositionsBlocks[i]));
             yield return new WaitForSeconds(_delayActiveBlock);
         }
     }
 
-    private IEnumerator MovementBlock(Transform block, Vector3 targetPosition)
+    private IEnumerator MovementBlock(int idBlock,Transform block, Vector3 targetPosition)
     {
 
         while(block.position != targetPosition)
@@ -48,6 +53,17 @@ public class AnimationBlicks : MonoBehaviour
             block.position = Vector3.MoveTowards(block.position, targetPosition, _speedAnimation * Time.deltaTime);
             yield return null;
         }
+        CompleteBlockAnimation(idBlock);
+    }
+
+    private void CompleteBlockAnimation(int blockId)
+    {
+        _stateAnimationBlocks[blockId] = true;
         AudioController.StartPlayHit(_clipHit);
+
+        if(_stateAnimationBlocks.All(p=>p == true))
+        {
+            _endAnimation?.Invoke();
+        }
     }
 }
