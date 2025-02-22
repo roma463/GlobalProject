@@ -956,23 +956,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._text
-      value: "\u041E\u0442\u043B\u0438\u0447\u043D\u043E"
+      value: "\u0422\u044B \u0442\u043E\u0447\u043D\u043E \u043A\u043B\u043E\u043D
+        \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u0430?"
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[1]._text
-      value: "\u0422\u0435\u043F\u0435\u0440\u044C \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C
-        \u0441 \u0431\u043E\u043B\u044C\u0448\u0438\u043C \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u043C
-        \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432."
+      value: "\u0421\u043A\u0430\u0436\u0438 \u0435\u0441\u043B\u0438 \u044D\u0442\u043E
+        \u0442\u0430\u043A"
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[2]._text
-      value: "\u0422\u0435\u043F\u0435\u0440\u044C \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C
-        \u0441 \u0431\u043E\u043B\u044C\u0448\u0438\u043C \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u043C
-        \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432."
+      value: "\u042D\u0442\u043E \u043E\u0447\u0435\u043D\u044C \u0432\u0430\u0436\u043D\u043E"
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[0]._timeText
@@ -985,6 +983,18 @@ PrefabInstance:
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[2]._timeText
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[0]._translate
+      value: Are you sure you're a clone of the original?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[1]._translate
+      value: Tell me if that's the case
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[2]._translate
+      value: This is very important
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _aciton.m_PersistentCalls.m_Calls.Array.size
@@ -1114,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 7833980780461269683, guid: 6ae23e78ee11f9b4f9b1a712d5bf8d0e, type: 3}
       propertyPath: _inputButton
       value: 
-      objectReference: {fileID: 914481918}
+      objectReference: {fileID: 0}
     - target: {fileID: 7833980780502318681, guid: 6ae23e78ee11f9b4f9b1a712d5bf8d0e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1137,17 +1147,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 3443617412005296491, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
   m_PrefabInstance: {fileID: 3443617412807965197}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &914481918 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7323935748224626294, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
-  m_PrefabInstance: {fileID: 7323935748384050312}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba17a2e41948b41439690454ba06f15f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &914481919 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9181593802604380227, guid: da3a194260593b74a89bc09245b22bc6, type: 3}
@@ -1666,7 +1665,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1278962375649610283, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
   m_PrefabInstance: {fileID: 1129259272}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1200681223
+--- !u!43 &1289637198
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2203,7 +2202,7 @@ PrefabInstance:
     - target: {fileID: 2118407585575635312, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1200681223}
+      objectReference: {fileID: 1289637198}
     - target: {fileID: 2118407585575635325, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_IsActive
       value: 1

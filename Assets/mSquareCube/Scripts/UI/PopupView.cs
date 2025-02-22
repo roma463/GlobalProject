@@ -1,14 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PopupView : MonoBehaviour
+public abstract class PopupView<T> : MonoBehaviour where T : PopupParameters
 {
-    [SerializeField] private Button _closeButton;
 
-    private void Awake()
-    {
-        _closeButton.onClick.AddListener(ButtonClosed);
-    }
+    public abstract void Setup(T settings);
 
     public virtual void Show()
     {
@@ -18,10 +14,5 @@ public class PopupView : MonoBehaviour
     public virtual void Hide() 
     {
         gameObject.SetActive(false);
-    }
-
-    public void ButtonClosed()
-    {
-        Hide();
     }
 }

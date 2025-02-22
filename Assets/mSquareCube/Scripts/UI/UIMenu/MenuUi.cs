@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,11 @@ public class MenuUi : MonoBehaviour
     [SerializeField] private ConnectionToServer _connetionToServer;
     [SerializeField] private Button _continue;
     [SerializeField] private Button _back;
+    [SerializeField] private PopupMessageView _warningPopup;
+
+    [SerializeField] private LanguageTextData _coopWarning;
+    [SerializeField] private LanguageTextData _resetDataWarning;
+
     private List<WindowUI> _listOpenWindow = new List<WindowUI>();
     private SaveGame _saveGame;
 
@@ -32,6 +38,37 @@ public class MenuUi : MonoBehaviour
         if (_saveGame.Data.LevelSingleIndex != SaveGame.startLevelIndex)
             _continue.interactable = true;
         _listOpenWindow.Add(w_basic);
+    }
+
+    public void OnCoopClick()
+    {
+        _warningPopup.Setup(new MessagePopup
+        {
+            message = _coopWarning.GetText(_saveGame.Data.CurrentLanguage),
+            cancelButton = () => _warningPopup.Hide(),
+        });
+    }
+
+    public void NewGame()
+    {
+        if (_saveGame.Data.LevelSingleIndex != SaveGame.startLevelIndex)
+        {
+            _warningPopup.Setup(new MessagePopup
+            {
+                message = _resetDataWarning.GetText(_saveGame.Data.CurrentLanguage),
+                continueButton = () => LaunchGame(SaveGame.startLevelIndex),
+                cancelButton = () => _warningPopup.Hide(),
+            });
+        }
+        else
+        {
+            LaunchGame(SaveGame.startLevelIndex);
+        }
+    }
+
+    public void LaunchGame(int indexLevel)
+    {
+        SceneManager.LoadScene(indexLevel);
     }
 
     public void Quit()
@@ -79,4 +116,15 @@ public class MenuUi : MonoBehaviour
         windowClosed.Hide();
     }
 
+}
+
+[Serializable]
+public class LanguageTextData
+{
+    [TextArea(3, 10)]
+    [SerializeField] private string _rassian;
+    [TextArea(3, 10)]
+    [SerializeField] private string _english;
+
+    public string GetText(Language language) => language == Language.rus ? _rassian : _english;
 }

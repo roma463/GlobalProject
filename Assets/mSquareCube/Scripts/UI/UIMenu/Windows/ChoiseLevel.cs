@@ -15,11 +15,6 @@ public class ChoiseLevel : WindowUI
         _save = save;
     }
 
-    private void Start()
-    {
-
-    }
-
     public void NewGame()
     {
         if (_save.Data.LevelSingleIndex != SaveGame.startLevelIndex)
