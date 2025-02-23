@@ -56,7 +56,11 @@ public class MenuUi : MonoBehaviour
             _warningPopup.Setup(new MessagePopup
             {
                 message = _resetDataWarning.GetText(_saveGame.Data.CurrentLanguage),
-                continueButton = () => LaunchGame(SaveGame.startLevelIndex),
+                continueButton = () => 
+                {
+                    LaunchGame(SaveGame.startLevelIndex);
+                    Dialog.ClearShowedDialogs();
+                },
                 cancelButton = () => _warningPopup.Hide(),
             });
         }

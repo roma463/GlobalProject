@@ -13,7 +13,7 @@ using Zenject;
 
 public class Dialog : MonoBehaviour
 {
-    public static List<string> _lastDialog = new List<string>();
+    public static List<string> _showdDialogs = new List<string>();
 
     [SerializeField] private string _id;
     [SerializeField] private Parametrs[] _parametrs;
@@ -39,7 +39,7 @@ public class Dialog : MonoBehaviour
 #endif
 }
 
-private void Start()
+    private void Start()
     {
         _viewer = ViewerSubtitrs.Instance;
     }
@@ -50,16 +50,25 @@ private void Start()
         _saveGame = saveGame;
     }
 
+    public static void ClearShowedDialogs()
+    {
+        _showdDialogs.Clear();
+    }
+
     public void StartDialog()
     {
-        if(_isShowdRepeat || !_lastDialog.Contains(_id))
+        if(_isShowdRepeat || !_showdDialogs.Contains(_id))
         {
-            foreach (var item in _lastDialog)
+            foreach (var item in _showdDialogs)
             {
                 print("AAAAAAA " + item);
             }
             StartCoroutine(ChangeSubtitres());
-            _lastDialog.Add(_id);
+            _showdDialogs.Add(_id);
+        }
+        else
+        {
+            _aciton?.Invoke(); 
         }
     }
 
