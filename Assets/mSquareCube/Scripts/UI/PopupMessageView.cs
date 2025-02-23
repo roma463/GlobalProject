@@ -19,13 +19,12 @@ public class PopupMessageView : PopupView<MessagePopup>
         Show();
     }
 
-    private void InitButton(Button button, Action? action)
+    private void InitButton(Button button, Action action)
     {
+        button.gameObject.SetActive(action != null);
+
         if(action == null)
-        {
-            button.gameObject.SetActive(false);
             return;
-        }
 
         button.onClick.AddListener(() => action?.Invoke());
     }

@@ -1,18 +1,45 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using UnityEngine;
 using UnityEngine.Events;
+using WebSocketSharp;
 using Zenject;
 
 public class Dialog : MonoBehaviour
 {
+    public static List<string> _lastDialog = new List<string>();
+
+    [SerializeField] private string _id;
     [SerializeField] private Parametrs[] _parametrs;
     [SerializeField] private float _dealy = .5f;
     [SerializeField] private UnityEvent _aciton;
+    [SerializeField] private bool _isShowdRepeat = false;
+
     private ViewerSubtitrs _viewer;
     private SaveGame _saveGame;
 
-    private void Start()
+    private void OnValidate()
+    {
+        if(Application.IsPlaying(this))
+        {
+            print("Dialog is plaint");
+            return;
+        }
+        print("Dialog validate");
+
+        _id = Guid.NewGuid().ToString();
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+#endif
+}
+
+private void Start()
     {
         _viewer = ViewerSubtitrs.Instance;
     }
@@ -25,7 +52,15 @@ public class Dialog : MonoBehaviour
 
     public void StartDialog()
     {
-        StartCoroutine(ChangeSubtitres());
+        if(_isShowdRepeat || !_lastDialog.Contains(_id))
+        {
+            foreach (var item in _lastDialog)
+            {
+                print("AAAAAAA " + item);
+            }
+            StartCoroutine(ChangeSubtitres());
+            _lastDialog.Add(_id);
+        }
     }
 
     private IEnumerator ChangeSubtitres()

@@ -685,18 +685,7 @@ PrefabInstance:
       addedObject: {fileID: 1002052755}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a81a22f4915048e4c9026bd5d053c96c, type: 3}
---- !u!114 &391086484 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
-  m_PrefabInstance: {fileID: 934988394}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f39fccc5ed22d429cd79c82dd5e0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!43 &449316509
+--- !u!43 &354544272
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -861,6 +850,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &391086484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+  m_PrefabInstance: {fileID: 934988394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f39fccc5ed22d429cd79c82dd5e0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &509978667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1468,6 +1468,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _id
+      value: fc5b8167-cf62-4fcb-9130-b5841ee01682
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1496,6 +1500,18 @@ PrefabInstance:
     - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
       propertyPath: _parametrs.Array.data[2]._timeText
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[0]._translate
+      value: This test uses a transparent wall.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[1]._translate
+      value: It's only transparent for bullets.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946741586251409696, guid: f75d438df6ca8ce4e9cfa725be48247f, type: 3}
+      propertyPath: _parametrs.Array.data[2]._translate
+      value: Good luck 146211
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2578,7 +2594,7 @@ PrefabInstance:
     - target: {fileID: 2118407585575635312, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 449316509}
+      objectReference: {fileID: 354544272}
     - target: {fileID: 2118407585575635325, guid: 3b2fc48962b2e154783a03529d8a4d67, type: 3}
       propertyPath: m_IsActive
       value: 1
