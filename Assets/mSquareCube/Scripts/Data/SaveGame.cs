@@ -65,7 +65,7 @@ public class GameData
 
     public GameData()
     {
-        CurrentLanguage = Language.rus;
+        CurrentLanguage = Language.eng;
         LevelSingleIndex = SaveGame.startLevelIndex;
         LevelJointsIndex = 0;
         Settings = new SettingsGame();
